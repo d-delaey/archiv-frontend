@@ -198,7 +198,7 @@ table {
 }
 
 .share-input {
-    padding: .25rem .5rem;
+    padding: 0.25rem 0.5rem;
 }
 
 .share-button-list {
@@ -246,11 +246,11 @@ table {
     font-size: 200%;
 
     &:before {
-        content: '☀️';
+        content: "☀️";
     }
 
     &.active:before {
-        content: '🌒';
+        content: "🌒";
     }
 }
 
@@ -312,7 +312,11 @@ table {
     font-family: $font-family-sans-serif;
     font-size: 140%;
     background: rgb(0, 0, 0) !important;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.58) 20%, rgba(255, 255, 255, 0) 95%) !important;
+    background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.58) 20%,
+        rgba(255, 255, 255, 0) 95%
+    ) !important;
 }
 
 .vjs-menu-button-popup .vjs-menu .vjs-menu-content,
@@ -340,7 +344,6 @@ table {
     color: black !important;
 }
 
-
 // media queries
 @media screen and (max-width: 767px) {
     #twitch-embed iframe {
@@ -355,7 +358,6 @@ table {
         margin: 1rem 0;
     }
 }
-
 
 @media screen and (min-width: 768px) {
     #twitch-embed iframe {
