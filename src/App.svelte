@@ -127,7 +127,7 @@
         <nav class="navbar navbar-expand-lg border-bottom sticky-top mb-4">
             <div class="container-fluid">
                 <Link to="/" class="navbar-brand ps-3">
-                    <img src="/img/wubPog.png" width="50" height="50" class="rounded-circle" alt="wubPog">
+                    <img src="/img/favicon.ico" width="50" height="50" class="rounded-circle" alt="wubPog">
                 </Link>
                 <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
