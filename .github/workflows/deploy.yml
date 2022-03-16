@@ -2,7 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
 
 jobs:
   build:
@@ -12,11 +13,11 @@ jobs:
 
       - name: Install and Build
         run: |
-          npm install
-          npm run build
+        npm install
+        npm run build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
-          branch: gh-pages
-          folder: public
+        branch: gh-pages
+        folder: public
