@@ -33,5 +33,5 @@
             let currentModeState = true;
         }
     </script>
-    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 </svelte:head>
