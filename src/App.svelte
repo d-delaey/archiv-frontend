@@ -16,10 +16,9 @@
     import Footer from "./components/Footer.svelte";
 
     // bootstrap js
-    import 'bootstrap/js/dist/base-component';
-    import 'bootstrap/js/dist/button';
-    import 'bootstrap/js/dist/dropdown';
-    import 'bootstrap/js/dist/dropdown';
+    import "bootstrap/js/dist/base-component";
+    import "bootstrap/js/dist/button";
+    import "bootstrap/js/dist/dropdown";
 
     // dayjs
     import dayjs from "dayjs";
