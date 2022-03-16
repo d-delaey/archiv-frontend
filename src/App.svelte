@@ -1,6 +1,6 @@
 <script>
-	// routes
-	import { Router, Route, Link } from "svelte-routing";
+    // routes
+    import { Router, Route, Link } from "svelte-routing";
     import Home from "./routes/Home.svelte";
     import VodsAll from "./routes/VodsAll.svelte";
     import VodsYears from "./routes/VodsYears.svelte";
@@ -11,27 +11,27 @@
     import Stats from "./routes/Stats.svelte";
     import Search from "./routes/Search.svelte";
 
-	// components
-	import Head from "./components/Head.svelte";
-	import Footer from "./components/Footer.svelte";
+    // components
+    import Head from "./components/Head.svelte";
+    import Footer from "./components/Footer.svelte";
 
-	// bootstrap js
-	import 'bootstrap/js/dist/base-component';
-	import 'bootstrap/js/dist/button';
-	import 'bootstrap/js/dist/dropdown';
-	import 'bootstrap/js/dist/dropdown';
+    // bootstrap js
+    import 'bootstrap/js/dist/base-component';
+    import 'bootstrap/js/dist/button';
+    import 'bootstrap/js/dist/dropdown';
+    import 'bootstrap/js/dist/dropdown';
 
-	// dayjs
+    // dayjs
     import dayjs from "dayjs";
     import relativeTime from "dayjs/plugin/relativeTime";
     import "dayjs/locale/de";
     dayjs.extend(relativeTime);
     dayjs.locale("de");
 
-	// exports
+    // exports
     export let url = "";
 
-	// vars
+    // vars
     let emotes;
     let statsDB;
     let vods;
@@ -40,42 +40,42 @@
     let showResults = false;
     let searchFocus = -1;
 
-	// parallel api fetch: https://dmitripavlutin.com/javascript-fetch-async-await/#5-parallel-fetch-requests
-	async function fetchApi() {
-		const [emoteResponse, statsResponse] = await Promise.all([
-			fetch("ENV_BASE_DIR/api/emotes/?page_size=500"),
-			fetch("ENV_BASE_DIR/api/stats/db/")
-		]);
-		const e = await emoteResponse.json();
-		const s = await statsResponse.json();
-		return [e, s]
-	}
+    // parallel api fetch: https://dmitripavlutin.com/javascript-fetch-async-await/#5-parallel-fetch-requests
+    async function fetchApi() {
+        const [emoteResponse, statsResponse] = await Promise.all([
+            fetch("ENV_BASE_DIR/api/emotes/?page_size=500"),
+            fetch("ENV_BASE_DIR/api/stats/db/")
+        ]);
+        const e = await emoteResponse.json();
+        const s = await statsResponse.json();
+        return [e, s]
+    }
 
-	fetchApi().then(([e, s]) => {
-		emotes = e;
-		statsDB = s;
-	})
+    fetchApi().then(([e, s]) => {
+        emotes = e;
+        statsDB = s;
+    })
 
     // handle search
-	async function fetchSearch() {
-		const [vodsResponse, clipsResponse] = await Promise.all([
-			fetch(`ENV_BASE_DIR/api/vods/?page_size=4&title=${query}`),
-			fetch(`ENV_BASE_DIR/api/clips/?page_size=4&title=${query}`)
-		]);
-		const v = await vodsResponse.json();
-		const c = await clipsResponse.json();
-		return [v, c]
-	}
+    async function fetchSearch() {
+        const [vodsResponse, clipsResponse] = await Promise.all([
+            fetch(`ENV_BASE_DIR/api/vods/?page_size=4&title=${query}`),
+            fetch(`ENV_BASE_DIR/api/clips/?page_size=4&title=${query}`)
+        ]);
+        const v = await vodsResponse.json();
+        const c = await clipsResponse.json();
+        return [v, c]
+    }
 
-	function search() {
-		if (query.length < 3) {
-			return
+    function search() {
+        if (query.length < 3) {
+            return
         }
         showResults = true;
         fetchSearch().then(([v, c]) => {
             vods = v;
             clips = c;
-	    })
+        })
     }
 
     search()
@@ -160,7 +160,7 @@
                     </ul>
                     <div class="d-flex input-group w-25 me-2" autocomplete="off">
                         <input id="searchInput" class="form-control rounded-0 rounded-start" type="search" placeholder="Suche /" aria-label="Suche" name="q" bind:value={query} on:input={() => search()} on:focus={() => showResults = true} on:keydown={(e) => handleResultsList(e)} required>
-						<a class="btn btn-outline-secondary rounded-0 rounded-end" type="button" href="/search/{query}">Suche</a>
+                        <a class="btn btn-outline-secondary rounded-0 rounded-end" type="button" href="/search/{query}">Suche</a>
                         <div id="searchResults" class="{showResults ? '' : 'd-none'} rounded">
                             {#if (vods?.results.length) && (query?.length > 2)}
                                 <h5 class="p-2">Vod Ergebnisse: {vods.count}</h5>
@@ -203,21 +203,21 @@
             </div>
         </nav>
     </header>
-	<Route path="vods/all" component="{VodsAll}" />
-	<Route path="vods/years" component="{VodsYears}" />
-	<Route path="vods/watch/:uuid" component="{VodsWatch}" />
-	<Route path="clips/all" component="{ClipsAll}" />
-	<Route path="clips/top30" component="{ClipsTop30}" />
-	<Route path="clips/watch/:uuid" component="{ClipsWatch}" />
-	<Route path="stats" component="{Stats}" />
-	<Route path="search/:query" component="{Search}" />
-	<Route path="/"><Home /></Route>
+    <Route path="vods/all" component="{VodsAll}" />
+    <Route path="vods/years" component="{VodsYears}" />
+    <Route path="vods/watch/:uuid" component="{VodsWatch}" />
+    <Route path="clips/all" component="{ClipsAll}" />
+    <Route path="clips/top30" component="{ClipsTop30}" />
+    <Route path="clips/watch/:uuid" component="{ClipsWatch}" />
+    <Route path="stats" component="{Stats}" />
+    <Route path="search/:query" component="{Search}" />
+    <Route path="/"><Home /></Route>
 </Router>
 
 <Footer last_vod_sync={statsDB?.last_vod_sync} last_emote_sync={statsDB?.last_emote_sync}/>
 
 <style lang="scss" global>
-	@import "./main.scss";
+    @import "./main.scss";
 
     :global(.result-item-active) {
         background-color: var(--hover-color);

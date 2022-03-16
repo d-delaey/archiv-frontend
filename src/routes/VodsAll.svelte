@@ -1,13 +1,13 @@
 <script>
-	import VodGrid from "../components/VodGrid.svelte";
+    import VodGrid from "../components/VodGrid.svelte";
 
     let vods;
 
-	async function fetchVods(p) {
+    async function fetchVods(p) {
         const response = await fetch(`ENV_BASE_DIR/api/vods/?page_size=36&page=${p}`);
-		const v = await response.json();
-		return v
-	}
+        const v = await response.json();
+        return v
+    }
 
     function refreshVods(p) {
         fetchVods(p).then((v) => {
@@ -22,7 +22,7 @@
 </script>
 
 <main class="flex-shrink-0">
-	<div class="container">
+    <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-8">
                 <h1 class="display-3 fw-bolder pb-3">
@@ -36,8 +36,8 @@
             {/if}
         </div>
 
-		{#if vods}
-			<VodGrid vods={vods} />
+        {#if vods}
+            <VodGrid vods={vods} />
             <nav aria-label="Pagination">
                 <ul class="pagination justify-content-center">
                     {#if vods.links.previous}
@@ -73,6 +73,6 @@
             </nav>
         {:else}
             {refreshVods(1)}
-		{/if}
-	</div>
+        {/if}
+    </div>
 </main>
