@@ -1,19 +1,16 @@
 <script>
     import VodGrid from "../components/VodGrid.svelte";
+    import GridPlaceholder from "../components/GridPlaceholder.svelte";
 
     let vods;
+    let page = 1;
 
     async function fetchVods(p) {
-        const response = await fetch(`ENV_BASE_DIR/api/vods/?page_size=36&page=${p}`);
+        const response = await fetch(`ENV_BASE_DIR/api/vods/?page_size=48&page=${p}`);
         const v = await response.json();
-        return v
-    }
-
-    function refreshVods(p) {
-        fetchVods(p).then((v) => {
-            vods = v;
-        })
+        vods = v;
         window.scrollTo(0, 0);
+        return v
     }
 
     function range(start, end) {
@@ -31,18 +28,19 @@
             </div>
             {#if vods}
                 <div class="col-xs-12 col-md-4 col-pages">
-                   <p class="fs-4 fw-bold mb-2 pb-3">Seite {vods.current_page} von {vods.total_pages}</p>
+                    <p class="fs-4 fw-bold mb-2 pb-3">Seite {vods.current_page} von {vods.total_pages}</p>
                 </div>
             {/if}
         </div>
-
-        {#if vods}
+        {#await fetchVods(page)}
+            <GridPlaceholder count=48 />
+        {:then vods}
             <VodGrid vods={vods} />
             <nav aria-label="Pagination">
                 <ul class="pagination justify-content-center">
                     {#if vods.links.previous}
                         <li class="page-item">
-                            <div class="page-link" role="button" on:click={() => refreshVods(1)}>Erste</div>
+                            <div class="page-link" role="button" on:click={() => page = 1}>Erste</div>
                         </li>
                         <li class="page-item pagination-ellipsis text-center">
                             <span>&hellip;</span>
@@ -52,11 +50,11 @@
                         {#if i <= vods.current_page+2 && i >= vods.current_page-2}
                             {#if vods.current_page == i}
                                 <li class="page-item active">
-                                    <div class="page-link" role="button" on:click={() => refreshVods(i)}>{i}</div>
+                                    <div class="page-link" role="button" on:click={() => page = i}>{i}</div>
                                 </li>
                             {:else}
                                 <li class="page-item">
-                                    <div class="page-link" role="button" on:click={() => refreshVods(i)}>{i}</div>
+                                    <div class="page-link" role="button" on:click={() => page = i}>{i}</div>
                                 </li>
                             {/if}
                         {/if}
@@ -66,13 +64,13 @@
                             <span>&hellip;</span>
                         </li>
                         <li class="page-item">
-                            <div class="page-link" role="button" on:click={() => refreshVods(vods.total_pages)}>Letzte</div>
+                            <div class="page-link" role="button" on:click={() => page = vods.total_pages}>Letzte</div>
                         </li>
                     {/if}
                 </ul>
             </nav>
-        {:else}
-            {refreshVods(1)}
-        {/if}
+        {:catch error}
+            <p>Fehler beim Laden von Vods.</p>
+        {/await}
     </div>
 </main>

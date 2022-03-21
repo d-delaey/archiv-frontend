@@ -161,7 +161,7 @@
                     </ul>
                     <div class="d-flex input-group w-25 me-2" autocomplete="off">
                         <input id="searchInput" class="form-control rounded-0 rounded-start" type="search" placeholder="Suche /" aria-label="Suche" name="q" bind:value={query} on:input={() => search()} on:focus={() => showResults = true} on:keydown={(e) => handleResultsList(e)} required>
-                        <a class="btn btn-outline-secondary rounded-0 rounded-end" type="button" href="/search/{query}">Suche</a>
+                        <Link to="search/{query}" class="btn btn-outline-secondary rounded-0 rounded-end" type="button">Suche</Link>
                         <div id="searchResults" class="{showResults ? '' : 'd-none'} rounded">
                             {#if (vods?.results.length) && (query?.length > 2)}
                                 <h5 class="p-2">Vod Ergebnisse: {vods.count}</h5>
