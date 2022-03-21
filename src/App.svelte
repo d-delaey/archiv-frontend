@@ -91,7 +91,9 @@
     // keyboard navigation for search results
     function handleResultsList(e) {
         let resultItems = document.querySelectorAll(".result-item");
-        if (e.keyCode == 40) {
+        if (e.keyCode == 13) {
+            window.location.href = `/search/${query}`;
+        } else if (e.keyCode == 40) {
             searchFocus++;
             addActive(resultItems);
         } else if (e.keyCode == 38) {
