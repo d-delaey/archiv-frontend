@@ -11,11 +11,11 @@
 </script>
 
 <div class="row">
-    {#each clips.results as clip}
+    {#each clips.results as clip ,i}
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-2 mb-2">
             <div class="card card-rounded h-100">
                 <div class="position-relative">
-                    <VideoThumbnail type="clips" filename={clip.clip_id} title={clip.title} uuid={clip.uuid} duration={clip.duration} />
+                    <VideoThumbnail type="clips" filename={clip.clip_id} title={clip.title} uuid={clip.uuid} duration={clip.duration} loading={i>7 ? "lazy" : "auto"} />
                 </div>
                 <div class="card-body">
                     <a href="/clips/watch/{clip.uuid}">

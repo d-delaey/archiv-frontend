@@ -4,6 +4,7 @@
     export let title;
     export let uuid;
     export let duration;
+    export let loading;
 
     function showPrev() {
         document.getElementById(filename + "-sm-avif").srcset = `ENV_BASE_URL/media/${type}/${filename}-preview.webp`;
@@ -30,9 +31,9 @@
 <a href="/{type}/watch/{uuid}">
     <!-- https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/mouse-events-have-key-events.md -->
     <picture id="{filename}" class="has-preview" on:mouseover={() => showPrev()} on:focus={() => showPrev()} on:mouseout={() => hidePrev()} on:blur={() => hidePrev()}>
-        <source id="{filename}-sm-avif" type="image/avif" srcset="ENV_BASE_URL/media/{type}/{filename}-sm.avif" media="(min-width: 576px)" class="card-img-top image-rounded-top" alt="{title}" loading="lazy">
-        <source id="{filename}-md-avif" type="image/avif" srcset="ENV_BASE_URL/media/{type}/{filename}-md.avif" media="(max-width: 575px)" class="card-img-top image-rounded-top" alt="{title}" loading="lazy">
-        <img id="{filename}-jpg" srcset="ENV_BASE_URL/media/{type}/{filename}-sm.jpg 576w, ENV_BASE_URL/media/{type}/{filename}-md.jpg 575w" src="ENV_BASE_URL/media/{type}/{filename}-md.jpg" class="card-img-top image-rounded-top" alt="{title}" loading="lazy">
+        <source id="{filename}-sm-avif" type="image/avif" srcset="ENV_BASE_URL/media/{type}/{filename}-sm.avif" media="(min-width: 576px)" class="card-img-top image-rounded-top" alt="{title}" loading="{loading}">
+        <source id="{filename}-md-avif" type="image/avif" srcset="ENV_BASE_URL/media/{type}/{filename}-md.avif" media="(max-width: 575px)" class="card-img-top image-rounded-top" alt="{title}" loading="{loading}">
+        <img id="{filename}-jpg" srcset="ENV_BASE_URL/media/{type}/{filename}-sm.jpg 576w, ENV_BASE_URL/media/{type}/{filename}-md.jpg 575w" src="ENV_BASE_URL/media/{type}/{filename}-md.jpg" class="card-img-top image-rounded-top" alt="{title}" loading="{loading}">
     </picture>
     <div class="timecode-overlay text-white">
         {toHHMMSS()}

@@ -11,11 +11,11 @@
 </script>
 
 <div class="row">
-    {#each vods.results as vod}
+    {#each vods.results as vod, i}
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-2 mb-2">
             <div class="card card-rounded h-100">
                 <div class="position-relative">
-                    <VideoThumbnail type="vods" filename={vod.filename} title={vod.title} uuid={vod.uuid} duration={vod.duration} />
+                    <VideoThumbnail type="vods" filename={vod.filename} title={vod.title} uuid={vod.uuid} duration={vod.duration} loading={i>7 ? "lazy" : "auto"} />
                 </div>
                 <div class="card-body">
                     <a href="/vods/watch/{vod.uuid}">
