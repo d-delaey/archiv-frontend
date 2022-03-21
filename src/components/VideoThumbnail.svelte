@@ -33,7 +33,7 @@
     <picture id="{filename}" class="has-preview" on:mouseover={() => showPrev()} on:focus={() => showPrev()} on:mouseout={() => hidePrev()} on:blur={() => hidePrev()}>
         <source id="{filename}-sm-avif" type="image/avif" srcset="ENV_BASE_URL/media/{type}/{filename}-sm.avif" media="(min-width: 576px)" class="card-img-top image-rounded-top" alt="{title}" loading="{loading}">
         <source id="{filename}-md-avif" type="image/avif" srcset="ENV_BASE_URL/media/{type}/{filename}-md.avif" media="(max-width: 575px)" class="card-img-top image-rounded-top" alt="{title}" loading="{loading}">
-        <img id="{filename}-jpg" srcset="ENV_BASE_URL/media/{type}/{filename}-sm.jpg 576w, ENV_BASE_URL/media/{type}/{filename}-md.jpg 575w" src="ENV_BASE_URL/media/{type}/{filename}-md.jpg" class="card-img-top image-rounded-top" alt="{title}" loading="{loading}">
+        <img width="520" height="293" id="{filename}-jpg" srcset="ENV_BASE_URL/media/{type}/{filename}-sm.jpg 576w, ENV_BASE_URL/media/{type}/{filename}-md.jpg 575w" src="ENV_BASE_URL/media/{type}/{filename}-md.jpg" class="card-img-top image-rounded-top" alt="{title}" loading="{loading}">
     </picture>
     <div class="timecode-overlay text-white">
         {toHHMMSS()}
@@ -42,3 +42,10 @@
         <div class="progress-bar" role="progressbar" aria-label="{uuid}-progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="{duration}"></div>
     </div>
 </a>
+
+<style lang="scss">
+    .card-img-top {
+        width: 100%;
+        height: auto;
+    }
+</style>

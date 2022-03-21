@@ -26,7 +26,7 @@
         </div>
     {:else}
         <div class="col">
-            <img src="/img/modcheck.gif" alt="modcheck">
+            <img src="/img/modcheck.gif" alt="modcheck" width="110" height="110">
         </div>
     {/each}
 </div>
