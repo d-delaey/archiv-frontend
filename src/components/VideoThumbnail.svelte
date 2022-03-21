@@ -1,4 +1,6 @@
 <script>
+    import { Link } from "svelte-routing";
+
     export let type;
     export let filename;
     export let title;
@@ -28,7 +30,7 @@
     }
 </script>
 
-<a href="/{type}/watch/{uuid}">
+<Link to="/{type}/watch/{uuid}">
     <!-- https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/mouse-events-have-key-events.md -->
     <picture id="{filename}" class="has-preview" on:mouseover={() => showPrev()} on:focus={() => showPrev()} on:mouseout={() => hidePrev()} on:blur={() => hidePrev()}>
         <source id="{filename}-sm-avif" type="image/avif" srcset="ENV_BASE_URL/media/{type}/{filename}-sm.avif" media="(min-width: 576px)" class="card-img-top image-rounded-top" alt="{title}" loading="{loading}">
@@ -41,7 +43,7 @@
     <div id="watched-progress" data-id="{uuid}" class="progress progress-overlay d-none">
         <div class="progress-bar" role="progressbar" aria-label="{uuid}-progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="{duration}"></div>
     </div>
-</a>
+</Link>
 
 <style lang="scss">
     .card-img-top {
