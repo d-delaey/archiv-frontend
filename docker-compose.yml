@@ -1,0 +1,7 @@
+version: "3"
+services:
+    frontend:
+        container_name: archiv-frontend
+        build: .
+        ports:
+            - 8080:8080
