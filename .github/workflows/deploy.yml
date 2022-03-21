@@ -9,10 +9,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Create SSH key
-        run: |
-          install -m 600 -D /dev/null ~/.ssh/id_rsa
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
-      - name: Deploy
-        run: ssh -t secrets.SSH_USER@secrets.SSH_HOST -p secrets.SSH_PORT -i ~/.ssh/id_rsa "cd ~/docker/archiv-frontend && git pull && docker-compose up -d --build"
+    - name: Deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          cd ~/docker/archiv-frontend
+          git pull
+          docker-compose up -d --build
