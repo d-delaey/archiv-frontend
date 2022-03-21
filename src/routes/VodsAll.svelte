@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-xs-12 col-md-8">
                 <h1 class="display-3 fw-bolder pb-3">
-                    Kürzliche Vods
+                    Alle Vods
                 </h1>
             </div>
             {#if vods}
