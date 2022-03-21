@@ -18,6 +18,7 @@
     // bootstrap js
     import "bootstrap/js/dist/base-component";
     import "bootstrap/js/dist/button";
+    import "bootstrap/js/dist/collapse";
     import "bootstrap/js/dist/dropdown";
 
     // dayjs
