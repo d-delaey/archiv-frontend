@@ -13,7 +13,7 @@
     let vods = {};
 
     async function fetchYears() {
-        const response = await fetch("ENV_BASE_DIR/api/years/");
+        const response = await fetch("ENV_BASE_URL/api/years/");
         const y = await response.json();
         y.forEach(element => {
             vodCount += element.count;
@@ -25,7 +25,7 @@
         if (y in vods) {
             return
         }
-        const response = await fetch(`ENV_BASE_DIR/api/vods/?page_size=500&year=${y}`);
+        const response = await fetch(`ENV_BASE_URL/api/vods/?page_size=500&year=${y}`);
         const year = await response.json();
         vods[y] = year.results;
     }

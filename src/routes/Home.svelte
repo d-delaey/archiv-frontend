@@ -3,13 +3,13 @@
     import ClipGrid from "../components/ClipGrid.svelte";
 
     async function fetchVods() {
-        const response = await fetch("ENV_BASE_DIR/api/vods/?page_size=18");
+        const response = await fetch("ENV_BASE_URL/api/vods/?page_size=18");
         const vods = await response.json();
         return vods
     }
 
     async function fetchClips() {
-        const response = await fetch("ENV_BASE_DIR/api/clips/?page_size=18&sort=view_count");
+        const response = await fetch("ENV_BASE_URL/api/clips/?page_size=18&sort=view_count");
         const clips = await response.json();
         return clips
     }

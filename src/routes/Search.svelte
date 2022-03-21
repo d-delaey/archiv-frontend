@@ -5,13 +5,13 @@
     export let query;
 
     async function fetchVods() {
-        const response = await fetch(`ENV_BASE_DIR/api/vods/?page_size=18&title=${query}`);
+        const response = await fetch(`ENV_BASE_URL/api/vods/?page_size=18&title=${query}`);
         const vods = await response.json();
         return vods
     }
 
     async function fetchClips() {
-        const response = await fetch(`ENV_BASE_DIR/api/clips/?page_size=18&title=${query}`);
+        const response = await fetch(`ENV_BASE_URL/api/clips/?page_size=18&title=${query}`);
         const clips = await response.json();
         return clips
     }

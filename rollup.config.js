@@ -66,7 +66,7 @@ export default {
       ],
     }),
     replace({
-      ENV_BASE_DIR: !production
+      ENV_BASE_URL: !production
         ? "https://wubbl0rz-archiv.inpognito.de"
         : "https://archiv.wubbl0rz.tv",
       preventAssignment: true,

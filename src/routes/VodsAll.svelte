@@ -6,7 +6,7 @@
     let page = 1;
 
     async function fetchVods(p) {
-        const response = await fetch(`ENV_BASE_DIR/api/vods/?page_size=48&page=${p}`);
+        const response = await fetch(`ENV_BASE_URL/api/vods/?page_size=48&page=${p}`);
         const v = await response.json();
         vods = v;
         window.scrollTo(0, 0);

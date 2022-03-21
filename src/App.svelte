@@ -43,8 +43,8 @@
     // parallel api fetch: https://dmitripavlutin.com/javascript-fetch-async-await/#5-parallel-fetch-requests
     async function fetchApi() {
         const [emoteResponse, statsResponse] = await Promise.all([
-            fetch("ENV_BASE_DIR/api/emotes/?page_size=500"),
-            fetch("ENV_BASE_DIR/api/stats/db/")
+            fetch("ENV_BASE_URL/api/emotes/?page_size=500"),
+            fetch("ENV_BASE_URL/api/stats/db/")
         ]);
         const e = await emoteResponse.json();
         const s = await statsResponse.json();
@@ -59,8 +59,8 @@
     // handle search
     async function fetchSearch() {
         const [vodsResponse, clipsResponse] = await Promise.all([
-            fetch(`ENV_BASE_DIR/api/vods/?page_size=4&title=${query}`),
-            fetch(`ENV_BASE_DIR/api/clips/?page_size=4&title=${query}`)
+            fetch(`ENV_BASE_URL/api/vods/?page_size=4&title=${query}`),
+            fetch(`ENV_BASE_URL/api/clips/?page_size=4&title=${query}`)
         ]);
         const v = await vodsResponse.json();
         const c = await clipsResponse.json();
