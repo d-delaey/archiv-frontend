@@ -1,17 +1,14 @@
+FROM node:alpine as build
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY . .
+RUN npm run build && npm prune --production
+
 FROM node:alpine
-
-WORKDIR /usr/src/app
-
-COPY svelte.config.js ./
-COPY package*.json ./
-
-RUN npm install
-
-COPY ./src ./src
-COPY ./static ./static
-
-RUN npm run build
-
-ENV HOST=0.0.0.0
-
-CMD ["npm", "start"]
+USER node:node
+WORKDIR /app
+COPY --from=build --chown=node:node /app/build ./build
+COPY --from=build --chown=node:node /app/node_modules ./node_modules
+COPY --chown=node:node package.json .
+CMD ["node","build"]

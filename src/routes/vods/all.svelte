@@ -83,8 +83,6 @@
                     {/if}
                 </ul>
             </nav>
-        {:catch error}
-            <p>Fehler beim Laden von Vods.</p>
         {/await}
     </div>
 </main>

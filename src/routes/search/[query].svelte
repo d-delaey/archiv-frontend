@@ -30,8 +30,6 @@
                 Vod Ergebnisse <small class="text-muted">{vods.count}</small>
             </h1>
             <VodGrid vods={vods} />
-        {:catch error}
-            <p>Fehler beim Laden von Vods.</p>
         {/await}
     </div>
     <div class="container">
@@ -45,8 +43,6 @@
                 Clip Ergebnisse <small class="text-muted">{clips.count}</small>
             </h1>
             <ClipGrid clips={clips} />
-        {:catch error}
-            <p>Fehler beim Laden von Clips.</p>
         {/await}
     </div>
 </main>

@@ -26,8 +26,6 @@
             <p>Lade Vods...</p>
         {:then vods}
             <VodGrid vods={vods} />
-        {:catch error}
-            <p>Fehler beim Laden von Vods.</p>
         {/await}
     </div>
     <div class="container">
@@ -38,8 +36,6 @@
             <p>Lade Clips...</p>
         {:then clips}
             <ClipGrid clips={clips} />
-        {:catch error}
-            <p>Fehler beim Laden von Clips.</p>
         {/await}
     </div>
 </main>
