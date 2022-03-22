@@ -241,6 +241,7 @@
 
         .result-item {
             padding: 0.5em;
+            cursor: pointer;
 
             &:not(:last-child) {
                 border-bottom: 1px solid var(--accent-color);
