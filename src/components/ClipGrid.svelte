@@ -1,4 +1,6 @@
 <script>
+    import { Link } from "svelte-routing";
+
     import VideoThumbnail from "./VideoThumbnail.svelte";
     import dayjs from "dayjs";
     import relativeTime from "dayjs/plugin/relativeTime";
@@ -18,15 +20,11 @@
                     <VideoThumbnail type="clips" filename={clip.clip_id} title={clip.title} uuid={clip.uuid} duration={clip.duration} loading={i>7 ? "lazy" : "auto"} />
                 </div>
                 <div class="card-body">
-                    <a href="/clips/watch/{clip.uuid}">
+                    <Link to="/clips/watch/{clip.uuid}">
                         <p class="h5 m-0 emote-title">
-                            {#if clip.emote_title}
-                                {clip.emote_title}
-                            {:else}
-                                {clip.title}
-                            {/if}
+                            {clip.title}
                         </p>
-                    </a>
+                    </Link>
                     <p class="card-text text-muted">
                         {dayjs(clip.date).fromNow()}<br>
                         {clip.view_count} Views - {clip.creator}
