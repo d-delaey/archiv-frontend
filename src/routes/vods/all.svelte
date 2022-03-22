@@ -1,12 +1,20 @@
 <script>
-    import VodGrid from "../components/VodGrid.svelte";
-    import GridPlaceholder from "../components/GridPlaceholder.svelte";
+    import Head from '../../components/Head.svelte';
+	import Footer from '../../components/Footer.svelte';
+    import VodGrid from "../../components/VodGrid.svelte";
+    import GridPlaceholder from "../../components/GridPlaceholder.svelte";
 
     let vods;
     let page = 1;
 
+    async function fetchStats() {
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/stats/db/`);
+        const s = await response.json();
+        return s
+    }
+
     async function fetchVods(p) {
-        const response = await fetch(`ENV_BASE_URL/api/vods/?page_size=48&page=${p}`);
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/vods/?page_size=48&page=${p}`);
         const v = await response.json();
         vods = v;
         window.scrollTo(0, 0);
@@ -17,6 +25,12 @@
         return Array(end - start + 1).fill().map((_, idx) => start + idx)
     }
 </script>
+
+{#await fetchStats()}
+    <span></span>
+{:then statsDB}
+    <Head updated_time={statsDB.last_vod_sync} />
+{/await}
 
 <main class="flex-shrink-0">
     <div class="container">

@@ -1,12 +1,7 @@
 <script>
-    import { Link } from "svelte-routing";
-
     import VideoThumbnail from "./VideoThumbnail.svelte";
-    import dayjs from "dayjs";
-    import relativeTime from "dayjs/plugin/relativeTime";
-    import "dayjs/locale/de";
-    dayjs.extend(relativeTime);
-    dayjs.locale("de");
+	import { format, formatDistance, parseISO } from 'date-fns';
+    import { de } from 'date-fns/locale/index.js';
 
     export let vods;
 
@@ -20,7 +15,7 @@
                     <VideoThumbnail type="vods" filename={vod.filename} title={vod.title} uuid={vod.uuid} duration={vod.duration} loading={i>7 ? "lazy" : "auto"} />
                 </div>
                 <div class="card-body">
-                    <Link to="/vods/watch/{vod.uuid}">
+                    <a href="/vods/watch/{vod.uuid}">
                         <p class="h5 m-0 emote-title">
                             {#if vod.emote_title}
                                 {vod.emote_title}
@@ -28,9 +23,9 @@
                                 {vod.title}
                             {/if}
                         </p>
-                    </Link>
+                    </a>
                     <p class="card-text text-muted">
-                        {dayjs(vod.date).fromNow()}, {dayjs(vod.date).format("HH:mm")} Uhr
+                        {formatDistance(parseISO(vod.date), new Date(), { locale: de })}, {format(parseISO(vod.date), "HH:mm")} Uhr
                     </p>
                 </div>
             </div>

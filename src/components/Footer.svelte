@@ -1,20 +1,18 @@
 <script>
-    import dayjs from "dayjs";
-    import relativeTime from "dayjs/plugin/relativeTime";
-    import "dayjs/locale/de";
-    dayjs.extend(relativeTime);
-    dayjs.locale("de");
+	import { formatRelative, parseISO } from 'date-fns';
+    import { de } from 'date-fns/locale/index.js';
 
-    export let last_vod_sync;
-    export let last_emote_sync;
+    export let statsDB;
 </script>
 
 <footer class="footer mt-auto py-2 border-top">
     <div class="container">
         <div class="row">
             <div class="col-md">
-                <p class="m-0">Letztes Vod Update: {dayjs(last_vod_sync).fromNow()}</p>
-                <p class="m-0">Letztes Emote Update: {dayjs(last_emote_sync).fromNow()}</p>
+                {#if statsDB}
+                    <p class="m-0">Letztes Vod Update: {formatRelative(parseISO(statsDB.last_vod_sync), new Date(), { locale: de })} Uhr</p>
+                    <p class="m-0">Letztes Emote Update: {formatRelative(parseISO(statsDB.last_emote_sync), new Date(), { locale: de })} Uhr</p>
+                {/if}
             </div>
             <div class="col-md text-md-end my-2">
                 <a href="https://www.twitch.tv/wubbl0rz" target="_blank" rel="noopener noreferrer" data-bs-toggle="tooltip" title="Twitch" class="text-decoration-none me-2">

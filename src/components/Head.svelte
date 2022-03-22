@@ -1,5 +1,7 @@
 <script>
-    export let last_vod_sync
+    import { page } from '$app/stores';
+
+    export let updated_time;
 </script>
 
 <svelte:head>
@@ -12,8 +14,8 @@
     <meta property="og:title" content="Wubbl0rz Archiv">
     <meta property="og:site_name" content="Wubbl0rz Archiv">
     <meta property="og:description" content="Twtich VOD Archiv von m4xFPS/wubbl0rz">
-    <meta property="og:url" content="{window.location.href}">
-    <meta property="og:updated_time" content={last_vod_sync}>
+    <meta property="og:url" content="{$page.url}">
+    <meta property="og:updated_time" content={updated_time}>
     <meta property="og:image" content="/img/og.jpg">
     <meta property="og:image:url" content="/img/og.jpg">
     <meta property="og:image:secure_url" content="/img/og.jpg">
@@ -26,12 +28,5 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image:alt" content="Wubbl0rz Archiv">
     <title>Wubbl0rz Archiv</title>
-    <script data-cfasync="false">
-        // Set color mode before anyting else, to prevent flashing screen
-        if (localStorage.getItem("dark-mode") == "true") {
-            document.documentElement.classList.add("dark-mode");
-            let currentModeState = true;
-        }
-    </script>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 </svelte:head>

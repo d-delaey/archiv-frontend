@@ -1,19 +1,11 @@
 <script>
-    // routes
-    import { Link } from "svelte-routing";
-
-    // dayjs
-    import dayjs from "dayjs";
-    import relativeTime from "dayjs/plugin/relativeTime";
-    import "dayjs/locale/de";
-    dayjs.extend(relativeTime);
-    dayjs.locale("de");
+	import { format, parseISO } from 'date-fns';
 
     let vodCount = 0;
     let vods = {};
 
     async function fetchYears() {
-        const response = await fetch("ENV_BASE_URL/api/years/");
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/years/`);
         const y = await response.json();
         y.forEach(element => {
             vodCount += element.count;
@@ -25,7 +17,7 @@
         if (y in vods) {
             return
         }
-        const response = await fetch(`ENV_BASE_URL/api/vods/?page_size=500&year=${y}`);
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/vods/?page_size=500&year=${y}`);
         const year = await response.json();
         vods[y] = year.results;
     }
@@ -68,12 +60,12 @@
                                     {#each vods[year.year] as vod}
                                         <div class="row py-2">
                                             <div class="col-md-auto">
-                                                {dayjs(vod.date).format("DD.MM.YYYY")} - {dayjs(vod.date).format("HH:mm")} Uhr
+                                                {format(parseISO(vod.date), "dd.MM.yyyy - HH:mm")} Uhr
                                             </div>
                                             <div class="col order-first order-md-last fw-bold">
-                                                <Link to="/vods/watch/{vod.uuid}" class="emote-title">
+                                                <a href="/vods/watch/{vod.uuid}" class="emote-title">
                                                     {vod.title}
-                                                </Link>
+                                                </a>
                                             </div>
                                             <div class="col-md-auto order-sm-last">
                                                 {toHHMMSS(vod.duration)} h
