@@ -11,8 +11,14 @@
 
     const BASE_URL = import.meta.env.VITE_BASE_URL;
     let player;
-    let src = type === "vods" ? `${BASE_URL}/media/${type}/${obj.filename}.m3u8` : `${BASE_URL}/media/${type}/${obj.clip_id}.m3u8`
-    let poster = type === "vods" ? `${BASE_URL}/media/${type}/${obj.filename}-lg.jpg` : `${BASE_URL}/media/${type}/${obj.clip_id}-lg.jpg`
+    let src =
+        type === 'vods'
+            ? `${BASE_URL}/media/${type}/${obj.filename}.m3u8`
+            : `${BASE_URL}/media/${type}/${obj.clip_id}.m3u8`;
+    let poster =
+        type === 'vods'
+            ? `${BASE_URL}/media/${type}/${obj.filename}-lg.jpg`
+            : `${BASE_URL}/media/${type}/${obj.clip_id}-lg.jpg`;
 
     const playbackRates = {
         playbackRates: [0.5, 1, 1.25, 1.5, 1.75, 2]
@@ -24,25 +30,25 @@
                 volumePanel: {
                     inline: false
                 }
-            },
+            }
         };
         player = videojs('vod', options);
-        player.setAttribute("uuid", obj.uuid);
+        player.setAttribute('uuid', obj.uuid);
         player.src({
             src: src,
-            type: "application/x-mpegURL"
-        })
+            type: 'application/x-mpegURL'
+        });
         player.fluid(true);
         player.seekButtons({
             forward: 30,
             back: 10
         });
         player.play();
-    })
+    });
 
     onDestroy(() => {
         player.dispose();
-    })
+    });
 </script>
 
 <video
@@ -52,7 +58,7 @@
     preload="auto"
     width="100%"
     height="100%"
-    poster={poster}
+    {poster}
     data-setup={JSON.stringify(playbackRates)}
 >
     <p class="vjs-no-js">

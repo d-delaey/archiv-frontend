@@ -195,8 +195,7 @@
                                 {#each vods.results as vod}
                                     <div
                                         class="result-item"
-                                        on:click={() =>
-                                            goto(`/vods/watch/${vod.uuid}`)}
+                                        on:click={() => goto(`/vods/watch/${vod.uuid}`)}
                                         on:mouseenter={(e) =>
                                             e.target.classList.add('result-item-active')}
                                         on:mouseleave={(e) =>
@@ -218,8 +217,7 @@
                                 {#each clips?.results as clip}
                                     <div
                                         class="result-item"
-                                        on:click={() =>
-                                            goto(`/clips/watch/${clip.uuid}`)}
+                                        on:click={() => goto(`/clips/watch/${clip.uuid}`)}
                                         on:mouseenter={(e) =>
                                             e.target.classList.add('result-item-active')}
                                         on:mouseleave={(e) =>

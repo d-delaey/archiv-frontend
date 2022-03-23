@@ -8,7 +8,7 @@
 
     page.subscribe(() => {
         uuid = $page.params.uuid;
-    })
+    });
 
     const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -32,7 +32,6 @@
         const i = Math.floor(Math.log(bytes) / Math.log(k));
         return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
     }
-
 </script>
 
 <main class="flex-shrink-0">
@@ -59,11 +58,11 @@
             <div class="mb-4">
                 <div>
                     <p class="placeholder-glow display-6">
-                        <span class="placeholder col-3"></span>
-                        <span class="placeholder col-7"></span>
+                        <span class="placeholder col-3" />
+                        <span class="placeholder col-7" />
                     </p>
                     <p class="text-muted placeholder-glow">
-                        <span class="placeholder col-4"></span>
+                        <span class="placeholder col-4" />
                     </p>
                 </div>
             </div>
