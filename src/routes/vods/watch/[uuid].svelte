@@ -1,5 +1,6 @@
 <script>
     import VideoThumbnail from '../../../components/VideoThumbnail.svelte';
+    import Player from '../../../components/Player.svelte';
     import { page } from '$app/stores';
     import { format, parseISO } from 'date-fns';
 
@@ -10,9 +11,6 @@
     })
 
     const BASE_URL = import.meta.env.VITE_BASE_URL;
-    const playbackRates = {
-        playbackRates: [0.5, 1, 1.25, 1.5, 1.75, 2]
-    };
 
     async function fetchVod(vod_uuid) {
         const response = await fetch(`${BASE_URL}/api/vods/${vod_uuid}`);
@@ -75,25 +73,7 @@
             <div class="mb-4">
                 <div class="row">
                     <div class="col-12">
-                        <video
-                            id="vod"
-                            class="video-js vjs-big-play-centered"
-                            controls
-                            preload="auto"
-                            width="100%"
-                            height="100%"
-                            poster="{BASE_URL}/media/vods/{vod.filename}-lg.jpg"
-                            data-setup={playbackRates}
-                        >
-                            <p class="vjs-no-js">
-                                To view this video please enable JavaScript, and consider upgrading
-                                to a web browser that
-                                <a href="https://videojs.com/html5-video-support/" target="_blank"
-                                    >supports HTML5 video</a
-                                >
-                            </p>
-                            <track kind="captions" />
-                        </video>
+                        <Player obj={vod} type="vods" />
                     </div>
                 </div>
             </div>
