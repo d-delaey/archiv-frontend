@@ -26,7 +26,7 @@
 		).srcset = `${BASE_URL}/media/${type}/${filename}-md.avif`;
 	}
 
-	function toHHMMSS(duration) {
+	function toHHMMSS() {
 		const sec_num = parseInt(duration, 10);
 		let hours = Math.floor(sec_num / 3600);
 		let minutes = Math.floor((sec_num - hours * 3600) / 60);
