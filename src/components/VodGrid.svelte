@@ -1,6 +1,6 @@
 <script>
     import VideoThumbnail from './VideoThumbnail.svelte';
-    import { format, formatDistance, parseISO } from 'date-fns';
+    import { format, formatDistanceToNow, parseISO } from 'date-fns';
     import { de } from 'date-fns/locale/index.js';
 
     export let vods;
@@ -31,10 +31,8 @@
                         </p>
                     </a>
                     <p class="card-text text-muted">
-                        {formatDistance(parseISO(vod.date), new Date(), { locale: de })}, {format(
-                            parseISO(vod.date),
-                            'HH:mm'
-                        )} Uhr
+                        {formatDistanceToNow(parseISO(vod.date), { locale: de })},
+                        {format(parseISO(vod.date), 'HH:mm')} Uhr
                     </p>
                 </div>
             </div>

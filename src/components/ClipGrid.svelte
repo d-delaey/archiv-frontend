@@ -1,6 +1,6 @@
 <script>
     import VideoThumbnail from './VideoThumbnail.svelte';
-    import { formatDistance, parseISO } from 'date-fns';
+    import { formatDistanceToNow, parseISO } from 'date-fns';
     import { de } from 'date-fns/locale/index.js';
 
     export let clips;
@@ -27,7 +27,7 @@
                         </p>
                     </a>
                     <p class="card-text text-muted">
-                        {formatDistance(parseISO(clip.date), new Date(), { locale: de })}<br />
+                        {formatDistanceToNow(parseISO(clip.date), { locale: de })}<br />
                         {clip.view_count} Views - {clip.creator}
                     </p>
                 </div>

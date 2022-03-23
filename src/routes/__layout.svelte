@@ -1,7 +1,8 @@
 <script>
     import { onMount } from 'svelte';
-    import { format, formatDistance, parseISO } from 'date-fns';
+    import { format, formatDistanceToNow, parseISO } from 'date-fns';
     import { de } from 'date-fns/locale/index.js';
+    import { goto } from '$app/navigation';
 
     import Head from '../components/Head.svelte';
     import Footer from '../components/Footer.svelte';
@@ -78,7 +79,7 @@
     function handleResultsList(e) {
         let resultItems = document.querySelectorAll('.result-item');
         if (e.keyCode == 13 && searchFocus === -1) {
-            window.location.href = `/search/${query}`;
+            goto(`/search/${query}`);
         } else if (e.keyCode == 40) {
             searchFocus++;
             addActive(resultItems);
@@ -195,7 +196,7 @@
                                     <div
                                         class="result-item"
                                         on:click={() =>
-                                            (window.location.href = `/vods/watch/${vod.uuid}`)}
+                                            goto(`/vods/watch/${vod.uuid}`)}
                                         on:mouseenter={(e) =>
                                             e.target.classList.add('result-item-active')}
                                         on:mouseleave={(e) =>
@@ -203,7 +204,7 @@
                                     >
                                         <div class="fw-bold">{vod.title}</div>
                                         <div class="text-muted">
-                                            {formatDistance(parseISO(vod.date), new Date(), {
+                                            {formatDistanceToNow(parseISO(vod.date), {
                                                 locale: de
                                             })} - {format(parseISO(vod.date), 'HH:mm')} Uhr
                                         </div>
@@ -218,7 +219,7 @@
                                     <div
                                         class="result-item"
                                         on:click={() =>
-                                            (window.location.href = `/clips/watch/${clip.uuid}`)}
+                                            goto(`/clips/watch/${clip.uuid}`)}
                                         on:mouseenter={(e) =>
                                             e.target.classList.add('result-item-active')}
                                         on:mouseleave={(e) =>
@@ -226,7 +227,7 @@
                                     >
                                         <div class="fw-bold">{clip.title}</div>
                                         <div class="text-muted">
-                                            {formatDistance(parseISO(clip.date), new Date(), {
+                                            {formatDistanceToNow(parseISO(clip.date), {
                                                 locale: de
                                             })}, von {clip.creator},
                                             {clip.view_count} Views

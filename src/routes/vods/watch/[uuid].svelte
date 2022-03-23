@@ -3,14 +3,19 @@
     import { page } from '$app/stores';
     import { format, parseISO } from 'date-fns';
 
-    const uuid = $page.params.uuid;
+    let uuid;
+
+    page.subscribe(() => {
+        uuid = $page.params.uuid;
+    })
+
     const BASE_URL = import.meta.env.VITE_BASE_URL;
     const playbackRates = {
         playbackRates: [0.5, 1, 1.25, 1.5, 1.75, 2]
     };
 
-    async function fetchVod() {
-        const response = await fetch(`${BASE_URL}/api/vods/${uuid}`);
+    async function fetchVod(vod_uuid) {
+        const response = await fetch(`${BASE_URL}/api/vods/${vod_uuid}`);
         const v = await response.json();
         return v;
     }
@@ -20,28 +25,10 @@
         const c = await response.json();
         return c;
     }
-
-    function showPrev(clip) {
-        document.getElementById(
-            clip.filename + '-sm-avif'
-        ).srcset = `${BASE_URL}/media/clips/${clip.filename}-preview.webp`;
-        document.getElementById(
-            clip.filename + '-md-avif'
-        ).srcset = `${BASE_URL}/media/clips/${clip.filename}-preview.webp`;
-    }
-
-    function hidePrev(clip) {
-        document.getElementById(
-            clip.filename + '-sm-avif'
-        ).srcset = `${BASE_URL}/media/clips/${clip.clid_id}-sm.avif`;
-        document.getElementById(
-            clip.filename + '-md-avif'
-        ).srcset = `${BASE_URL}/media/clips/${clip.clip_id}-md.avif`;
-    }
 </script>
 
 <main class="flex-shrink-0">
-    {#await fetchVod()}
+    {#await fetchVod(uuid)}
         <div class="container">
             <div class="mb-4">
                 <div class="row">
