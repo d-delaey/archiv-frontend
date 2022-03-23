@@ -97,4 +97,26 @@
 		width: 100%;
 		height: auto;
 	}
+	
+	.progress-overlay {
+		position: absolute;
+		width: 100%;
+		bottom: 0;
+		height: 0.4rem;
+		border-radius: unset;
+		background-color: var(--progress-bar-bg);
+
+		.progress-bar {
+			background-color: var(--progress-bar-fg);
+		}
+	}
+	.timecode-overlay {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		margin: 7px;
+		background: black;
+		padding: 0px 3px;
+		border-radius: 0.25rem;
+	}
 </style>

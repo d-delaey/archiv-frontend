@@ -5,7 +5,7 @@
 	export let statsDB;
 </script>
 
-<footer class="footer mt-auto py-2 border-top">
+<footer class="footer mt-auto py-2">
 	<div class="container">
 		<div class="row">
 			<div class="col-md">
@@ -134,3 +134,9 @@
 		</div>
 	</div>
 </footer>
+
+<style lang="scss">
+	footer {
+		border-top: var(--border) !important;
+	}
+</style>

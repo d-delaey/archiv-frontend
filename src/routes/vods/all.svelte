@@ -76,3 +76,32 @@
 		{/await}
 	</div>
 </main>
+
+<style lang="scss">
+	.page-link {
+		color: var(--main-color);
+		background-color: var(--bg-color);
+
+		&:hover {
+			color: var(--bg-color);
+			background-color: var(--main-color);
+		}
+
+		&:focus {
+			color: var(--bg-color);
+			background-color: var(--main-color);
+			box-shadow: none;
+		}
+	}
+
+	.page-item {
+		&.active .page-link {
+			background-color: var(--main-color);
+			border-color: var(--main-color);
+			color: var(--bg-color);
+		}
+	}
+	.pagination-ellipsis {
+		width: 35px !important;
+	}
+</style>

@@ -110,7 +110,7 @@
 <Head updated_time={statsDB?.last_vod_sync} />
 
 <header>
-	<nav class="navbar navbar-expand-lg border-bottom sticky-top mb-4">
+	<nav class="navbar navbar-expand-lg sticky-top mb-4">
 		<div class="container-fluid">
 			<a href="/" class="navbar-brand ps-3">
 				<img src="/favicon.ico" width="50" height="50" class="rounded-circle" alt="wubPog" />
@@ -254,4 +254,57 @@
 
 <style lang="scss" global>
 	@import '../main.scss';
+
+	nav {
+		border-bottom: var(--border) !important;
+	}
+
+	.navbar {
+		background-color: var(--bg-color);
+	}
+
+	.navbar-collapse {
+		background-color: var(--bg-color);
+	}
+
+	.nav-link {
+		color: var(--main-color) !important;
+	}
+
+	.form-control {
+		color: var(--main-color) !important;
+		border: var(--border);
+
+		&:focus,
+		&:focus-visible {
+			color: inherit;
+			border-color: inherit;
+			box-shadow: none;
+		}
+	}
+
+	#searchResults {
+		position: absolute;
+		z-index: 1000;
+		background-color: var(--bg-color);
+		border: 1px solid var(--main-color);
+		top: 0;
+		margin-top: 37px;
+		width: 100%;
+
+		h5 {
+			margin: 0;
+			background-color: var(--main-color);
+			color: var(--bg-color);
+		}
+
+		.result-item {
+			padding: 0.5em;
+			cursor: pointer;
+
+			&:not(:last-child) {
+				border-bottom: 1px solid var(--accent-color);
+			}
+		}
+	}
 </style>

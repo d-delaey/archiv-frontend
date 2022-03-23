@@ -102,3 +102,39 @@
 		{/await}
 	</div>
 </div>
+
+<style lang="scss">
+	.accordion-item {
+		border-color: var(--main-color);
+		color: var(--main-color);
+		background-color: var(--bg-color);
+	}
+
+	.accordion-button {
+		color: var(--main-color);
+		background-color: var(--bg-color);
+
+		&:hover {
+			background-color: var(--hover-color);
+		}
+
+		&:focus {
+			color: inherit;
+			box-shadow: none;
+		}
+
+		&:not(.collapsed) {
+			color: var(--bg-color);
+			background-color: var(--main-color);
+		}
+
+		&::after {
+			background-image: var(--accordion-button);
+		}
+
+		&:not(.collapsed)::after {
+			background-image: var(--accordion-button);
+			filter: invert(1);
+		}
+	}
+</style>

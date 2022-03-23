@@ -63,38 +63,6 @@ table {
 	border-color: var(--accent-color) !important;
 }
 
-.border-top {
-	border-top: var(--border) !important;
-}
-
-.border-bottom {
-	border-bottom: var(--border) !important;
-}
-
-.form-control {
-	color: var(--main-color) !important;
-	border: var(--border);
-
-	&:focus,
-	&:focus-visible {
-		color: inherit;
-		border-color: inherit;
-		box-shadow: none;
-	}
-}
-
-.navbar {
-	background-color: var(--bg-color);
-}
-
-.navbar-collapse {
-	background-color: var(--bg-color);
-}
-
-.nav-link {
-	color: var(--main-color) !important;
-}
-
 .card {
 	background-color: var(--bg-color);
 }
@@ -127,64 +95,6 @@ table {
 
 	&:focus {
 		box-shadow: none;
-	}
-}
-
-.page-link {
-	color: var(--main-color);
-	background-color: var(--bg-color);
-
-	&:hover {
-		color: var(--bg-color);
-		background-color: var(--main-color);
-	}
-
-	&:focus {
-		color: var(--bg-color);
-		background-color: var(--main-color);
-		box-shadow: none;
-	}
-}
-
-.page-item {
-	&.active .page-link {
-		background-color: var(--main-color);
-		border-color: var(--main-color);
-		color: var(--bg-color);
-	}
-}
-
-.accordion-item {
-	border-color: var(--main-color);
-	color: var(--main-color);
-	background-color: var(--bg-color);
-}
-
-.accordion-button {
-	color: var(--main-color);
-	background-color: var(--bg-color);
-
-	&:hover {
-		background-color: var(--hover-color);
-	}
-
-	&:focus {
-		color: inherit;
-		box-shadow: none;
-	}
-
-	&:not(.collapsed) {
-		color: var(--bg-color);
-		background-color: var(--main-color);
-	}
-
-	&::after {
-		background-image: var(--accordion-button);
-	}
-
-	&:not(.collapsed)::after {
-		background-image: var(--accordion-button);
-		filter: invert(1);
 	}
 }
 
@@ -233,31 +143,6 @@ table {
 	background-color: var(--hover-color);
 }
 
-#searchResults {
-	position: absolute;
-	z-index: 1000;
-	background-color: var(--bg-color);
-	border: 1px solid var(--main-color);
-	top: 0;
-	margin-top: 37px;
-	width: 100%;
-
-	h5 {
-		margin: 0;
-		background-color: var(--main-color);
-		color: var(--bg-color);
-	}
-
-	.result-item {
-		padding: 0.5em;
-		cursor: pointer;
-
-		&:not(:last-child) {
-			border-bottom: 1px solid var(--accent-color);
-		}
-	}
-}
-
 #icon-clipboard {
 	display: block;
 }
@@ -275,32 +160,6 @@ table {
 		img {
 			margin: 0 0.5rem 0 0.5rem;
 		}
-	}
-}
-
-.timecode-overlay {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	margin: 7px;
-	background: black;
-	padding: 0px 3px;
-	border-radius: 0.25rem;
-}
-
-.pagination-ellipsis {
-	width: 35px !important;
-}
-
-.toggle-dark {
-	font-size: 200%;
-
-	&:before {
-		content: '☀️';
-	}
-
-	&.active:before {
-		content: '🌒';
 	}
 }
 
@@ -330,19 +189,6 @@ table {
 
 .share-button {
 	margin-left: auto;
-}
-
-.progress-overlay {
-	position: absolute;
-	width: 100%;
-	bottom: 0;
-	height: 0.4rem;
-	border-radius: unset;
-	background-color: var(--progress-bar-bg);
-
-	.progress-bar {
-		background-color: var(--progress-bar-fg);
-	}
 }
 
 // video.js overwrites
@@ -392,10 +238,6 @@ table {
 
 // media queries
 @media screen and (max-width: 767px) {
-	#twitch-embed iframe {
-		height: 300px;
-	}
-
 	.title-container {
 		display: block !important;
 	}
@@ -406,10 +248,6 @@ table {
 }
 
 @media screen and (min-width: 768px) {
-	#twitch-embed iframe {
-		height: 400px;
-	}
-
 	.col-pages {
 		display: flex;
 		align-items: flex-end;
@@ -417,24 +255,8 @@ table {
 	}
 }
 
-@media screen and (min-width: 992px) {
-	#twitch-embed iframe {
-		height: 536px;
-	}
-}
-
 @media screen and (min-width: 1200px) {
 	.container-navbar {
 		margin-top: 1.5rem;
-	}
-
-	#twitch-embed iframe {
-		height: 637px;
-	}
-}
-
-@media screen and (min-width: 1400px) {
-	#twitch-embed iframe {
-		height: 895px;
 	}
 }

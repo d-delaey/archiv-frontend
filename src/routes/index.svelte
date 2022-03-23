@@ -5,14 +5,14 @@
 
 	// fetch vods and clips
 	async function fetchVods() {
-		const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/vods/?page_size=18`);
+		const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/vods/?page_size=12`);
 		const vods = await response.json();
 		return vods;
 	}
 
 	async function fetchClips() {
 		const response = await fetch(
-			`${import.meta.env.VITE_BASE_URL}/api/clips/?page_size=18&sort=view_count`
+			`${import.meta.env.VITE_BASE_URL}/api/clips/?page_size=12&sort=view_count`
 		);
 		const clips = await response.json();
 		return clips;
