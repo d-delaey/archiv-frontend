@@ -25,6 +25,16 @@
         const c = await response.json();
         return c;
     }
+
+    function formatBytes(bytes, decimals = 2) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const dm = decimals < 0 ? 0 : decimals;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+    }
+
 </script>
 
 <main class="flex-shrink-0">
@@ -32,9 +42,31 @@
         <div class="container">
             <div class="mb-4">
                 <div class="row">
-                    <div class="col-12">
-                        <p>Lade Vod...</p>
+                    <div class="col-12 ratio ratio-16x9">
+                        <svg
+                            class="bd-placeholder-img "
+                            width="100%"
+                            xmlns="http://www.w3.org/2000/svg"
+                            role="img"
+                            aria-label="Placeholder"
+                            preserveAspectRatio="xMidYMid slice"
+                            focusable="false"
+                        >
+                            <title>Placeholder</title>
+                            <rect width="100%" height="100%" fill="#222222" />
+                        </svg>
                     </div>
+                </div>
+            </div>
+            <div class="mb-4">
+                <div>
+                    <p class="placeholder-glow display-6">
+                        <span class="placeholder col-3"></span>
+                        <span class="placeholder col-7"></span>
+                    </p>
+                    <p class="text-muted placeholder-glow">
+                        <span class="placeholder col-4"></span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -158,9 +190,9 @@
                 <div>
                     <p class="collapse text-muted" id="collapseExample">
                         Auslösung: {vod.resolution}<br />
-                        Bitrate: {vod.bitrate} MBit/s<br />
+                        Bitrate: {formatBytes(vod.bitrate)}it/s<br />
                         FPS: {vod.fps}<br />
-                        Größe: {vod.size}
+                        Größe: {formatBytes(vod.size)}
                     </p>
                     <p class="lh-lg">
                         <button
