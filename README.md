@@ -1,4 +1,5 @@
 [![Deploy](https://github.com/AgileProggers/archiv-frontend/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/AgileProggers/archiv-frontend/actions/workflows/deploy.yml) [![Lint](https://github.com/AgileProggers/archiv-frontend/actions/workflows/lint.yml/badge.svg?branch=master)](https://github.com/AgileProggers/archiv-frontend/actions/workflows/lint.yml)
+
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
