@@ -46,7 +46,7 @@
 			<p>Lade Jahre...</p>
 		{:then years}
 			{#each years as year}
-				<div class="accordion-item" on:click={() => fetchVods(year.year)}>
+				<div class="accordion-item" on:mouseenter={() => fetchVods(year.year)}>
 					<h2 class="accordion-header" id="panelsStayOpen-headingOne">
 						<button
 							class="accordion-button collapsed"
