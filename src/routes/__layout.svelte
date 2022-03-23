@@ -1,7 +1,7 @@
 <script>
-    import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import { format, formatDistance, parseISO } from 'date-fns';
-    import { de } from 'date-fns/locale/index.js';
+	import { de } from 'date-fns/locale/index.js';
 
 	import Head from '../components/Head.svelte';
 	import Footer from '../components/Footer.svelte';
@@ -15,24 +15,24 @@
 	let showResults = false;
 	let searchFocus = -1;
 
-	onMount(async ()=>{
-        // bootstrap js
-        await import('bootstrap/js/dist/base-component');
-        await import('bootstrap/js/dist/button');
-        await import('bootstrap/js/dist/collapse');
-        await import('bootstrap/js/dist/dropdown');
-	})
+	onMount(async () => {
+		// bootstrap js
+		await import('bootstrap/js/dist/base-component');
+		await import('bootstrap/js/dist/button');
+		await import('bootstrap/js/dist/collapse');
+		await import('bootstrap/js/dist/dropdown');
+	});
 
-    onMount(() => {
-        // close seach results when clicking somewhere else on the page
-        document.addEventListener('click', function (e) {
-            const searchInput = document.querySelector('#searchInput');
-            const searchResults = document.querySelector('#searchResults');
-            if (e.target != searchInput && e.target != searchResults) {
-                showResults = false;
-            }
-        });
-    })
+	onMount(() => {
+		// close seach results when clicking somewhere else on the page
+		document.addEventListener('click', function (e) {
+			const searchInput = document.querySelector('#searchInput');
+			const searchResults = document.querySelector('#searchResults');
+			if (e.target != searchInput && e.target != searchResults) {
+				showResults = false;
+			}
+		});
+	});
 
 	// parallel api fetch: https://dmitripavlutin.com/javascript-fetch-async-await/#5-parallel-fetch-requests
 	async function fetchApi() {
@@ -105,9 +105,7 @@
 			resultItems[i].classList.remove('result-item-active');
 		}
 	}
-
 </script>
-
 
 <Head updated_time={statsDB?.last_vod_sync} />
 
@@ -196,7 +194,10 @@
 									>
 										<div class="fw-bold">{vod.title}</div>
 										<div class="text-muted">
-											{formatDistance(parseISO(vod.date), new Date(), { locale: de })} - {format(parseISO(vod.date), "HH:mm")} Uhr
+											{formatDistance(parseISO(vod.date), new Date(), { locale: de })} - {format(
+												parseISO(vod.date),
+												'HH:mm'
+											)} Uhr
 										</div>
 									</div>
 								{/each}
@@ -214,7 +215,8 @@
 									>
 										<div class="fw-bold">{clip.title}</div>
 										<div class="text-muted">
-											{formatDistance(parseISO(clip.date), new Date(), { locale: de })}, von {clip.creator}, {clip.view_count} Views
+											{formatDistance(parseISO(clip.date), new Date(), { locale: de })}, von {clip.creator},
+											{clip.view_count} Views
 										</div>
 									</div>
 								{/each}
@@ -246,9 +248,9 @@
 	</nav>
 </header>
 
-<slot></slot>
+<slot />
 
-<Footer statsDB={statsDB} />
+<Footer {statsDB} />
 
 <style lang="scss" global>
 	@import '../main.scss';

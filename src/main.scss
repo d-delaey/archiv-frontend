@@ -1,348 +1,348 @@
-@import "fonts.scss";
-@import "themes.scss";
+@import 'fonts.scss';
+@import 'themes.scss';
 
 // bootstrap
 // configuration
-@import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/mixins";
+@import '../node_modules/bootstrap/scss/functions';
+@import '../node_modules/bootstrap/scss/variables';
+@import '../node_modules/bootstrap/scss/mixins';
 // layout & components
-@import "../node_modules/bootstrap/scss/root";
-@import "../node_modules/bootstrap/scss/utilities";
-@import "../node_modules/bootstrap/scss/reboot";
-@import "../node_modules/bootstrap/scss/type";
-@import "../node_modules/bootstrap/scss/images";
-@import "../node_modules/bootstrap/scss/containers";
-@import "../node_modules/bootstrap/scss/grid";
-@import "../node_modules/bootstrap/scss/card";
-@import "../node_modules/bootstrap/scss/nav";
-@import "../node_modules/bootstrap/scss/navbar";
-@import "../node_modules/bootstrap/scss/buttons";
-@import "../node_modules/bootstrap/scss/dropdown";
-@import "../node_modules/bootstrap/scss/forms";
-@import "../node_modules/bootstrap/scss/pagination";
-@import "../node_modules/bootstrap/scss/accordion";
-@import "../node_modules/bootstrap/scss/transitions";
+@import '../node_modules/bootstrap/scss/root';
+@import '../node_modules/bootstrap/scss/utilities';
+@import '../node_modules/bootstrap/scss/reboot';
+@import '../node_modules/bootstrap/scss/type';
+@import '../node_modules/bootstrap/scss/images';
+@import '../node_modules/bootstrap/scss/containers';
+@import '../node_modules/bootstrap/scss/grid';
+@import '../node_modules/bootstrap/scss/card';
+@import '../node_modules/bootstrap/scss/nav';
+@import '../node_modules/bootstrap/scss/navbar';
+@import '../node_modules/bootstrap/scss/buttons';
+@import '../node_modules/bootstrap/scss/dropdown';
+@import '../node_modules/bootstrap/scss/forms';
+@import '../node_modules/bootstrap/scss/pagination';
+@import '../node_modules/bootstrap/scss/accordion';
+@import '../node_modules/bootstrap/scss/transitions';
 // helpers
-@import "../node_modules/bootstrap/scss/helpers";
-@import "../node_modules/bootstrap/scss/utilities/api";
+@import '../node_modules/bootstrap/scss/helpers';
+@import '../node_modules/bootstrap/scss/utilities/api';
 
 // bootstrap overwrites
 ::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 body {
-    color: var(--main-color) !important;
-    background-color: var(--bg-color);
+	color: var(--main-color) !important;
+	background-color: var(--bg-color);
 }
 
 a {
-    color: var(--main-color);
+	color: var(--main-color);
 
-    &:hover {
-        color: var(--main-color);
-    }
+	&:hover {
+		color: var(--main-color);
+	}
 }
 
 input {
-    background-color: var(--bg-color) !important;
+	background-color: var(--bg-color) !important;
 }
 
 hr {
-    margin: 0.5rem;
+	margin: 0.5rem;
 }
 
 kbd {
-    color: var(--bg-color);
-    background-color: var(--main-color);
+	color: var(--bg-color);
+	background-color: var(--main-color);
 }
 
 table {
-    color: var(--main-color) !important;
-    border-color: var(--accent-color) !important;
+	color: var(--main-color) !important;
+	border-color: var(--accent-color) !important;
 }
 
 .border-top {
-    border-top: var(--border) !important;
+	border-top: var(--border) !important;
 }
 
 .border-bottom {
-    border-bottom: var(--border) !important;
+	border-bottom: var(--border) !important;
 }
 
 .form-control {
-    color: var(--main-color) !important;
-    border: var(--border);
+	color: var(--main-color) !important;
+	border: var(--border);
 
-    &:focus,
-    &:focus-visible {
-        color: inherit;
-        border-color: inherit;
-        box-shadow: none;
-    }
+	&:focus,
+	&:focus-visible {
+		color: inherit;
+		border-color: inherit;
+		box-shadow: none;
+	}
 }
 
 .navbar {
-    background-color: var(--bg-color);
+	background-color: var(--bg-color);
 }
 
 .navbar-collapse {
-    background-color: var(--bg-color);
+	background-color: var(--bg-color);
 }
 
 .nav-link {
-    color: var(--main-color) !important;
+	color: var(--main-color) !important;
 }
 
 .card {
-    background-color: var(--bg-color);
+	background-color: var(--bg-color);
 }
 
 .card-body {
-    padding: 0.5rem 0;
+	padding: 0.5rem 0;
 }
 
 .card-body a {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .card-body h5 {
-    font-weight: 500;
+	font-weight: 500;
 }
 
 .btn {
-    border: var(--border);
-    background-color: var(--main-color);
-    color: var(--bg-color) !important;
+	border: var(--border);
+	background-color: var(--main-color);
+	color: var(--bg-color) !important;
 
-    &:focus {
-        box-shadow: none;
-    }
+	&:focus {
+		box-shadow: none;
+	}
 }
 
 .btn-close {
-    background: var(--modal-btn-close);
-    opacity: 1;
+	background: var(--modal-btn-close);
+	opacity: 1;
 
-    &:focus {
-        box-shadow: none;
-    }
+	&:focus {
+		box-shadow: none;
+	}
 }
 
 .page-link {
-    color: var(--main-color);
-    background-color: var(--bg-color);
+	color: var(--main-color);
+	background-color: var(--bg-color);
 
-    &:hover {
-        color: var(--bg-color);
-        background-color: var(--main-color);
-    }
+	&:hover {
+		color: var(--bg-color);
+		background-color: var(--main-color);
+	}
 
-    &:focus {
-        color: var(--bg-color);
-        background-color: var(--main-color);
-        box-shadow: none;
-    }
+	&:focus {
+		color: var(--bg-color);
+		background-color: var(--main-color);
+		box-shadow: none;
+	}
 }
 
 .page-item {
-    &.active .page-link {
-        background-color: var(--main-color);
-        border-color: var(--main-color);
-        color: var(--bg-color);
-    }
+	&.active .page-link {
+		background-color: var(--main-color);
+		border-color: var(--main-color);
+		color: var(--bg-color);
+	}
 }
 
 .accordion-item {
-    border-color: var(--main-color);
-    color: var(--main-color);
-    background-color: var(--bg-color);
+	border-color: var(--main-color);
+	color: var(--main-color);
+	background-color: var(--bg-color);
 }
 
 .accordion-button {
-    color: var(--main-color);
-    background-color: var(--bg-color);
+	color: var(--main-color);
+	background-color: var(--bg-color);
 
-    &:hover {
-        background-color: var(--hover-color);
-    }
+	&:hover {
+		background-color: var(--hover-color);
+	}
 
-    &:focus {
-        color: inherit;
-        box-shadow: none;
-    }
+	&:focus {
+		color: inherit;
+		box-shadow: none;
+	}
 
-    &:not(.collapsed) {
-        color: var(--bg-color);
-        background-color: var(--main-color);
-    }
+	&:not(.collapsed) {
+		color: var(--bg-color);
+		background-color: var(--main-color);
+	}
 
-    &::after {
-        background-image: var(--accordion-button);
-    }
+	&::after {
+		background-image: var(--accordion-button);
+	}
 
-    &:not(.collapsed)::after {
-        background-image: var(--accordion-button);
-        filter: invert(1);
-    }
+	&:not(.collapsed)::after {
+		background-image: var(--accordion-button);
+		filter: invert(1);
+	}
 }
 
 .text-muted {
-    color: var(--text-muted) !important;
+	color: var(--text-muted) !important;
 }
 
-.form-check-input:checked[type="checkbox"] {
-    background-image: var(--input-checkbox);
+.form-check-input:checked[type='checkbox'] {
+	background-image: var(--input-checkbox);
 }
 
 .form-check-label {
-    color: var(--main-color);
-    user-select: none;
+	color: var(--main-color);
+	user-select: none;
 }
 
 .form-check-input {
-    border-color: var(--main-color);
+	border-color: var(--main-color);
 
-    &:focus {
-        border-color: var(--main-color);
-        box-shadow: none;
-    }
+	&:focus {
+		border-color: var(--main-color);
+		box-shadow: none;
+	}
 
-    &:focus-visible {
-        border-color: var(--main-color);
-    }
+	&:focus-visible {
+		border-color: var(--main-color);
+	}
 
-    &:checked {
-        border-color: var(--main-color);
-    }
+	&:checked {
+		border-color: var(--main-color);
+	}
 }
 
 .share-input {
-    padding: 0.25rem 0.5rem;
+	padding: 0.25rem 0.5rem;
 }
 
 .share-button-list {
-    background-color: var(--hover-color);
-    width: 450px !important;
-    max-width: 100vw;
+	background-color: var(--hover-color);
+	width: 450px !important;
+	max-width: 100vw;
 }
 
 // custom classes
 :global(.result-item-active) {
-    background-color: var(--hover-color);
+	background-color: var(--hover-color);
 }
 
 #searchResults {
-    position: absolute;
-    z-index: 1000;
-    background-color: var(--bg-color);
-    border: 1px solid var(--main-color);
-    top: 0;
-    margin-top: 37px;
-    width: 100%;
+	position: absolute;
+	z-index: 1000;
+	background-color: var(--bg-color);
+	border: 1px solid var(--main-color);
+	top: 0;
+	margin-top: 37px;
+	width: 100%;
 
-    h5 {
-        margin: 0;
-        background-color: var(--main-color);
-        color: var(--bg-color);
-    }
+	h5 {
+		margin: 0;
+		background-color: var(--main-color);
+		color: var(--bg-color);
+	}
 
-    .result-item {
-        padding: 0.5em;
-        cursor: pointer;
+	.result-item {
+		padding: 0.5em;
+		cursor: pointer;
 
-        &:not(:last-child) {
-            border-bottom: 1px solid var(--accent-color);
-        }
-    }
+		&:not(:last-child) {
+			border-bottom: 1px solid var(--accent-color);
+		}
+	}
 }
 
 #icon-clipboard {
-    display: block;
+	display: block;
 }
 
 #icon-clipboard-checked {
-    display: none;
+	display: none;
 }
 
 .emote-title {
-    img {
-        height: 1em;
-    }
+	img {
+		height: 1em;
+	}
 
-    &.large {
-        img {
-            margin: 0 0.5rem 0 0.5rem;
-        }
-    }
+	&.large {
+		img {
+			margin: 0 0.5rem 0 0.5rem;
+		}
+	}
 }
 
 .timecode-overlay {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin: 7px;
-    background: black;
-    padding: 0px 3px;
-    border-radius: 0.25rem;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin: 7px;
+	background: black;
+	padding: 0px 3px;
+	border-radius: 0.25rem;
 }
 
 .pagination-ellipsis {
-    width: 35px !important;
+	width: 35px !important;
 }
 
 .toggle-dark {
-    font-size: 200%;
+	font-size: 200%;
 
-    &:before {
-        content: "☀️";
-    }
+	&:before {
+		content: '☀️';
+	}
 
-    &.active:before {
-        content: "🌒";
-    }
+	&.active:before {
+		content: '🌒';
+	}
 }
 
 .stats-box {
-    height: 100%;
-    border-radius: 1em;
-    box-shadow: var(--drop-shadow);
-    -webkit-box-shadow: var(--drop-shadow);
-    -moz-box-shadow: var(--drop-shadow);
+	height: 100%;
+	border-radius: 1em;
+	box-shadow: var(--drop-shadow);
+	-webkit-box-shadow: var(--drop-shadow);
+	-moz-box-shadow: var(--drop-shadow);
 
-    &.bg-1 {
-        background-color: var(--stats-bg-1);
-    }
+	&.bg-1 {
+		background-color: var(--stats-bg-1);
+	}
 
-    &.bg-2 {
-        background-color: var(--stats-bg-2);
-    }
+	&.bg-2 {
+		background-color: var(--stats-bg-2);
+	}
 
-    &.bg-3 {
-        background-color: var(--stats-bg-3);
-    }
+	&.bg-3 {
+		background-color: var(--stats-bg-3);
+	}
 
-    &.bg-4 {
-        background-color: var(--stats-bg-4);
-    }
+	&.bg-4 {
+		background-color: var(--stats-bg-4);
+	}
 }
 
 .share-button {
-    margin-left: auto;
+	margin-left: auto;
 }
 
 .progress-overlay {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    height: 0.4rem;
-    border-radius: unset;
-    background-color: var(--progress-bar-bg);
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	height: 0.4rem;
+	border-radius: unset;
+	background-color: var(--progress-bar-bg);
 
-    .progress-bar {
-        background-color: var(--progress-bar-fg);
-    }
+	.progress-bar {
+		background-color: var(--progress-bar-fg);
+	}
 }
 
 // video.js overwrites
@@ -351,94 +351,90 @@ table {
 .vjs-time-divider,
 .video-js .vjs-duration,
 .vjs-no-flex .vjs-duration {
-    display: block !important;
+	display: block !important;
 }
 
 .vjs-remaining-time.vjs-time-control.vjs-control {
-    display: none !important;
+	display: none !important;
 }
 
 .vjs-control-bar {
-    font-family: $font-family-sans-serif;
-    font-size: 140%;
-    background: rgb(0, 0, 0) !important;
-    background: linear-gradient(
-        0deg,
-        rgba(0, 0, 0, 0.58) 20%,
-        rgba(255, 255, 255, 0) 95%
-    ) !important;
+	font-family: $font-family-sans-serif;
+	font-size: 140%;
+	background: rgb(0, 0, 0) !important;
+	background: linear-gradient(0deg, rgba(0, 0, 0, 0.58) 20%, rgba(255, 255, 255, 0) 95%) !important;
 }
 
 .vjs-menu-button-popup .vjs-menu .vjs-menu-content,
 .video-js .vjs-volume-vertical {
-    background-color: rgba(0, 0, 0, 0.58) !important;
+	background-color: rgba(0, 0, 0, 0.58) !important;
 }
 
 .vjs-big-play-centered .vjs-big-play-button {
-    margin-top: -0.75em !important;
-    margin-left: -0.8em !important;
+	margin-top: -0.75em !important;
+	margin-left: -0.8em !important;
 }
 
 .video-js .vjs-big-play-button {
-    height: 1.5em !important;
-    width: 1.5em !important;
-    background-color: rgba(255, 255, 255, 0.8) !important;
-    color: rgba(26, 26, 26, 0.9) !important;
-    border-radius: 1em !important;
-    line-height: 1.4em !important;
+	height: 1.5em !important;
+	width: 1.5em !important;
+	background-color: rgba(255, 255, 255, 0.8) !important;
+	color: rgba(26, 26, 26, 0.9) !important;
+	border-radius: 1em !important;
+	line-height: 1.4em !important;
 }
 
 .video-js:hover .vjs-big-play-button,
 .video-js .vjs-big-play-button:focus {
-    background-color: rgb(255, 255, 255) !important;
-    color: black !important;
+	background-color: rgb(255, 255, 255) !important;
+	color: black !important;
 }
 
 // media queries
 @media screen and (max-width: 767px) {
-    #twitch-embed iframe {
-        height: 300px;
-    }
+	#twitch-embed iframe {
+		height: 300px;
+	}
 
-    .title-container {
-        display: block !important;
-    }
+	.title-container {
+		display: block !important;
+	}
 
-    .share-button {
-        margin: 1rem 0;
-    }
+	.share-button {
+		margin: 1rem 0;
+	}
 }
 
 @media screen and (min-width: 768px) {
-    #twitch-embed iframe {
-        height: 400px;
-    }
+	#twitch-embed iframe {
+		height: 400px;
+	}
 
-    .col-pages {
-        display: flex;
-        align-items: flex-end;
-        justify-content: flex-end;
-    }
+	.col-pages {
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-end;
+	}
 }
 
 @media screen and (min-width: 992px) {
-    #twitch-embed iframe {
-        height: 536px;
-    }
+	#twitch-embed iframe {
+		height: 536px;
+	}
 }
 
 @media screen and (min-width: 1200px) {
-    .container-navbar {
-        margin-top: 1.5rem;
-    }
+	.container-navbar {
+		margin-top: 1.5rem;
+	}
 
-    #twitch-embed iframe {
-        height: 637px;
-    }
+	#twitch-embed iframe {
+		height: 637px;
+	}
 }
 
 @media screen and (min-width: 1400px) {
-    #twitch-embed iframe {
-        height: 895px;
-    }
+	#twitch-embed iframe {
+		height: 895px;
+	}
 }
