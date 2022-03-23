@@ -55,7 +55,7 @@
     id="vod"
     class="video-js vjs-big-play-centered"
     controls
-    preload="auto"
+    preload="none"
     width="100%"
     height="100%"
     {poster}
