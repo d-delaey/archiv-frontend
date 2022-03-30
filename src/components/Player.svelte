@@ -13,8 +13,8 @@
     let player;
     let src =
         type === 'vods'
-            ? `${BASE_URL}/media/${type}/${obj.filename}.m3u8`
-            : `${BASE_URL}/media/${type}/${obj.clip_id}.m3u8`;
+            ? `${BASE_URL}/media/${type}/${obj.filename}-segments/${obj.filename}.m3u8`
+            : `${BASE_URL}/media/${type}/${obj.clip_id}-segments/${obj.clip_id}.m3u8`;
     let poster =
         type === 'vods'
             ? `${BASE_URL}/media/${type}/${obj.filename}-lg.jpg`
