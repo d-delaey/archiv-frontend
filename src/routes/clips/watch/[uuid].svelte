@@ -85,16 +85,25 @@
                         <div class="row align-items-center">
                             <div class="col-auto me-3">
                                 {#if clip.game}
-                                    <img src="{BASE_URL}/media/games/{clip.game.game_id}.jpg" alt="{clip.game.name}" loading="lazy">
+                                    <img
+                                        src="{BASE_URL}/media/games/{clip.game.game_id}.jpg"
+                                        alt={clip.game.name}
+                                        loading="lazy"
+                                    />
                                 {:else}
-                                    <img src="/img/modcheck.gif" alt="Unbekanntes Spiel" loading="lazy">
+                                    <img
+                                        src="/img/modcheck.gif"
+                                        alt="Unbekanntes Spiel"
+                                        loading="lazy"
+                                    />
                                 {/if}
                             </div>
                             <div class="col-auto">
                                 <div class="row">
                                     <div class="col">
-                                        {format(parseISO(clip.date), 'dd.MM.yyyy - HH:mm')} Uhr<br>
-                                        {clip.view_count} Views, erstellt von: {clip.creator}<br>
+                                        {format(parseISO(clip.date), 'dd.MM.yyyy - HH:mm')} Uhr<br
+                                        />
+                                        {clip.view_count} Views, erstellt von: {clip.creator}<br />
                                         {#if clip.game}
                                             Kategorie: {clip.game.name}
                                         {:else}
@@ -104,23 +113,56 @@
                                 </div>
                                 <div class="row">
                                     <div class="col lh-lg mt-2">
-                                        <button class="btn btn-sm" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        <button
+                                            class="btn btn-sm"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#collapseExample"
+                                            aria-expanded="false"
+                                            aria-controls="collapseExample"
+                                        >
                                             Mehr anzeigen
                                         </button>
                                         <a href="/clips/watch/{clip.uuid}?dl=1" class="btn btn-sm">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-                                                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                                                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="16"
+                                                height="16"
+                                                fill="currentColor"
+                                                class="bi bi-download"
+                                                viewBox="0 0 16 16"
+                                            >
+                                                <path
+                                                    d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
+                                                />
+                                                <path
+                                                    d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"
+                                                />
                                             </svg>
                                             Download
                                         </a>
-                                        <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#hotkeyModal">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-keyboard" viewBox="0 0 16 16">
-                                                <path d="M14 5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h12zM2 4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H2z"/>
-                                                <path d="M13 10.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm0-2a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-5 0A.25.25 0 0 1 8.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 8 8.75v-.5zm2 0a.25.25 0 0 1 .25-.25h1.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-1.5a.25.25 0 0 1-.25-.25v-.5zm1 2a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-5-2A.25.25 0 0 1 6.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 6 8.75v-.5zm-2 0A.25.25 0 0 1 4.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 4 8.75v-.5zm-2 0A.25.25 0 0 1 2.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 2 8.75v-.5zm11-2a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-2 0a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-2 0A.25.25 0 0 1 9.25 6h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 9 6.75v-.5zm-2 0A.25.25 0 0 1 7.25 6h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 7 6.75v-.5zm-2 0A.25.25 0 0 1 5.25 6h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 5 6.75v-.5zm-3 0A.25.25 0 0 1 2.25 6h1.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-1.5A.25.25 0 0 1 2 6.75v-.5zm0 4a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm2 0a.25.25 0 0 1 .25-.25h5.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-5.5a.25.25 0 0 1-.25-.25v-.5z"/>
-                                                </svg>
-                                                Hotkeys
+                                        <button
+                                            type="button"
+                                            class="btn btn-sm"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#hotkeyModal"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="16"
+                                                height="16"
+                                                fill="currentColor"
+                                                class="bi bi-keyboard"
+                                                viewBox="0 0 16 16"
+                                            >
+                                                <path
+                                                    d="M14 5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h12zM2 4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H2z"
+                                                />
+                                                <path
+                                                    d="M13 10.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm0-2a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-5 0A.25.25 0 0 1 8.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 8 8.75v-.5zm2 0a.25.25 0 0 1 .25-.25h1.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-1.5a.25.25 0 0 1-.25-.25v-.5zm1 2a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-5-2A.25.25 0 0 1 6.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 6 8.75v-.5zm-2 0A.25.25 0 0 1 4.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 4 8.75v-.5zm-2 0A.25.25 0 0 1 2.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 2 8.75v-.5zm11-2a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-2 0a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-2 0A.25.25 0 0 1 9.25 6h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 9 6.75v-.5zm-2 0A.25.25 0 0 1 7.25 6h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 7 6.75v-.5zm-2 0A.25.25 0 0 1 5.25 6h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 5 6.75v-.5zm-3 0A.25.25 0 0 1 2.25 6h1.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-1.5A.25.25 0 0 1 2 6.75v-.5zm0 4a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm2 0a.25.25 0 0 1 .25-.25h5.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-5.5a.25.25 0 0 1-.25-.25v-.5z"
+                                                />
+                                            </svg>
+                                            Hotkeys
                                         </button>
                                     </div>
                                 </div>
@@ -129,28 +171,78 @@
                     </div>
                     <div class="share-button">
                         <div class="dropdown">
-                            <button class="btn btn-sm dropdown-toggle" type="button" id="share-button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button
+                                class="btn btn-sm dropdown-toggle"
+                                type="button"
+                                id="share-button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
                                 Teilen
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-end p-3 share-button-list" id="share-button-list" aria-labelledby="share-button" style="width: max-content;">
+                            <ul
+                                class="dropdown-menu dropdown-menu-end p-3 share-button-list"
+                                id="share-button-list"
+                                aria-labelledby="share-button"
+                                style="width: max-content;"
+                            >
                                 <li>
                                     <div class="input-group">
-                                        <input type="text" class="form-control share-input" aria-label="Share Url">
+                                        <input
+                                            type="text"
+                                            class="form-control share-input"
+                                            aria-label="Share Url"
+                                        />
                                         <button id="btn-copy-clipboard" class="btn">
-                                            <svg id="icon-clipboard" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
-                                                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-                                                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                                            <svg
+                                                id="icon-clipboard"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="20"
+                                                height="20"
+                                                fill="currentColor"
+                                                class="bi bi-clipboard"
+                                                viewBox="0 0 16 16"
+                                            >
+                                                <path
+                                                    d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"
+                                                />
+                                                <path
+                                                    d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"
+                                                />
                                             </svg>
-                                            <svg id="icon-clipboard-checked" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-                                                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-                                                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                                            <svg
+                                                id="icon-clipboard-checked"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="20"
+                                                height="20"
+                                                fill="currentColor"
+                                                class="bi bi-clipboard-check"
+                                                viewBox="0 0 16 16"
+                                            >
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"
+                                                />
+                                                <path
+                                                    d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"
+                                                />
+                                                <path
+                                                    d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"
+                                                />
                                             </svg>
                                         </button>
                                     </div>
                                     <div class="form-check mt-2">
-                                        <input class="form-check-input" type="checkbox" id="share-checkbox">
-                                        <label class="form-check-label" for="share-checkbox" id="share-at-text"></label>
+                                        <input
+                                            class="form-check-input"
+                                            type="checkbox"
+                                            id="share-checkbox"
+                                        />
+                                        <label
+                                            class="form-check-label"
+                                            for="share-checkbox"
+                                            id="share-at-text"
+                                        />
                                     </div>
                                 </li>
                             </ul>
@@ -158,16 +250,14 @@
                     </div>
                 </div>
                 <p class="collapse text-muted mt-2" id="collapseExample">
-                    Auslösung: {clip.resolution}<br>
-                    Bitrate: {formatBytes(clip.bitrate)}it/s<br>
+                    Auslösung: {clip.resolution}<br />
+                    Bitrate: {formatBytes(clip.bitrate)}it/s<br />
                     Größe: {formatBytes(clip.size)}
                 </p>
             </div>
             {#if clip.vod}
-                <hr class="my-4">
-                <p class="display-6 fw-bolder emote-title large">
-                    Clip stammt aus folgendem Vod:
-                </p>
+                <hr class="my-4" />
+                <p class="display-6 fw-bolder emote-title large">Clip stammt aus folgendem Vod:</p>
                 <div class="row">
                     {#await fetchVod(clip.vod)}
                         <p>Lade Vod...</p>
@@ -196,9 +286,10 @@
                         </div>
                     {/await}
                 </div>
-                <hr class="my-4">
+                <hr class="my-4" />
             {/if}
-            <script src="https://utteranc.es/client.js"
+            <script
+                src="https://utteranc.es/client.js"
                 repo="AgileProggers/wubbl0rz-archiv-comments"
                 issue-term="url"
                 theme="preferred-color-scheme"

@@ -25,21 +25,42 @@
 <main class="flex-shrink-0">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-md-8">
+            <div class="col-xs-12 col-md-9">
                 <h1 class="display-3 fw-bolder pb-3">Alle Clips</h1>
             </div>
             {#if clips}
-                <div class="col-xs-12 col-md-4 col-pages">
+                <div class="col-xs-12 col-md-2 col-pages">
                     <p class="fs-4 fw-bold mb-2 pb-3">
                         Seite {clips.current_page} von {clips.total_pages}
                     </p>
+                </div>
+                <div class="col-xs-12 col-md-1 mb-2 pb-3 col-pages">
+                    <div class="dropdown">
+                        <button
+                            class="btn btn-secondary dropdown-toggle"
+                            type="button"
+                            id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            Filter
+                        </button>
+                        <ul
+                            class="dropdown-menu dropdown-menu-end"
+                            aria-labelledby="dropdownMenuButton1"
+                        >
+                            <li><div class="dropdown-item">Action</div></li>
+                            <li><div class="dropdown-item">Another action</div></li>
+                            <li><div class="dropdown-item">Something else here</div></li>
+                        </ul>
+                    </div>
                 </div>
             {/if}
         </div>
         {#await fetchClips(page)}
             <GridPlaceholder count="48" />
         {:then clips}
-            <ClipGrid clips={clips} />
+            <ClipGrid {clips} />
             <nav aria-label="Pagination">
                 <ul class="pagination justify-content-center">
                     {#if clips.links.previous}

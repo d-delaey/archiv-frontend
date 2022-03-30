@@ -152,7 +152,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-5" href="/clips">Clips</a>
-                      </li>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link fs-5" href="/stats">Stats</a>
                     </li>
