@@ -150,23 +150,11 @@
                             <li><a href="/vods/years" class="dropdown-item">Jahresansicht</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a
-                            class="nav-link dropdown-toggle fs-5"
-                            id="navbarClipsDropdown"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                        >
-                            Clips
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarClipsDropdown">
-                            <a href="/clips/all" class="dropdown-item">Alle Clips</a>
-                            <a href="/clips/top30" class="dropdown-item">Top 30 Tage</a>
-                        </ul>
-                    </li>
                     <li class="nav-item">
-                        <a href="/stats" class="nav-link fs-5">Stats</a>
+                        <a class="nav-link fs-5" href="/clips">Clips</a>
+                      </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5" href="/stats">Stats</a>
                     </li>
                 </ul>
                 <div class="d-flex input-group w-25 me-2" autocomplete="off">
