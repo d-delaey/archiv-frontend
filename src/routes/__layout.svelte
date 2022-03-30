@@ -54,8 +54,8 @@
     // handle search
     async function fetchSearch() {
         const [vodsResponse, clipsResponse] = await Promise.all([
-            fetch(`${import.meta.env.VITE_BASE_URL}/api/vods/?page_size=4&title=${query}`),
-            fetch(`${import.meta.env.VITE_BASE_URL}/api/clips/?page_size=4&title=${query}`)
+            fetch(`${import.meta.env.VITE_BASE_URL}/api/vods/?page_size=4&search=${query}`),
+            fetch(`${import.meta.env.VITE_BASE_URL}/api/clips/?page_size=4&search=${query}`)
         ]);
         const v = await vodsResponse.json();
         const c = await clipsResponse.json();

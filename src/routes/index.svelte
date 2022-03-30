@@ -12,7 +12,7 @@
 
     async function fetchClips() {
         const response = await fetch(
-            `${import.meta.env.VITE_BASE_URL}/api/clips/?page_size=12&sort=view_count`
+            `${import.meta.env.VITE_BASE_URL}/api/clips/?page_size=12&ordering=-view_count`
         );
         const clips = await response.json();
         return clips;
