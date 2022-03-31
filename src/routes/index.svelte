@@ -3,7 +3,7 @@
     import VodGrid from '../components/VodGrid.svelte';
     import ClipGrid from '../components/ClipGrid.svelte';
     import GridPlaceholder from '../components/GridPlaceholder.svelte';
-    import subMonths from 'date-fns/subMonths';
+    import subMonths from 'date-fns/subMonths/index.js';
 
     // fetch vods and clips
     async function fetchVods() {
