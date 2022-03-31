@@ -3,6 +3,7 @@
     import VodGrid from '../components/VodGrid.svelte';
     import ClipGrid from '../components/ClipGrid.svelte';
     import GridPlaceholder from '../components/GridPlaceholder.svelte';
+    import subMonths from 'date-fns/subMonths';
 
     // fetch vods and clips
     async function fetchVods() {
@@ -13,7 +14,7 @@
 
     async function fetchClips() {
         const response = await fetch(
-            `${import.meta.env.VITE_BASE_URL}/api/clips/?page_size=12&ordering=-view_count`
+            `${import.meta.env.VITE_BASE_URL}/api/clips/?page_size=12&ordering=-view_count&date_from=${subMonths(Date.now(), 1).toISOString()}`
         );
         const clips = await response.json();
         return clips;
@@ -30,7 +31,7 @@
         {/await}
     </div>
     <div class="container">
-        <h1 class="display-3 fw-bolder pb-3">Top Clips</h1>
+        <h1 class="display-3 fw-bolder pb-3">Top Clips letzter Monat</h1>
         {#await fetchClips()}
             <GridPlaceholder count="12" />
         {:then clips}
