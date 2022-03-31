@@ -171,10 +171,10 @@
                         on:keydown={(e) => handleResultsList(e)}
                         required
                     />
-                    <button
+                    <a
                         href="/search/{query}"
                         class="btn btn-outline-secondary rounded-0 rounded-end"
-                        type="button">Suche</button
+                        type="button">Suche</a
                     >
                     <div id="searchResults" class="{showResults ? '' : 'd-none'} rounded">
                         {#if vods?.results.length && query?.length > 2}
