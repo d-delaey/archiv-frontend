@@ -2,6 +2,8 @@
     // components
     import VodGrid from '../components/VodGrid.svelte';
     import ClipGrid from '../components/ClipGrid.svelte';
+    import GridPlaceholder from '../components/GridPlaceholder.svelte';
+
 
     // fetch vods and clips
     async function fetchVods() {
@@ -23,7 +25,7 @@
     <div class="container">
         <h1 class="display-3 fw-bolder pb-3">Kürzliche Vods</h1>
         {#await fetchVods()}
-            <p>Lade Vods...</p>
+            <GridPlaceholder count="12" />
         {:then vods}
             <VodGrid {vods} />
         {/await}
@@ -31,7 +33,7 @@
     <div class="container">
         <h1 class="display-3 fw-bolder pb-3">Top Clips</h1>
         {#await fetchClips()}
-            <p>Lade Clips...</p>
+            <GridPlaceholder count="12" />
         {:then clips}
             <ClipGrid {clips} />
         {/await}

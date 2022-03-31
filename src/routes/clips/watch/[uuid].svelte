@@ -1,6 +1,7 @@
 <script>
     import VideoThumbnail from '../../../components/VideoThumbnail.svelte';
     import Player from '../../../components/Player.svelte';
+    import GridPlaceholder from '../../../components/GridPlaceholder.svelte';
     import { page } from '$app/stores';
     import { format, parseISO } from 'date-fns';
 
@@ -260,7 +261,7 @@
                 <p class="display-6 fw-bolder emote-title large">Clip stammt aus folgendem Vod:</p>
                 <div class="row">
                     {#await fetchVod(clip.vod)}
-                        <p>Lade Vod...</p>
+                        <GridPlaceholder count="1" />
                     {:then vod}
                         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-2">
                             <div class="position-relative">
