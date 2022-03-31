@@ -4,7 +4,6 @@
     import ClipGrid from '../components/ClipGrid.svelte';
     import GridPlaceholder from '../components/GridPlaceholder.svelte';
 
-
     // fetch vods and clips
     async function fetchVods() {
         const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/vods/?page_size=12`);
