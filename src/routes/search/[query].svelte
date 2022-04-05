@@ -25,10 +25,10 @@
 <main class="flex-shrink-0">
     <div class="container">
         {#await fetchVods()}
-            <h1 class="display-3 fw-bolder pb-3">Vod Ergebnisse</h1>
+            <h1 class="display-4 fw-bolder pb-3">Vod Ergebnisse</h1>
             <p>Lade Vods...</p>
         {:then vods}
-            <h1 class="display-3 fw-bolder pb-3">
+            <h1 class="display-4 fw-bolder pb-3">
                 Vod Ergebnisse <small class="text-muted">{vods.count}</small>
             </h1>
             <VodGrid {vods} />
@@ -36,10 +36,10 @@
     </div>
     <div class="container">
         {#await fetchClips()}
-            <h1 class="display-3 fw-bolder pb-3">Clip Ergebnisse</h1>
+            <h1 class="display-4 fw-bolder pb-3">Clip Ergebnisse</h1>
             <p>Lade Clips...</p>
         {:then clips}
-            <h1 class="display-3 fw-bolder pb-3">
+            <h1 class="display-4 fw-bolder pb-3">
                 Clip Ergebnisse <small class="text-muted">{clips.count}</small>
             </h1>
             <ClipGrid {clips} />

@@ -37,7 +37,7 @@
 </script>
 
 <div class="container">
-    <h1 class="display-3 fw-bold pb-3">
+    <h1 class="display-4 fw-bold pb-3">
         Jahresansicht
         <small class="text-muted">Gesamt: {vodCount}</small>
     </h1>

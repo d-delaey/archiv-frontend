@@ -26,7 +26,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-8">
-                <h1 class="display-3 fw-bolder pb-3">Alle Vods</h1>
+                <h1 class="display-4 fw-bolder pb-3">Alle Vods</h1>
             </div>
             {#if vods}
                 <div class="col-xs-12 col-md-4 col-pages">

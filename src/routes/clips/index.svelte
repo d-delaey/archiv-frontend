@@ -37,7 +37,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-9">
-                <h1 class="display-3 fw-bolder pb-3">Alle Clips</h1>
+                <h1 class="display-4 fw-bolder pb-3">Alle Clips</h1>
             </div>
             {#if clips}
                 <div class="col-xs-12 col-md-2 col-pages">
