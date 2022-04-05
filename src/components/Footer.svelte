@@ -5,13 +5,13 @@
     export let statsDB;
 </script>
 
-<footer class="footer mt-auto py-2">
+<footer class="footer mt-auto py-3">
     <div class="container">
         <div class="row">
             <div class="col-md">
                 {#if statsDB}
                     <p class="m-0">
-                        Letztes Vod Update: {formatRelative(
+                        Letztes Vod/Clip Update: {formatRelative(
                             parseISO(statsDB.last_vod_sync),
                             new Date(),
                             {
@@ -147,6 +147,6 @@
 
 <style lang="scss">
     footer {
-        border-top: var(--border) !important;
+        background-color: var(--bg-footer);
     }
 </style>

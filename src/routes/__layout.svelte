@@ -255,10 +255,6 @@
 <style lang="scss" global>
     @import '../main.scss';
 
-    nav {
-        border-bottom: var(--border) !important;
-    }
-
     .navbar {
         background-color: var(--bg-color);
     }
