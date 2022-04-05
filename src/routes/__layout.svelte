@@ -162,7 +162,7 @@
                         id="searchInput"
                         class="form-control rounded-0 rounded-start"
                         type="search"
-                        placeholder="Suche /"
+                        placeholder="Archiv durchsuchen..."
                         aria-label="Suche"
                         name="q"
                         bind:value={query}
@@ -174,8 +174,11 @@
                     <a
                         href="/search/{query}"
                         class="btn btn-outline-secondary rounded-0 rounded-end"
-                        type="button">Suche</a
-                    >
+                        type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                    </a>
                     <div id="searchResults" class="{showResults ? '' : 'd-none'} rounded">
                         {#if vods?.results.length && query?.length > 2}
                             <h5 class="p-2">Vod Ergebnisse: {vods.count}</h5>
