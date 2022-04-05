@@ -230,22 +230,18 @@
                         {/if}
                     </div>
                 </div>
-                <div class="dropdown me-2">
-                    <button
-                        class="btn btn-secondary dropdown-toggle"
-                        type="button"
-                        id="dropdownTheme"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                    >
-                        Theme
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownTheme">
+                <ul class="navbar-nav me-2">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Theme
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><div class="dropdown-item">Dark</div></li>
                         <li><div class="dropdown-item">Light</div></li>
                         <li><div class="dropdown-item">System</div></li>
-                    </ul>
-                </div>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
