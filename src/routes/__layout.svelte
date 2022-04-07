@@ -301,6 +301,11 @@
                                     Gruvbox
                                 </div>
                             </li>
+                            <li>
+                                <div class="dropdown-item" on:click={() => setTheme('solarized')}>
+                                    Solarized Dark
+                                </div>
+                            </li>
                         </ul>
                     </li>
                 </ul>
