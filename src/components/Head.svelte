@@ -33,7 +33,6 @@
     <script data-cfasync="false">
         if (document) {
             let theme = localStorage.getItem('theme');
-            console.log(theme);
             if (theme) {
                 document.documentElement.setAttribute('data-theme', theme);
             } else {

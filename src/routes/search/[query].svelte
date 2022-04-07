@@ -4,7 +4,6 @@
     import { page } from '$app/stores';
 
     let query = $page.params.query;
-    console.log(query);
     if (!query) {
         query = '';
     }
