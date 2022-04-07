@@ -296,6 +296,11 @@
                                     Nord
                                 </div>
                             </li>
+                            <li>
+                                <div class="dropdown-item" on:click={() => setTheme('gruvbox')}>
+                                    Gruvbox
+                                </div>
+                            </li>
                         </ul>
                     </li>
                 </ul>
