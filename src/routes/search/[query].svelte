@@ -3,7 +3,11 @@
     import ClipGrid from '../../components/ClipGrid.svelte';
     import { page } from '$app/stores';
 
-    const query = $page.params.query;
+    let query = $page.params.query;
+    console.log(query);
+    if (!query) {
+        query = "";
+    }
 
     async function fetchVods() {
         const response = await fetch(

@@ -7,26 +7,14 @@
 
 <footer class="footer mt-auto py-3">
     <div class="container">
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-md">
                 {#if statsDB}
+                    <p class="m-0 fw-bold fs-6">Letztes Update</p>
                     <p class="m-0">
-                        Letztes Vod/Clip Update: {formatRelative(
-                            parseISO(statsDB.last_vod_sync),
-                            new Date(),
-                            {
-                                locale: de
-                            }
-                        )} Uhr
-                    </p>
-                    <p class="m-0">
-                        Letztes Emote Update: {formatRelative(
-                            parseISO(statsDB.last_emote_sync),
-                            new Date(),
-                            {
-                                locale: de
-                            }
-                        )} Uhr
+                        {formatRelative(parseISO(statsDB.last_vod_sync), new Date(), {
+                            locale: de
+                        })} Uhr
                     </p>
                 {/if}
             </div>

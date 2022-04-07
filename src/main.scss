@@ -107,6 +107,10 @@ table {
     background-image: var(--input-checkbox);
 }
 
+.form-check-input:checked[type='radio'] {
+    background-image: var(--input-radio);
+}
+
 .form-check-label {
     color: var(--main-color);
     user-select: none;

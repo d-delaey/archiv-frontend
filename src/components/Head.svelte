@@ -29,4 +29,19 @@
     <meta name="twitter:image:alt" content="Wubbl0rz Archiv" />
     <title>Wubbl0rz Archiv</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <!-- Prevent flashing theme -->
+    <script>
+        if (document) {
+            let theme = localStorage.getItem('theme');
+            if (theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+            } else {
+                theme = window.matchMedia('(prefers-color-scheme: dark)').matches
+                    ? 'dark'
+                    : 'light';
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+            }
+        }
+    </script>
 </svelte:head>

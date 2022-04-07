@@ -167,20 +167,14 @@
                     </div>
                 </div>
                 <div>
-                    <p class="collapse text-muted" id="collapseExample">
-                        Auslösung: {vod.resolution}<br />
-                        Bitrate: {formatBytes(vod.bitrate)}it/s<br />
-                        FPS: {vod.fps}<br />
-                        Größe: {formatBytes(vod.size)}
-                    </p>
                     <p class="lh-lg">
                         <button
                             class="btn btn-sm"
                             type="button"
                             data-bs-toggle="collapse"
-                            data-bs-target="#collapseExample"
+                            data-bs-target="#moreInfos"
                             aria-expanded="false"
-                            aria-controls="collapseExample"
+                            aria-controls="moreInfos"
                         >
                             Mehr anzeigen
                         </button>
@@ -225,6 +219,12 @@
                             </svg>
                             Hotkeys
                         </button>
+                    </p>
+                    <p class="collapse text-muted" id="moreInfos">
+                        Auslösung: {vod.resolution}<br />
+                        Bitrate: {formatBytes(vod.bitrate)}it/s<br />
+                        FPS: {vod.fps}<br />
+                        Größe: {formatBytes(vod.size)}
                     </p>
                 </div>
                 {#if vod.clip_set.length}

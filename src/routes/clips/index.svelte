@@ -85,7 +85,6 @@
                                             id="flexRadioDefault2"
                                             bind:group={filter['sort_by']}
                                             value="view_count"
-                                            checked
                                         />
                                         <label class="form-check-label" for="flexRadioDefault2">
                                             Aufrufe
@@ -104,7 +103,6 @@
                                             autocomplete="off"
                                             bind:group={filter['direction']}
                                             value=""
-                                            checked
                                         />
                                         <label class="btn btn-secondary w-50" for="btnradio1">
                                             <svg
@@ -162,7 +160,7 @@
                                             name="date-from"
                                             bind:value={filter['date_from']}
                                             max={Date.now()}
-                                            class="datetime-local"
+                                            class="datetime-local form-control"
                                         />
                                     </div>
                                     <div class="mt-2">
@@ -172,7 +170,7 @@
                                             type="datetime-local"
                                             name="date-to"
                                             bind:value={filter['date_to']}
-                                            class="datetime-local"
+                                            class="datetime-local form-control"
                                         />
                                     </div>
                                 </div>

@@ -14,7 +14,12 @@
 
     async function fetchClips() {
         const response = await fetch(
-            `${import.meta.env.VITE_BASE_URL}/api/clips/?page_size=12&ordering=-view_count&date_from=${subMonths(Date.now(), 1).toISOString()}`
+            `${
+                import.meta.env.VITE_BASE_URL
+            }/api/clips/?page_size=12&ordering=-view_count&date_from=${subMonths(
+                Date.now(),
+                1
+            ).toISOString()}`
         );
         const clips = await response.json();
         return clips;
@@ -23,7 +28,9 @@
 
 <main class="flex-shrink-0">
     <div class="container">
-        <h1 class="display-4 fw-bolder pb-3"><a href="/vods/all" class="text-decoration-none">Kürzliche Vods</a></h1>
+        <h1 class="display-4 fw-bolder pb-3">
+            <a href="/vods/all" class="text-decoration-none">Kürzliche Vods</a>
+        </h1>
         {#await fetchVods()}
             <GridPlaceholder count="12" />
         {:then vods}
@@ -31,7 +38,9 @@
         {/await}
     </div>
     <div class="container">
-        <h1 class="display-4 fw-bolder pb-3"><a href="/clips" class="text-decoration-none">Top Clips letzter Monat</a></h1>
+        <h1 class="display-4 fw-bolder pb-3">
+            <a href="/clips" class="text-decoration-none">Top Clips letzter Monat</a>
+        </h1>
         {#await fetchClips()}
             <GridPlaceholder count="12" />
         {:then clips}

@@ -53,7 +53,7 @@
             type="image/avif"
             srcset="{BASE_URL}/media/{type}/{filename}-sm.avif"
             media="(min-width: 576px)"
-            class="card-img-top image-rounded-top"
+            class="card-img-top rounded"
             alt={title}
             {loading}
         />
@@ -62,7 +62,7 @@
             type="image/avif"
             srcset="{BASE_URL}/media/{type}/{filename}-md.avif"
             media="(max-width: 575px)"
-            class="card-img-top image-rounded-top"
+            class="card-img-top rounded"
             alt={title}
             {loading}
         />
@@ -72,7 +72,7 @@
             id="{filename}-jpg"
             srcset="{BASE_URL}/media/{type}/{filename}-sm.jpg 576w, {BASE_URL}/media/{type}/{filename}-md.jpg 575w"
             src="{BASE_URL}/media/{type}/{filename}-md.jpg"
-            class="card-img-top image-rounded-top"
+            class="card-img-top rounded"
             alt={title}
             {loading}
         />
