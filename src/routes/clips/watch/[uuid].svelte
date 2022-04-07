@@ -307,7 +307,7 @@
     }
 
     .share-button-list {
-        background-color: var(--hover-color);
+        background-color: var(--color-hover);
         width: 450px !important;
         max-width: 100vw;
     }

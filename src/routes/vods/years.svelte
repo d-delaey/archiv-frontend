@@ -108,17 +108,17 @@
 
 <style lang="scss">
     .accordion-item {
-        border-color: var(--main-color);
-        color: var(--main-color);
-        background-color: var(--bg-color);
+        border-color: var(--color-main);
+        color: var(--color-main);
+        background-color: var(--color-background);
     }
 
     .accordion-button {
-        color: var(--main-color);
-        background-color: var(--bg-color);
+        color: var(--color-main);
+        background-color: var(--color-background);
 
         &:hover {
-            background-color: var(--hover-color);
+            background-color: var(--color-hover);
         }
 
         &:focus {
@@ -127,8 +127,8 @@
         }
 
         &:not(.collapsed) {
-            color: var(--bg-color);
-            background-color: var(--main-color);
+            color: var(--color-background);
+            background-color: var(--color-main);
         }
 
         &::after {

@@ -135,6 +135,6 @@
 
 <style lang="scss">
     footer {
-        background-color: var(--bg-footer);
+        background-color: var(--color-footer-background);
     }
 </style>

@@ -99,26 +99,26 @@
 
 <style lang="scss">
     .page-link {
-        color: var(--main-color);
-        background-color: var(--bg-color);
+        color: var(--color-main);
+        background-color: var(--color-background);
 
         &:hover {
-            color: var(--bg-color);
-            background-color: var(--main-color);
+            color: var(--color-background);
+            background-color: var(--color-main);
         }
 
         &:focus {
-            color: var(--bg-color);
-            background-color: var(--main-color);
+            color: var(--color-background);
+            background-color: var(--color-main);
             box-shadow: none;
         }
     }
 
     .page-item {
         &.active .page-link {
-            background-color: var(--main-color);
-            border-color: var(--main-color);
-            color: var(--bg-color);
+            background-color: var(--color-main);
+            border-color: var(--color-main);
+            color: var(--color-background);
         }
     }
     .pagination-ellipsis {

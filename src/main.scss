@@ -34,20 +34,20 @@
 }
 
 body {
-    color: var(--main-color) !important;
-    background-color: var(--bg-color);
+    color: var(--color-main) !important;
+    background-color: var(--color-background);
 }
 
 a {
-    color: var(--main-color);
+    color: var(--color-main);
 
     &:hover {
-        color: var(--main-color);
+        color: var(--color-main);
     }
 }
 
 input {
-    background-color: var(--bg-color) !important;
+    background-color: var(--color-background) !important;
 }
 
 hr {
@@ -55,17 +55,17 @@ hr {
 }
 
 kbd {
-    color: var(--bg-color);
-    background-color: var(--main-color);
+    color: var(--color-background);
+    background-color: var(--color-main);
 }
 
 table {
-    color: var(--main-color) !important;
-    border-color: var(--accent-color) !important;
+    color: var(--color-main) !important;
+    border-color: var(--color-hover) !important;
 }
 
 .card {
-    background-color: var(--bg-color);
+    background-color: var(--color-background);
 }
 
 .card-body {
@@ -82,8 +82,8 @@ table {
 
 .btn {
     border: var(--border);
-    background-color: var(--main-color);
-    color: var(--bg-color) !important;
+    background-color: var(--color-main);
+    color: var(--color-background) !important;
 
     &:focus {
         box-shadow: none;
@@ -100,7 +100,7 @@ table {
 }
 
 .text-muted {
-    color: var(--text-muted) !important;
+    color: var(--color-text-muted) !important;
 }
 
 .form-check-input:checked[type='checkbox'] {
@@ -112,30 +112,30 @@ table {
 }
 
 .form-check-label {
-    color: var(--main-color);
+    color: var(--color-main);
     user-select: none;
 }
 
 .form-check-input {
-    border-color: var(--main-color);
+    border-color: var(--color-main);
 
     &:focus {
-        border-color: var(--main-color);
+        border-color: var(--color-main);
         box-shadow: none;
     }
 
     &:focus-visible {
-        border-color: var(--main-color);
+        border-color: var(--color-main);
     }
 
     &:checked {
-        border-color: var(--main-color);
+        border-color: var(--color-main);
     }
 }
 
 // custom classes
 :global(.result-item-active) {
-    background-color: var(--hover-color);
+    background-color: var(--color-hover);
 }
 
 #icon-clipboard {

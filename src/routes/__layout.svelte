@@ -291,6 +291,11 @@
                                     Light
                                 </div>
                             </li>
+                            <li>
+                                <div class="dropdown-item" on:click={() => setTheme('nord')}>
+                                    Nord
+                                </div>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -307,19 +312,19 @@
     @import '../main.scss';
 
     .navbar {
-        background-color: var(--bg-color);
+        background-color: var(--color-background);
     }
 
     .navbar-collapse {
-        background-color: var(--bg-color);
+        background-color: var(--color-background);
     }
 
     .nav-link {
-        color: var(--main-color) !important;
+        color: var(--color-main) !important;
     }
 
     .form-control {
-        color: var(--main-color) !important;
+        color: var(--color-main) !important;
         border: var(--border);
 
         &:focus,
@@ -337,16 +342,16 @@
     #searchResults {
         position: absolute;
         z-index: 1000;
-        background-color: var(--bg-color);
-        border: 1px solid var(--main-color);
+        background-color: var(--color-background);
+        border: 1px solid var(--color-main);
         top: 0;
         margin-top: 37px;
         width: 100%;
 
         h5 {
             margin: 0;
-            background-color: var(--main-color);
-            color: var(--bg-color);
+            background-color: var(--color-main);
+            color: var(--color-background);
         }
 
         .result-item {
@@ -354,7 +359,7 @@
             cursor: pointer;
 
             &:not(:last-child) {
-                border-bottom: 1px solid var(--accent-color);
+                border-bottom: 1px solid var(--color-hover);
             }
         }
     }
