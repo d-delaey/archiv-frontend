@@ -184,7 +184,7 @@
                         required
                     />
                     <a
-                        href={query ? `/search/${query}` : ""}
+                        href={query ? `/search/${query}` : ''}
                         class="btn btn-outline-secondary rounded-0 rounded-end d-flex align-items-center"
                         type="button"
                     >

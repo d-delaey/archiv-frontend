@@ -6,7 +6,7 @@
     let query = $page.params.query;
     console.log(query);
     if (!query) {
-        query = "";
+        query = '';
     }
 
     async function fetchVods() {
