@@ -30,9 +30,10 @@
     <title>Wubbl0rz Archiv</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <!-- Prevent flashing theme -->
-    <script>
+    <script data-cfasync="false">
         if (document) {
             let theme = localStorage.getItem('theme');
+            console.log(theme);
             if (theme) {
                 document.documentElement.setAttribute('data-theme', theme);
             } else {
