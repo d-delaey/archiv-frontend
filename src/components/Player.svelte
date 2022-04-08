@@ -54,12 +54,10 @@
         player.on("timeupdate", () => {
             updateWatched()
         })
-        player.play();
-
         if (watched[type][obj.uuid]) {
             player.currentTime(watched[type][obj.uuid]);
         }
-
+        player.play();
     });
 
     onDestroy(() => {
