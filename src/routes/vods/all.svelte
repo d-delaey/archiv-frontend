@@ -1,6 +1,7 @@
 <script>
     import VodGrid from '../../components/VodGrid.svelte';
     import GridPlaceholder from '../../components/GridPlaceholder.svelte';
+    import Pagination from '../../components/Pagination.svelte';
 
     let vods;
     let page = 1;
@@ -40,59 +41,7 @@
             <GridPlaceholder count="48" />
         {:then vods}
             <VodGrid {vods} />
-            <nav aria-label="Pagination">
-                <ul class="pagination justify-content-center">
-                    {#if vods.links.previous}
-                        <li class="page-item">
-                            <div class="page-link" role="button" on:click={() => (page = 1)}>
-                                Erste
-                            </div>
-                        </li>
-                        <li class="page-item pagination-ellipsis text-center">
-                            <span>&hellip;</span>
-                        </li>
-                    {/if}
-                    {#each range(1, vods.total_pages) as i}
-                        {#if i <= vods.current_page + 2 && i >= vods.current_page - 2}
-                            {#if vods.current_page == i}
-                                <li class="page-item active">
-                                    <div
-                                        class="page-link"
-                                        role="button"
-                                        on:click={() => (page = i)}
-                                    >
-                                        {i}
-                                    </div>
-                                </li>
-                            {:else}
-                                <li class="page-item">
-                                    <div
-                                        class="page-link"
-                                        role="button"
-                                        on:click={() => (page = i)}
-                                    >
-                                        {i}
-                                    </div>
-                                </li>
-                            {/if}
-                        {/if}
-                    {/each}
-                    {#if vods.links.next}
-                        <li class="page-item pagination-ellipsis text-center">
-                            <span>&hellip;</span>
-                        </li>
-                        <li class="page-item">
-                            <div
-                                class="page-link"
-                                role="button"
-                                on:click={() => (page = vods.total_pages)}
-                            >
-                                Letzte
-                            </div>
-                        </li>
-                    {/if}
-                </ul>
-            </nav>
+            <Pagination obj={vods} bind:page={page} />
         {/await}
     </div>
 </main>

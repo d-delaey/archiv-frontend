@@ -1,6 +1,7 @@
 <script>
     import ClipGrid from '../../components/ClipGrid.svelte';
     import GridPlaceholder from '../../components/GridPlaceholder.svelte';
+    import Pagination from '../../components/Pagination.svelte';
 
     let clips;
     let page = 1;
@@ -24,12 +25,6 @@
         clips = c;
         window.scrollTo(0, 0);
         return c;
-    }
-
-    function range(start, end) {
-        return Array(end - start + 1)
-            .fill()
-            .map((_, idx) => start + idx);
     }
 </script>
 
@@ -184,91 +179,12 @@
             <GridPlaceholder count="48" />
         {:then clips}
             <ClipGrid {clips} />
-            <nav aria-label="Pagination">
-                <ul class="pagination justify-content-center">
-                    {#if clips.links.previous}
-                        <li class="page-item">
-                            <div class="page-link" role="button" on:click={() => (page = 1)}>
-                                Erste
-                            </div>
-                        </li>
-                        <li class="page-item pagination-ellipsis text-center">
-                            <span>&hellip;</span>
-                        </li>
-                    {/if}
-                    {#each range(1, clips.total_pages) as i}
-                        {#if i <= clips.current_page + 2 && i >= clips.current_page - 2}
-                            {#if clips.current_page == i}
-                                <li class="page-item active">
-                                    <div
-                                        class="page-link"
-                                        role="button"
-                                        on:click={() => (page = i)}
-                                    >
-                                        {i}
-                                    </div>
-                                </li>
-                            {:else}
-                                <li class="page-item">
-                                    <div
-                                        class="page-link"
-                                        role="button"
-                                        on:click={() => (page = i)}
-                                    >
-                                        {i}
-                                    </div>
-                                </li>
-                            {/if}
-                        {/if}
-                    {/each}
-                    {#if clips.links.next}
-                        <li class="page-item pagination-ellipsis text-center">
-                            <span>&hellip;</span>
-                        </li>
-                        <li class="page-item">
-                            <div
-                                class="page-link"
-                                role="button"
-                                on:click={() => (page = clips.total_pages)}
-                            >
-                                Letzte
-                            </div>
-                        </li>
-                    {/if}
-                </ul>
-            </nav>
+            <Pagination obj={clips} bind:page={page} />
         {/await}
     </div>
 </main>
 
 <style lang="scss">
-    .page-link {
-        color: var(--color-main);
-        background-color: var(--color-background);
-
-        &:hover {
-            color: var(--color-background);
-            background-color: var(--color-main);
-        }
-
-        &:focus {
-            color: var(--color-background);
-            background-color: var(--color-main);
-            box-shadow: none;
-        }
-    }
-
-    .page-item {
-        &.active .page-link {
-            background-color: var(--color-main);
-            border-color: var(--color-main);
-            color: var(--color-background);
-        }
-    }
-    .pagination-ellipsis {
-        width: 35px !important;
-    }
-
     .datetime-local {
         color: var(--color-main);
     }
