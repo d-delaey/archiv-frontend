@@ -77,6 +77,58 @@
             updatePlayerSettings();
         });
         player.play();
+
+        document.onkeydown = (e) => {
+            let searchActive = document.getElementById("searchInput") == document.activeElement;
+            if (searchActive) {
+                return
+            } else if (e.key === "f") {
+                if (player.isFullscreen()) {
+                    player.exitFullscreen();
+                } else {
+                    player.requestFullscreen();
+                }
+                return false
+            } else if (e.key === " ") {
+                if (player.paused()) {
+                    player.play();
+                } else {
+                    player.pause();
+                }
+                return false
+            } else if (e.key === "ArrowRight") {
+                player.currentTime(player.currentTime() + 30)
+                return false
+            } else if (e.key === "ArrowLeft") {
+                player.currentTime(player.currentTime() - 10)
+                return false
+            } else if (e.key === "ArrowUp") {
+                player.volume(player.volume() + 0.05)
+                return false
+            } else if (e.key === "ArrowDown") {
+                player.volume(player.volume() - 0.05)
+                return false
+            } else if (e.key === "m") {
+                if (player.muted()) {
+                    player.muted(false)
+                } else {
+                    player.muted(true)
+                }
+                return false
+            } else if (e.key === ",") {
+                let rateIndex = playbackRates.indexOf(player.playbackRate())
+                if (rateIndex-1 >= 0 && rateIndex-1 <= playbackRates.length) {
+                    player.playbackRate(playbackRates[rateIndex-1])
+                }
+                return false
+            } else if (e.key === ".") {
+                let rateIndex = playbackRates.indexOf(player.playbackRate())
+                if (rateIndex+1 >= 0 && rateIndex+1 <= playbackRates.length) {
+                    player.playbackRate(playbackRates[rateIndex+1])
+                }
+                return false
+            }
+        }
     });
 
     onDestroy(() => {
