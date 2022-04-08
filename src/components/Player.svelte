@@ -11,15 +11,20 @@
     export let time;
 
     const BASE_URL = import.meta.env.VITE_BASE_URL;
-    const playbackRates = {
-        playbackRates: [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
-    };
+    const playbackRates = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
     let player;
     let watched = JSON.parse(localStorage.getItem('watched'));
     if (!watched) {
         watched = {
             vods: {},
             clips: {}
+        };
+    }
+    let playerSettings = JSON.parse(localStorage.getItem('player'));
+    if (!playerSettings) {
+        playerSettings = {
+            volume: 1,
+            playbackRate: 1
         };
     }
     let src =
@@ -37,7 +42,8 @@
                 volumePanel: {
                     inline: false
                 }
-            }
+            },
+            playbackRates: playbackRates
         };
         player = videojs('vod', options);
         player.src({
@@ -51,14 +57,25 @@
         });
         // Safari has problems with bind:currentTime on the video element and running a function when the var changes. So we use the non svelte way.
         // https://github.com/sveltejs/svelte/issues/6002
+        player.on('loadedmetadata', () => {
+            player.playbackRate(playerSettings.playbackRate);
+            player.volume(playerSettings.volume);
+            if (time > 0) {
+                player.currentTime(time);
+            } else if (watched[type][obj.uuid]) {
+                player.currentTime(watched[type][obj.uuid]);
+            }
+        })
         player.on('timeupdate', () => {
             updateWatched();
         });
-        if (time > 0) {
-            player.currentTime(time);
-        } else if (watched[type][obj.uuid]) {
-            player.currentTime(watched[type][obj.uuid]);
-        }
+        player.on('volumechange', () => {
+            updatePlayerSettings();
+        });
+        player.on('ratechange', () => {
+            console.log(player.playbackRate());
+            updatePlayerSettings();
+        });
         player.play();
     });
 
@@ -76,6 +93,12 @@
             localStorage.setItem('watched', JSON.stringify(watched));
         }
     }
+
+    function updatePlayerSettings() {
+        playerSettings.volume = player.volume();
+        playerSettings.playbackRate = player.playbackRate();
+        localStorage.setItem('player', JSON.stringify(playerSettings));
+    }
 </script>
 
 <video
@@ -86,7 +109,6 @@
     width="100%"
     height="100%"
     {poster}
-    data-setup={JSON.stringify(playbackRates)}
 >
     <p class="vjs-no-js">
         To view this video please enable JavaScript, and consider upgrading to a web browser that

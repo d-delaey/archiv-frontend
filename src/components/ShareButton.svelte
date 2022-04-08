@@ -30,7 +30,6 @@
         setTimeout(() => {
             copyClicked = false;
         }, 1000);
-
     }
 </script>
 
