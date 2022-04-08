@@ -7,23 +7,18 @@
     export let loading;
 
     const BASE_URL = import.meta.env.VITE_BASE_URL;
+    let avifSm;
+    let avifMd;
+    let jpg;
 
     function showPrev() {
-        document.getElementById(
-            filename + '-sm-avif'
-        ).srcset = `${BASE_URL}/media/${type}/${filename}-preview.webp`;
-        document.getElementById(
-            filename + '-md-avif'
-        ).srcset = `${BASE_URL}/media/${type}/${filename}-preview.webp`;
+        avifSm.srcset = `${BASE_URL}/media/${type}/${filename}-preview.webp`;
+        avifMd.srcset = `${BASE_URL}/media/${type}/${filename}-preview.webp`;
     }
 
     function hidePrev() {
-        document.getElementById(
-            filename + '-sm-avif'
-        ).srcset = `${BASE_URL}/media/${type}/${filename}-sm.avif`;
-        document.getElementById(
-            filename + '-md-avif'
-        ).srcset = `${BASE_URL}/media/${type}/${filename}-md.avif`;
+        avifSm.srcset = `${BASE_URL}/media/${type}/${filename}-sm.avif`;
+        avifMd.srcset = `${BASE_URL}/media/${type}/${filename}-md.avif`;
     }
 
     function toHHMMSS() {
@@ -56,6 +51,7 @@
             class="card-img-top rounded"
             alt={title}
             {loading}
+            bind:this={avifSm}
         />
         <source
             id="{filename}-md-avif"
@@ -65,6 +61,7 @@
             class="card-img-top rounded"
             alt={title}
             {loading}
+            bind:this={avifMd}
         />
         <img
             width="520"
@@ -75,6 +72,7 @@
             class="card-img-top rounded"
             alt={title}
             {loading}
+            bind:this={jpg}
         />
     </picture>
     <div class="timecode-overlay text-white">
