@@ -139,6 +139,10 @@ table {
     background-color: var(--color-hover);
 }
 
+:global(.msg) {
+    background-color: var(--color-background);
+}
+
 #icon-clipboard {
     display: block;
 }

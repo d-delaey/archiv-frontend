@@ -35,6 +35,9 @@
         type === 'vods'
             ? `${BASE_URL}/media/${type}/${obj.filename}-lg.jpg`
             : `${BASE_URL}/media/${type}/${obj.clip_id}-lg.jpg`;
+    let overlay;
+    let overlayMsg = "";
+    let timeout;
 
     onMount(() => {
         let options = {
@@ -73,7 +76,6 @@
             updatePlayerSettings();
         });
         player.on('ratechange', () => {
-            console.log(player.playbackRate());
             updatePlayerSettings();
         });
         player.play();
@@ -92,39 +94,49 @@
             } else if (e.key === " ") {
                 if (player.paused()) {
                     player.play();
+                    showOverlay("Play")
                 } else {
                     player.pause();
+                    showOverlay("Pause")
                 }
                 return false
             } else if (e.key === "ArrowRight") {
                 player.currentTime(player.currentTime() + 30)
+                showOverlay("+30 Sekunden")
                 return false
             } else if (e.key === "ArrowLeft") {
                 player.currentTime(player.currentTime() - 10)
+                showOverlay("-10 Sekunden")
                 return false
             } else if (e.key === "ArrowUp") {
                 player.volume(player.volume() + 0.05)
+                showOverlay(`Lautstärke ${Math.round(player.volume()*100)}%`)
                 return false
             } else if (e.key === "ArrowDown") {
                 player.volume(player.volume() - 0.05)
+                showOverlay(`Lautstärke ${Math.round(player.volume()*100)}%`)
                 return false
             } else if (e.key === "m") {
                 if (player.muted()) {
                     player.muted(false)
+                    showOverlay("Laut")
                 } else {
                     player.muted(true)
+                    showOverlay("Stumm")
                 }
                 return false
             } else if (e.key === ",") {
                 let rateIndex = playbackRates.indexOf(player.playbackRate())
-                if (rateIndex-1 >= 0 && rateIndex-1 <= playbackRates.length) {
+                if (rateIndex-1 >= 0 && rateIndex-1 <= playbackRates.length-1) {
                     player.playbackRate(playbackRates[rateIndex-1])
+                    showOverlay(`Geschwindigkeit ${playbackRates[rateIndex-1]}x`)
                 }
                 return false
             } else if (e.key === ".") {
                 let rateIndex = playbackRates.indexOf(player.playbackRate())
-                if (rateIndex+1 >= 0 && rateIndex+1 <= playbackRates.length) {
+                if (rateIndex+1 >= 0 && rateIndex+1 <= playbackRates.length-1) {
                     player.playbackRate(playbackRates[rateIndex+1])
+                    showOverlay(`Geschwindigkeit ${playbackRates[rateIndex+1]}x`)
                 }
                 return false
             }
@@ -151,20 +163,54 @@
         playerSettings.playbackRate = player.playbackRate();
         localStorage.setItem('player', JSON.stringify(playerSettings));
     }
+
+    function showOverlay(msg) {
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+        overlayMsg = msg;
+        overlay.classList.add("vis");
+        timeout = setTimeout(() => {
+            overlay.classList.remove("vis");
+        }, 1000);
+    }
 </script>
 
-<video
-    id="vod"
-    class="video-js vjs-big-play-centered"
-    controls
-    preload="none"
-    width="100%"
-    height="100%"
-    {poster}
->
-    <p class="vjs-no-js">
-        To view this video please enable JavaScript, and consider upgrading to a web browser that
-        <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-    </p>
-    <track kind="captions" />
-</video>
+<div>
+    <div id="overlay" class="position-fixed d-flex align-items-center justify-content-center pe-none" bind:this={overlay}>
+        <div class="msg px-3 py-2 rounded">
+            {overlayMsg}
+        </div>
+    </div>
+    <video
+        id="vod"
+        class="video-js vjs-big-play-centered"
+        controls
+        preload="none"
+        width="100%"
+        height="100%"
+        {poster}
+    >
+        <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a web browser that
+            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+        <track kind="captions" />
+    </video>
+</div>
+
+<style lang="scss">
+    #overlay {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1030;
+        opacity: 0;
+        transition: 0.3s;
+
+        &:global(.vis) {
+            opacity: 0.9;
+        }
+    }
+</style>
