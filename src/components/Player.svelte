@@ -8,13 +8,13 @@
 
     export let obj;
     export let type;
+    export let time;
 
     const BASE_URL = import.meta.env.VITE_BASE_URL;
     const playbackRates = {
         playbackRates: [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
     };
     let player;
-    let currentTime;
     let watched = JSON.parse(localStorage.getItem('watched'));
     if (!watched) {
         watched = {
@@ -51,10 +51,12 @@
         });
         // Safari has problems with bind:currentTime on the video element and running a function when the var changes. So we use the non svelte way.
         // https://github.com/sveltejs/svelte/issues/6002
-        player.on("timeupdate", () => {
-            updateWatched()
-        })
-        if (watched[type][obj.uuid]) {
+        player.on('timeupdate', () => {
+            updateWatched();
+        });
+        if (time > 0) {
+            player.currentTime(time);
+        } else if (watched[type][obj.uuid]) {
             player.currentTime(watched[type][obj.uuid]);
         }
         player.play();
@@ -69,7 +71,8 @@
             watched[type][obj.uuid] = 0;
             localStorage.setItem('watched', JSON.stringify(watched));
         } else if (Math.floor(player.currentTime()) != Math.floor(watched[type][obj.uuid])) {
-            watched[type][obj.uuid] = Math.round(player.currentTime());
+            time = Math.round(player.currentTime());
+            watched[type][obj.uuid] = time;
             localStorage.setItem('watched', JSON.stringify(watched));
         }
     }

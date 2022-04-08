@@ -1,10 +1,21 @@
 <script>
-    import VideoThumbnail from '../../../components/VideoThumbnail.svelte';
-    import Player from '../../../components/Player.svelte';
+    import { onMount } from 'svelte';
     import { page } from '$app/stores';
     import { format, parseISO } from 'date-fns';
+    import VideoThumbnail from '../../../components/VideoThumbnail.svelte';
+    import Player from '../../../components/Player.svelte';
+    import GridPlaceholder from '../../../components/GridPlaceholder.svelte';
+    import ShareButton from '../../../components/ShareButton.svelte';
 
     let uuid;
+    let time = 0;
+
+    onMount(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('t')) {
+            time = parseInt(urlParams.get('t'));
+        }
+    });
 
     page.subscribe(() => {
         uuid = $page.params.uuid;
@@ -72,7 +83,7 @@
             <div class="mb-4">
                 <div class="row">
                     <div class="col-12">
-                        <Player obj={vod} type="vods" />
+                        <Player bind:time obj={vod} type="vods" />
                     </div>
                 </div>
             </div>
@@ -86,85 +97,7 @@
                             {format(parseISO(vod.date), 'dd.MM.yyyy - HH:mm')} Uhr
                         </p>
                     </div>
-                    <div class="share-button">
-                        <div class="dropdown">
-                            <button
-                                class="btn btn-sm dropdown-toggle"
-                                type="button"
-                                id="share-button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                            >
-                                Teilen
-                            </button>
-                            <ul
-                                class="dropdown-menu dropdown-menu-end p-3 share-button-list"
-                                id="share-button-list"
-                                aria-labelledby="share-button"
-                                style="width: max-content;"
-                            >
-                                <li>
-                                    <div class="input-group">
-                                        <input
-                                            type="text"
-                                            class="form-control share-input"
-                                            aria-label="Share Url"
-                                        />
-                                        <button id="btn-copy-clipboard" class="btn">
-                                            <svg
-                                                id="icon-clipboard"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="20"
-                                                height="20"
-                                                fill="currentColor"
-                                                class="bi bi-clipboard"
-                                                viewBox="0 0 16 16"
-                                            >
-                                                <path
-                                                    d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"
-                                                />
-                                                <path
-                                                    d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"
-                                                />
-                                            </svg>
-                                            <svg
-                                                id="icon-clipboard-checked"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="20"
-                                                height="20"
-                                                fill="currentColor"
-                                                class="bi bi-clipboard-check"
-                                                viewBox="0 0 16 16"
-                                            >
-                                                <path
-                                                    fill-rule="evenodd"
-                                                    d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"
-                                                />
-                                                <path
-                                                    d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"
-                                                />
-                                                <path
-                                                    d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"
-                                                />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div class="form-check mt-2">
-                                        <input
-                                            class="form-check-input"
-                                            type="checkbox"
-                                            id="share-checkbox"
-                                        />
-                                        <label
-                                            class="form-check-label"
-                                            for="share-checkbox"
-                                            id="share-at-text"
-                                        />
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <ShareButton bind:time />
                 </div>
                 <div>
                     <p class="lh-lg">
@@ -262,7 +195,7 @@
                     <div class="row">
                         {#each vod.clip_set as uuid}
                             {#await fetchClip(uuid)}
-                                <p>Lade Clip...</p>
+                                <GridPlaceholder count="1" />
                             {:then clip}
                                 <div
                                     class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-2"
@@ -309,27 +242,9 @@
 </main>
 
 <style lang="scss">
-    .share-input {
-        padding: 0.25rem 0.5rem;
-    }
-
-    .share-button-list {
-        background-color: var(--color-hover);
-        width: 450px !important;
-        max-width: 100vw;
-    }
-
-    .share-button {
-        margin-left: auto;
-    }
-
     @media screen and (max-width: 767px) {
         .title-container {
             display: block !important;
-        }
-
-        .share-button {
-            margin: 1rem 0;
         }
     }
 </style>
