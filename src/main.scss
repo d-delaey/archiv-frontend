@@ -211,7 +211,7 @@ table {
     padding: 0.1em;
 }
 
-.vjs-menu-button-popup .vjs-menu .vjs-menu-content,
+:global(.vjs-menu-button-popup .vjs-menu .vjs-menu-content),
 .video-js .vjs-volume-vertical {
     background-color: rgba(0, 0, 0, 0.58) !important;
     max-height: none;
