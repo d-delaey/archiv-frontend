@@ -10,7 +10,18 @@
     export let type;
 
     const BASE_URL = import.meta.env.VITE_BASE_URL;
+    const playbackRates = {
+        playbackRates: [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
+    };
     let player;
+    let currentTime;
+    let watched = JSON.parse(localStorage.getItem('watched'));
+    if (!watched) {
+        watched = {
+            vods: {},
+            clips: {}
+        };
+    }
     let src =
         type === 'vods'
             ? `${BASE_URL}/media/${type}/${obj.filename}-segments/${obj.filename}.m3u8`
@@ -19,10 +30,6 @@
         type === 'vods'
             ? `${BASE_URL}/media/${type}/${obj.filename}-lg.jpg`
             : `${BASE_URL}/media/${type}/${obj.clip_id}-lg.jpg`;
-
-    const playbackRates = {
-        playbackRates: [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
-    };
 
     onMount(() => {
         let options = {
@@ -44,11 +51,27 @@
             back: 10
         });
         player.play();
+
+        if (watched[type][obj.uuid]) {
+            player.currentTime(watched[type][obj.uuid]);
+        }
     });
 
     onDestroy(() => {
         player.dispose();
     });
+
+    function updateWatched() {
+        if (watched[type][obj.uuid] === undefined) {
+            watched[type][obj.uuid] = 0;
+            localStorage.setItem('watched', JSON.stringify(watched));
+        } else if (Math.floor(currentTime) > Math.floor(watched[type][obj.uuid])) {
+            watched[type][obj.uuid] = Math.round(currentTime);
+            localStorage.setItem('watched', JSON.stringify(watched));
+        }
+    }
+
+    $: currentTime, updateWatched();
 </script>
 
 <video
@@ -60,6 +83,7 @@
     height="100%"
     {poster}
     data-setup={JSON.stringify(playbackRates)}
+    bind:currentTime
 >
     <p class="vjs-no-js">
         To view this video please enable JavaScript, and consider upgrading to a web browser that

@@ -10,6 +10,7 @@
     let avifSm;
     let avifMd;
     let jpg;
+    let watched = JSON.parse(localStorage.getItem('watched'));
 
     function showPrev() {
         avifSm.srcset = `${BASE_URL}/media/${type}/${filename}-preview.webp`;
@@ -78,16 +79,19 @@
     <div class="timecode-overlay text-white">
         {toHHMMSS()}
     </div>
-    <div id="watched-progress" data-id={uuid} class="progress progress-overlay d-none">
-        <div
-            class="progress-bar"
-            role="progressbar"
-            aria-label="{uuid}-progress"
-            aria-valuenow="0"
-            aria-valuemin="0"
-            aria-valuemax={duration}
-        />
-    </div>
+    {#if watched[type][uuid]}
+        <div id="watched-progress" data-id={uuid} class="progress progress-overlay">
+            <div
+                class="progress-bar"
+                role="progressbar"
+                aria-label="{uuid}-progress"
+                aria-valuenow={watched[type][uuid]}
+                aria-valuemin="0"
+                aria-valuemax={duration}
+                style:width={`${Math.round((watched[type][uuid] * 100) / duration)}%`}
+            />
+        </div>
+    {/if}
 </a>
 
 <style lang="scss">
