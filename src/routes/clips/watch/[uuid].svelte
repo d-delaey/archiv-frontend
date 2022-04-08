@@ -8,7 +8,7 @@
     import ShareButton from '../../../components/ShareButton.svelte';
 
     let uuid;
-    let time;
+    let time = 0;
 
     onMount(() => {
         const urlParams = new URLSearchParams(window.location.search);

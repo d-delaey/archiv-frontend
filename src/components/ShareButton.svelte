@@ -9,6 +9,7 @@
 
     let shareTime = false;
     let url;
+    let copyClicked = false;
 
     $: shareTime, (url = shareTime ? $page.url + '?t=' + time : $page.url);
 
@@ -25,6 +26,11 @@
 
     function copyToClipboard() {
         navigator.clipboard.writeText(url);
+        copyClicked = true;
+        setTimeout(() => {
+            copyClicked = false;
+        }, 1000);
+
     }
 </script>
 
@@ -56,12 +62,11 @@
                     />
                     <button id="btn-copy-clipboard" class="btn" on:click={copyToClipboard}>
                         <svg
-                            id="icon-clipboard"
                             xmlns="http://www.w3.org/2000/svg"
                             width="20"
                             height="20"
                             fill="currentColor"
-                            class="bi bi-clipboard"
+                            class="bi bi-clipboard {copyClicked ? 'd-none' : ''}"
                             viewBox="0 0 16 16"
                         >
                             <path
@@ -72,12 +77,11 @@
                             />
                         </svg>
                         <svg
-                            id="icon-clipboard-checked"
                             xmlns="http://www.w3.org/2000/svg"
                             width="20"
                             height="20"
                             fill="currentColor"
-                            class="bi bi-clipboard-check"
+                            class="bi bi-clipboard-check {copyClicked ? '' : 'd-none'}"
                             viewBox="0 0 16 16"
                         >
                             <path
