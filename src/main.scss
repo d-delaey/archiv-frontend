@@ -214,6 +214,7 @@ table {
 .vjs-menu-button-popup .vjs-menu .vjs-menu-content,
 .video-js .vjs-volume-vertical {
     background-color: rgba(0, 0, 0, 0.58) !important;
+    max-height: none;
 }
 
 .vjs-big-play-centered .vjs-big-play-button {
