@@ -234,27 +234,9 @@
 </main>
 
 <style lang="scss">
-    .share-input {
-        padding: 0.25rem 0.5rem;
-    }
-
-    .share-button-list {
-        background-color: var(--color-hover);
-        width: 450px !important;
-        max-width: 100vw;
-    }
-
-    .share-button {
-        margin-left: auto;
-    }
-
     @media screen and (max-width: 767px) {
         .title-container {
             display: block !important;
-        }
-
-        .share-button {
-            margin: 1rem 0;
         }
     }
 </style>
