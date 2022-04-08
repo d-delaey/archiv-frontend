@@ -11,6 +11,12 @@
     let avifMd;
     let jpg;
     let watched = JSON.parse(localStorage.getItem('watched'));
+    if (!watched) {
+        watched = {
+            vods: {},
+            clips: {}
+        };
+    }
 
     function showPrev() {
         avifSm.srcset = `${BASE_URL}/media/${type}/${filename}-preview.webp`;
