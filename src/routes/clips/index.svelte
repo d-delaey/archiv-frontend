@@ -30,18 +30,16 @@
 
 <main class="flex-shrink-0">
     <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-md-9">
-                <h1 class="display-4 fw-bolder pb-3">Alle Clips</h1>
+        <div class="row mb-4">
+            <div class="col-auto">
+                <h1 class="display-4 fw-bolder p-0 m-0 align-self-center">Alle Clips</h1>
             </div>
             {#if clips}
-                <div class="col-xs-12 col-md-2 col-pages">
-                    <p class="fs-4 fw-bold mb-2 pb-3">
+                <div class="col-xs-12 col-md-5 ms-auto col-pages">
+                    <p class="fs-4 fw-bold p-0 m-0 me-3 align-self-center">
                         Seite {clips.current_page} von {clips.total_pages}
                     </p>
-                </div>
-                <div class="col-xs-12 col-md-1 mb-2 pb-3 col-pages">
-                    <div class="dropdown">
+                    <div class="dropdown align-self-center">
                         <button
                             class="btn btn-secondary dropdown-toggle filter-btn"
                             type="button"
@@ -179,7 +177,7 @@
             <GridPlaceholder count="48" />
         {:then clips}
             <ClipGrid {clips} />
-            <Pagination obj={clips} bind:page={page} />
+            <Pagination obj={clips} bind:page />
         {/await}
     </div>
 </main>

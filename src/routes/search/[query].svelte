@@ -1,51 +1,73 @@
 <script>
     import VodGrid from '../../components/VodGrid.svelte';
     import ClipGrid from '../../components/ClipGrid.svelte';
+    import GridPlaceholder from '../../components/GridPlaceholder.svelte';
+    import Pagination from '../../components/Pagination.svelte';
     import { page } from '$app/stores';
 
-    let query = $page.params.query;
-    if (!query) {
-        query = '';
-    }
+    let vodsPage = 1;
+    let clipsPage = 1;
+    let pageSize = 18;
+    let query;
 
-    async function fetchVods() {
-        const response = await fetch(
-            `${import.meta.env.VITE_BASE_URL}/api/vods/?page_size=18&search=${query}`
-        );
-        const vods = await response.json();
-        return vods;
-    }
+    page.subscribe(() => {
+        query = $page.params.query;
+    });
 
-    async function fetchClips() {
+    async function fetchSearch(type, page, q) {
         const response = await fetch(
-            `${import.meta.env.VITE_BASE_URL}/api/clips/?page_size=18&search=${query}`
+            `${import.meta.env.VITE_BASE_URL}/api/${type}/?page_size=${pageSize}&page=${page}&search=${q}`
         );
-        const clips = await response.json();
-        return clips;
+        const resp = await response.json();
+        return resp;
     }
 </script>
 
 <main class="flex-shrink-0">
     <div class="container">
-        {#await fetchVods()}
-            <h1 class="display-4 fw-bolder pb-3">Vod Ergebnisse</h1>
-            <p>Lade Vods...</p>
+        {#await fetchSearch("vods", vodsPage, query)}
+            <div class="row mb-4">
+                <div class="col-xs-12 col-md-7">
+                    <h1 class="display-4 fw-bolder p-0 m-0 align-self-center">Vod Ergebnisse</h1>
+                </div>
+            </div>
+            <GridPlaceholder count="12" />
         {:then vods}
-            <h1 class="display-4 fw-bolder pb-3">
-                Vod Ergebnisse <small class="text-muted">{vods.count}</small>
-            </h1>
+            <div class="row mb-4">
+                <div class="col-auto">
+                    <h1 class="display-4 fw-bolder p-0 m-0 align-self-center">Vod Ergebnisse</h1>
+                </div>
+                <div class="col-xs-12 col-md-5 ms-auto col-pages">
+                    <p class="fs-4 fw-bold p-0 m-0 align-self-center">
+                        {vods.count > 1 ? "Ergebnisse" : "Ergebnis"} {(vodsPage-1)*(pageSize)+1} - {(vodsPage-1)*(pageSize)+vods.results.length} von {vods.count}
+                    </p>
+                </div>
+            </div>
             <VodGrid {vods} />
+            <Pagination obj={vods} bind:page={vodsPage} />
         {/await}
     </div>
     <div class="container">
-        {#await fetchClips()}
-            <h1 class="display-4 fw-bolder pb-3">Clip Ergebnisse</h1>
-            <p>Lade Clips...</p>
+        {#await fetchSearch("clips", clipsPage, query)}
+            <div class="row mb-4">
+                <div class="col-xs-12 col-md-7">
+                    <h1 class="display-4 fw-bolder p-0 m-0 align-self-center">Clip Ergebnisse</h1>
+                </div>
+            </div>
+            <GridPlaceholder count="12" />
         {:then clips}
-            <h1 class="display-4 fw-bolder pb-3">
-                Clip Ergebnisse <small class="text-muted">{clips.count}</small>
-            </h1>
+            <div class="row mb-4">
+                <div class="col-auto">
+                    <h1 class="display-4 fw-bolder p-0 m-0 align-self-center">Clip Ergebnisse</h1>
+                </div>
+                <div class="col-xs-12 col-md-5 ms-auto col-pages">
+                    <p class="fs-4 fw-bold p-0 m-0 align-self-center">
+                        {clips.count > 1 ? "Ergebnisse" : "Ergebnis"} {(clipsPage-1)*(pageSize)+1} - {(clipsPage-1)*(pageSize)+clips.results.length} von {clips.count}
+                    </p>
+                </div>
+            </div>
             <ClipGrid {clips} />
+            <Pagination obj={clips} bind:page={clipsPage} />
         {/await}
     </div>
 </main>

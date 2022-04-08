@@ -25,9 +25,9 @@
 
 <main class="flex-shrink-0">
     <div class="container">
-        <div class="row">
+        <div class="row mb-4">
             <div class="col-xs-12 col-md-8">
-                <h1 class="display-4 fw-bolder pb-3">Alle Vods</h1>
+                <h1 class="display-4 fw-bolder p-0 m-0 align-self-center">Alle Vods</h1>
             </div>
             {#if vods}
                 <div class="col-xs-12 col-md-4 col-pages">
@@ -41,7 +41,7 @@
             <GridPlaceholder count="48" />
         {:then vods}
             <VodGrid {vods} />
-            <Pagination obj={vods} bind:page={page} />
+            <Pagination obj={vods} bind:page />
         {/await}
     </div>
 </main>

@@ -91,6 +91,7 @@
     function handleResultsList(e) {
         let resultItems = document.querySelectorAll('.result-item');
         if (e.keyCode == 13 && searchFocus === -1) {
+            showResults = false;
             goto(`/search/${query}`);
         } else if (e.keyCode == 40) {
             searchFocus++;
@@ -187,7 +188,7 @@
                         class="btn btn-outline-secondary rounded-0 rounded-end d-flex align-items-center"
                         type="button"
                         aria-label="Suchen"
-                        on:click={() => query ? goto(`/search/${query}`) : ''}
+                        on:click={() => (query ? goto(`/search/${query}`) : '')}
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

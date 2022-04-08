@@ -28,7 +28,7 @@
 
 <main class="flex-shrink-0">
     <div class="container">
-        <h1 class="display-4 fw-bolder pb-3">
+        <h1 class="display-4 fw-bolder p-0 m-0 mb-4 align-self-center">
             <a href="/vods/all" class="text-decoration-none">Kürzliche Vods</a>
         </h1>
         {#await fetchVods()}
@@ -38,7 +38,7 @@
         {/await}
     </div>
     <div class="container">
-        <h1 class="display-4 fw-bolder pb-3">
+        <h1 class="display-4 fw-bolder p-0 m-0 mb-4 align-self-center">
             <a href="/clips" class="text-decoration-none">Top Clips letzter Monat</a>
         </h1>
         {#await fetchClips()}
