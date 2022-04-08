@@ -11,7 +11,7 @@
     export let time;
 
     const BASE_URL = import.meta.env.VITE_BASE_URL;
-    const playbackRates = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
+    const playbackRates = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
     let player;
     let watched = JSON.parse(localStorage.getItem('watched'));
     if (!watched) {
@@ -36,7 +36,7 @@
             ? `${BASE_URL}/media/${type}/${obj.filename}-lg.jpg`
             : `${BASE_URL}/media/${type}/${obj.clip_id}-lg.jpg`;
     let overlay;
-    let overlayMsg = "";
+    let overlayMsg = '';
     let timeout;
 
     onMount(() => {
@@ -68,7 +68,7 @@
             } else if (watched[type][obj.uuid]) {
                 player.currentTime(watched[type][obj.uuid]);
             }
-        })
+        });
         player.on('timeupdate', () => {
             updateWatched();
         });
@@ -81,66 +81,66 @@
         player.play();
 
         document.onkeydown = (e) => {
-            let searchActive = document.getElementById("searchInput") == document.activeElement;
+            let searchActive = document.getElementById('searchInput') == document.activeElement;
             if (searchActive) {
-                return
-            } else if (e.key === "f") {
+                return;
+            } else if (e.key === 'f') {
                 if (player.isFullscreen()) {
                     player.exitFullscreen();
                 } else {
                     player.requestFullscreen();
                 }
-                return false
-            } else if (e.key === " ") {
+                return false;
+            } else if (e.key === ' ') {
                 if (player.paused()) {
                     player.play();
-                    showOverlay("Play")
+                    showOverlay('Play');
                 } else {
                     player.pause();
-                    showOverlay("Pause")
+                    showOverlay('Pause');
                 }
-                return false
-            } else if (e.key === "ArrowRight") {
-                player.currentTime(player.currentTime() + 30)
-                showOverlay("+30 Sekunden")
-                return false
-            } else if (e.key === "ArrowLeft") {
-                player.currentTime(player.currentTime() - 10)
-                showOverlay("-10 Sekunden")
-                return false
-            } else if (e.key === "ArrowUp") {
-                player.volume(player.volume() + 0.05)
-                showOverlay(`Lautstärke ${Math.round(player.volume()*100)}%`)
-                return false
-            } else if (e.key === "ArrowDown") {
-                player.volume(player.volume() - 0.05)
-                showOverlay(`Lautstärke ${Math.round(player.volume()*100)}%`)
-                return false
-            } else if (e.key === "m") {
+                return false;
+            } else if (e.key === 'ArrowRight') {
+                player.currentTime(player.currentTime() + 30);
+                showOverlay('+30 Sekunden');
+                return false;
+            } else if (e.key === 'ArrowLeft') {
+                player.currentTime(player.currentTime() - 10);
+                showOverlay('-10 Sekunden');
+                return false;
+            } else if (e.key === 'ArrowUp') {
+                player.volume(player.volume() + 0.05);
+                showOverlay(`Lautstärke ${Math.round(player.volume() * 100)}%`);
+                return false;
+            } else if (e.key === 'ArrowDown') {
+                player.volume(player.volume() - 0.05);
+                showOverlay(`Lautstärke ${Math.round(player.volume() * 100)}%`);
+                return false;
+            } else if (e.key === 'm') {
                 if (player.muted()) {
-                    player.muted(false)
-                    showOverlay("Laut")
+                    player.muted(false);
+                    showOverlay('Laut');
                 } else {
-                    player.muted(true)
-                    showOverlay("Stumm")
+                    player.muted(true);
+                    showOverlay('Stumm');
                 }
-                return false
-            } else if (e.key === ",") {
-                let rateIndex = playbackRates.indexOf(player.playbackRate())
-                if (rateIndex-1 >= 0 && rateIndex-1 <= playbackRates.length-1) {
-                    player.playbackRate(playbackRates[rateIndex-1])
-                    showOverlay(`Geschwindigkeit ${playbackRates[rateIndex-1]}x`)
+                return false;
+            } else if (e.key === ',') {
+                let rateIndex = playbackRates.indexOf(player.playbackRate());
+                if (rateIndex - 1 >= 0 && rateIndex - 1 <= playbackRates.length - 1) {
+                    player.playbackRate(playbackRates[rateIndex - 1]);
+                    showOverlay(`Geschwindigkeit ${playbackRates[rateIndex - 1]}x`);
                 }
-                return false
-            } else if (e.key === ".") {
-                let rateIndex = playbackRates.indexOf(player.playbackRate())
-                if (rateIndex+1 >= 0 && rateIndex+1 <= playbackRates.length-1) {
-                    player.playbackRate(playbackRates[rateIndex+1])
-                    showOverlay(`Geschwindigkeit ${playbackRates[rateIndex+1]}x`)
+                return false;
+            } else if (e.key === '.') {
+                let rateIndex = playbackRates.indexOf(player.playbackRate());
+                if (rateIndex + 1 >= 0 && rateIndex + 1 <= playbackRates.length - 1) {
+                    player.playbackRate(playbackRates[rateIndex + 1]);
+                    showOverlay(`Geschwindigkeit ${playbackRates[rateIndex + 1]}x`);
                 }
-                return false
+                return false;
             }
-        }
+        };
     });
 
     onDestroy(() => {
@@ -169,15 +169,19 @@
             clearTimeout(timeout);
         }
         overlayMsg = msg;
-        overlay.classList.add("vis");
+        overlay.classList.add('vis');
         timeout = setTimeout(() => {
-            overlay.classList.remove("vis");
+            overlay.classList.remove('vis');
         }, 1000);
     }
 </script>
 
 <div>
-    <div id="overlay" class="position-fixed d-flex align-items-center justify-content-center pe-none" bind:this={overlay}>
+    <div
+        id="overlay"
+        class="position-fixed d-flex align-items-center justify-content-center pe-none"
+        bind:this={overlay}
+    >
         <div class="msg px-3 py-2 rounded">
             {overlayMsg}
         </div>
@@ -192,8 +196,11 @@
         {poster}
     >
         <p class="vjs-no-js">
-            To view this video please enable JavaScript, and consider upgrading to a web browser that
-            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+            To view this video please enable JavaScript, and consider upgrading to a web browser
+            that
+            <a href="https://videojs.com/html5-video-support/" target="_blank"
+                >supports HTML5 video</a
+            >
         </p>
         <track kind="captions" />
     </video>
