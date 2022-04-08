@@ -50,11 +50,17 @@
             forward: 30,
             back: 10
         });
+        // Safari has problems with bind:currentTime on the video element and running a function when the var changes. So we use the non svelte way.
+        // https://github.com/sveltejs/svelte/issues/6002
+        player.on("timeupdate", () => {
+            updateWatched()
+        })
         player.play();
 
         if (watched[type][obj.uuid]) {
             player.currentTime(watched[type][obj.uuid]);
         }
+
     });
 
     onDestroy(() => {
@@ -65,13 +71,11 @@
         if (watched[type][obj.uuid] === undefined) {
             watched[type][obj.uuid] = 0;
             localStorage.setItem('watched', JSON.stringify(watched));
-        } else if (Math.floor(currentTime) > Math.floor(watched[type][obj.uuid])) {
-            watched[type][obj.uuid] = Math.round(currentTime);
+        } else if (Math.floor(player.currentTime()) != Math.floor(watched[type][obj.uuid])) {
+            watched[type][obj.uuid] = Math.round(player.currentTime());
             localStorage.setItem('watched', JSON.stringify(watched));
         }
     }
-
-    $: currentTime, updateWatched();
 </script>
 
 <video
@@ -83,7 +87,6 @@
     height="100%"
     {poster}
     data-setup={JSON.stringify(playbackRates)}
-    bind:currentTime
 >
     <p class="vjs-no-js">
         To view this video please enable JavaScript, and consider upgrading to a web browser that
