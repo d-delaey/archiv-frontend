@@ -40,7 +40,6 @@
             }
         };
         player = videojs('vod', options);
-        player.setAttribute('uuid', obj.uuid);
         player.src({
             src: src,
             type: 'application/x-mpegURL'
