@@ -4,16 +4,8 @@
     import Pagination from '../../components/Pagination.svelte';
     import { clipFilter } from '../../stores';
 
-    let clips
+    let clips;
     let page = 1;
-    if (Object.keys($clipFilter).length === 0) {
-        clipFilter.set({
-            sort_by: 'date',
-            direction: '-',
-            date_from: null,
-            date_to: null
-        });
-    }
 
     async function fetchClips(f, p) {
         let params = `?page_size=48&page=${p}&ordering=${f['direction']}${f['sort_by']}`;
