@@ -2,15 +2,18 @@
     import ClipGrid from '../../components/ClipGrid.svelte';
     import GridPlaceholder from '../../components/GridPlaceholder.svelte';
     import Pagination from '../../components/Pagination.svelte';
+    import { clipFilter } from '../../stores';
 
-    let clips;
+    let clips
     let page = 1;
-    let filter = {
-        sort_by: 'date',
-        direction: '-',
-        date_from: null,
-        date_to: null
-    };
+    if (Object.keys($clipFilter).length === 0) {
+        clipFilter.set({
+            sort_by: 'date',
+            direction: '-',
+            date_from: null,
+            date_to: null
+        });
+    }
 
     async function fetchClips(f, p) {
         let params = `?page_size=48&page=${p}&ordering=${f['direction']}${f['sort_by']}`;
@@ -63,7 +66,7 @@
                                             type="radio"
                                             name="flexRadioDefault"
                                             id="flexRadioDefault1"
-                                            bind:group={filter['sort_by']}
+                                            bind:group={$clipFilter['sort_by']}
                                             value="date"
                                         />
                                         <label class="form-check-label" for="flexRadioDefault1">
@@ -76,7 +79,7 @@
                                             type="radio"
                                             name="flexRadioDefault"
                                             id="flexRadioDefault2"
-                                            bind:group={filter['sort_by']}
+                                            bind:group={$clipFilter['sort_by']}
                                             value="view_count"
                                         />
                                         <label class="form-check-label" for="flexRadioDefault2">
@@ -94,7 +97,7 @@
                                             name="btnradio"
                                             id="btnradio1"
                                             autocomplete="off"
-                                            bind:group={filter['direction']}
+                                            bind:group={$clipFilter['direction']}
                                             value=""
                                         />
                                         <label class="btn btn-secondary w-50" for="btnradio1">
@@ -119,7 +122,7 @@
                                             name="btnradio"
                                             id="btnradio2"
                                             autocomplete="off"
-                                            bind:group={filter['direction']}
+                                            bind:group={$clipFilter['direction']}
                                             value="-"
                                         />
                                         <label class="btn btn-secondary w-50" for="btnradio2">
@@ -151,7 +154,7 @@
                                             id="date-from"
                                             type="datetime-local"
                                             name="date-from"
-                                            bind:value={filter['date_from']}
+                                            bind:value={$clipFilter['date_from']}
                                             max={Date.now()}
                                             class="datetime-local form-control"
                                         />
@@ -162,7 +165,7 @@
                                             id="date-to"
                                             type="datetime-local"
                                             name="date-to"
-                                            bind:value={filter['date_to']}
+                                            bind:value={$clipFilter['date_to']}
                                             class="datetime-local form-control"
                                         />
                                     </div>
@@ -173,7 +176,7 @@
                 </div>
             {/if}
         </div>
-        {#await fetchClips(filter, page)}
+        {#await fetchClips($clipFilter, page)}
             <GridPlaceholder count="48" />
         {:then clips}
             <ClipGrid {clips} />
