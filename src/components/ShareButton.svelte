@@ -8,10 +8,11 @@
     }
 
     let shareTime = false;
-    let url;
+    let shareUrl;
     let copyClicked = false;
+    const baseUrl = window.location.href.split('?')[0] // prevent having 2x '?t=' in url
 
-    $: shareTime, (url = shareTime ? $page.url + '?t=' + time : $page.url);
+    $: shareTime, (shareUrl = shareTime ? baseUrl + '?t=' + time : baseUrl);
 
     function toHHMMSS(t) {
         const sec_num = parseInt(t, 10);
@@ -25,7 +26,7 @@
     }
 
     function copyToClipboard() {
-        navigator.clipboard.writeText(url);
+        navigator.clipboard.writeText(shareUrl);
         copyClicked = true;
         setTimeout(() => {
             copyClicked = false;
@@ -57,7 +58,7 @@
                         type="text"
                         class="form-control share-input"
                         aria-label="Share Url"
-                        value={url}
+                        value={shareUrl}
                     />
                     <button id="btn-copy-clipboard" class="btn" on:click={copyToClipboard}>
                         <svg

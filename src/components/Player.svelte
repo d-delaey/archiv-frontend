@@ -63,7 +63,7 @@
         player.on('loadedmetadata', () => {
             player.playbackRate(playerSettings.playbackRate);
             player.volume(playerSettings.volume);
-            if (time > 0) {
+            if (time > 0 && time <= obj.duration) {
                 player.currentTime(time);
             } else if (watched[type][obj.uuid]) {
                 player.currentTime(watched[type][obj.uuid]);
