@@ -8,7 +8,7 @@
 
     async function fetchVods(p) {
         const response = await fetch(
-            `${import.meta.env.VITE_BASE_URL}/api/vods/?page_size=48&page=${p}`
+            `${import.meta.env.VITE_BASE_URL}/vods/?page_size=48&page=${p}`
         );
         const v = await response.json();
         vods = v;

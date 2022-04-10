@@ -18,7 +18,7 @@
         const response = await fetch(
             `${
                 import.meta.env.VITE_BASE_URL
-            }/api/${type}/?page_size=${pageSize}&page=${page}&search=${q}`
+            }/${type}/?page_size=${pageSize}&page=${page}&search=${q}`
         );
         const resp = await response.json();
         return resp;

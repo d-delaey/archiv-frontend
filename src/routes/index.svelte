@@ -7,7 +7,7 @@
 
     // fetch vods and clips
     async function fetchVods() {
-        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/vods/?page_size=12`);
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/vods/?page_size=12`);
         const vods = await response.json();
         return vods;
     }
@@ -16,7 +16,7 @@
         const response = await fetch(
             `${
                 import.meta.env.VITE_BASE_URL
-            }/api/clips/?page_size=12&ordering=-view_count&date_from=${subMonths(
+            }/clips/?page_size=12&ordering=-view_count&date_from=${subMonths(
                 Date.now(),
                 1
             ).toISOString()}`

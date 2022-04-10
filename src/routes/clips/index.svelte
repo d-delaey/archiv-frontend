@@ -15,7 +15,7 @@
         if (f['date_to'] != null && f['date_to'] != '') {
             params += `&date_to=${f['date_to']}`;
         }
-        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/clips/${params}`);
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/clips/${params}`);
         const c = await response.json();
         clips = c;
         window.scrollTo(0, 0);

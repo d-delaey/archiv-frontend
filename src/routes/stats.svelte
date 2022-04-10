@@ -8,13 +8,13 @@
     const BASE_URL = import.meta.env.VITE_BASE_URL;
 
     async function fetchStats() {
-        const response = await fetch(`${BASE_URL}/api/stats`);
+        const response = await fetch(`${BASE_URL}/stats`);
         const s = await response.json();
         return s;
     }
 
     async function fetchEmotes(provider) {
-        const response = await fetch(`${BASE_URL}/api/emotes/?page_size=500&provider=${provider}`);
+        const response = await fetch(`${BASE_URL}/emotes/?page_size=500&provider=${provider}`);
         const e = await response.json();
         return e;
     }

@@ -5,7 +5,7 @@
     let vods = {};
 
     async function fetchYears() {
-        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/years/`);
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/years/`);
         const y = await response.json();
         y.forEach((element) => {
             vodCount += element.count;
@@ -18,7 +18,7 @@
             return;
         }
         const response = await fetch(
-            `${import.meta.env.VITE_BASE_URL}/api/vods/?page_size=500&year=${y}`
+            `${import.meta.env.VITE_BASE_URL}/vods/?page_size=500&year=${y}`
         );
         const year = await response.json();
         vods[y] = year.results;
