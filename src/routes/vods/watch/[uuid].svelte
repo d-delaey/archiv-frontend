@@ -7,6 +7,7 @@
     import Player from '../../../components/Player.svelte';
     import GridPlaceholder from '../../../components/GridPlaceholder.svelte';
     import ShareButton from '../../../components/ShareButton.svelte';
+    import HotkeyModal from '../../../components/HotkeyModal.svelte';
 
     let uuid;
     let time = 0;
@@ -144,6 +145,7 @@
                             </svg>
                             Hotkeys
                         </button>
+                        <HotkeyModal />
                     </p>
                     <p class="collapse text-muted" id="moreInfos">
                         Auslösung: {vod.resolution}<br />

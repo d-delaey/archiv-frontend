@@ -18,7 +18,6 @@
         const e = await response.json();
         return e;
     }
-
 </script>
 
 <main class="flex-shrink-0">

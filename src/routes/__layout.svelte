@@ -24,6 +24,7 @@
         await import('bootstrap/js/dist/button');
         await import('bootstrap/js/dist/collapse');
         await import('bootstrap/js/dist/dropdown');
+        await import('bootstrap/js/dist/modal');
     });
 
     onMount(() => {
