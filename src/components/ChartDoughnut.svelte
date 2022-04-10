@@ -18,7 +18,7 @@
         if (chart) {
             colors = themeColors[newTheme];
             chart.data.datasets.forEach((dataset) => {
-                dataset.backgroundColor = colors?.backgroundColors
+                dataset.backgroundColor = colors?.backgroundColors;
             });
             chart.options.plugins.legend.labels.color = colors?.ticks;
             chart.update();

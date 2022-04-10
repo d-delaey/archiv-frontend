@@ -18,7 +18,7 @@
         if (chart) {
             colors = themeColors[newTheme];
             chart.data.datasets.forEach((dataset) => {
-                dataset.backgroundColor = colors?.backgroundColors
+                dataset.backgroundColor = colors?.backgroundColors;
             });
             chart.options = {
                 plugins: {
@@ -44,7 +44,7 @@
                         }
                     }
                 }
-            }
+            };
             chart.update();
         }
     });
