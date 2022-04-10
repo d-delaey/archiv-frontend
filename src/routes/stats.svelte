@@ -12,6 +12,13 @@
         const s = await response.json();
         return s;
     }
+
+    async function fetchEmotes(provider) {
+        const response = await fetch(`${BASE_URL}/api/emotes/?page_size=500&provider=${provider}`);
+        const e = await response.json();
+        return e;
+    }
+
 </script>
 
 <main class="flex-shrink-0">
@@ -78,84 +85,63 @@
                     </div>
                 </div>
             </section>
-            <section>
-                <h3 class="display-6 py-3">
-                    <strong>Clips pro User</strong>
-                </h3>
-                <div class="row">
-                    <div class="col-md-6">
-                        <table class="table">
-                            <thead>
-                                <th>Name</th>
-                                <th>Erstellte Clips</th>
-                            </thead>
-                            <tbody>
-                                <!-- {% for user in most_clips_per_user %}
-                                <tr>
-                                    <td>{{ user.creator__name }}</td>
-                                    <td>{{ user.amount|intcomma }}</td>
-                                </tr>
-                                {% endfor %} -->
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-md-6">
-                        <table class="table">
-                            <thead>
-                                <th>Name</th>
-                                <th>Views gesamt</th>
-                            </thead>
-                            <tbody>
-                                <!-- {% for user in most_views_per_user %}
-                                <tr>
-                                    <td>{{ user.creator__name }}</td>
-                                    <td>{{ user.amount|intcomma }}</td>
-                                </tr>
-                                {% endfor %} -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-            <section>
-                <h3 class="display-6 py-3">
-                    <strong>Emotes</strong>
-                    <!-- <small>({{ emote_count }})</small> -->
-                </h3>
+        {/await}
+
+        <section>
+            <h3 class="display-6 py-3">
+                <strong>Emotes</strong>
+            </h3>
+            {#await fetchEmotes("twitch")}
                 <h4 class="h4">
                     Twitch
-                    <!-- <small>({{ all_twitch_emotes|length }})</small> -->
+                </h4>
+            {:then emotes}
+                <h4 class="h4">
+                    Twitch
+                    <small>({emotes.count})</small>
                 </h4>
                 <div class="row">
-                    <!-- {% for emote in all_twitch_emotes %}
+                    {#each emotes.results as emote}
                         <div class="col-auto p-1">
-                            <img src="{{ emote.url }}" alt="{{ emote.name }}" loading="lazy" height="60" data-toggle="tooltip" title="{{ emote.name }}">
+                            <img src={emote.url} alt={emote.name} loading="lazy" height="60" data-toggle="tooltip" title={emote.name}>
                         </div>
-                    {% endfor %} -->
+                    {/each}
                 </div>
+            {/await}
+            {#await fetchEmotes("bttv")}
                 <h4 class="h4 pt-4">
                     BetterTTV
-                    <!-- <small>({{ all_bttv_emotes|length }})</small> -->
+                </h4>
+            {:then emotes}
+                <h4 class="h4 pt-4">
+                    BetterTTV
+                    <small>({emotes.count})</small>
                 </h4>
                 <div class="row">
-                    <!-- {% for emote in all_bttv_emotes %}
+                    {#each emotes.results as emote}
                         <div class="col-auto p-1">
-                            <img src="{{ emote.url }}" alt="{{ emote.name }}" loading="lazy" height="60" data-toggle="tooltip" title="{{ emote.name }}">
+                            <img src={emote.url} alt={emote.name} loading="lazy" height="60" data-toggle="tooltip" title={emote.name}>
                         </div>
-                    {% endfor %} -->
+                    {/each}
                 </div>
+            {/await}
+            {#await fetchEmotes("ffz")}
                 <h4 class="h4 pt-4">
                     FrankerFaceZ
-                    <!-- <small>({{ all_ffz_emotes|length }})</small> -->
+                </h4>
+            {:then emotes}
+                <h4 class="h4 pt-4">
+                    FrankerFaceZ
+                    <small>({emotes.count})</small>
                 </h4>
                 <div class="row">
-                    <!-- {% for emote in all_ffz_emotes %}
+                    {#each emotes.results as emote}
                         <div class="col-auto p-1">
-                            <img src="{{ emote.url }}" alt="{{ emote.name }}" loading="lazy" height="60" data-toggle="tooltip" title="{{ emote.name }}">
+                            <img src={emote.url} alt={emote.name} loading="lazy" height="60" data-toggle="tooltip" title={emote.name}>
                         </div>
-                    {% endfor %} -->
+                    {/each}
                 </div>
-            </section>
-        {/await}
+            {/await}
+        </section>
     </div>
 </main>
