@@ -7,4 +7,7 @@ export const clipFilter = writable({
     date_to: null
 });
 
-export const theme = writable(localStorage.getItem('theme'));
+export const theme = writable();
+if (typeof window !== 'undefined')[
+    theme.set(localStorage.getItem('theme'))
+]
