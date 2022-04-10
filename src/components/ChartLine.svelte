@@ -1,27 +1,10 @@
 <script>
     import { onMount } from 'svelte';
-    import {
-        Chart,
-        Legend,
-        Tooltip,
-        LineElement,
-        PointElement,
-        LineController,
-        CategoryScale,
-        LinearScale
-    } from 'chart.js';
+    import { Chart, registerables } from 'chart.js/dist/chart.esm';
     import { chartColors } from './ChartColors.svelte';
     import { theme } from '../stores';
 
-    Chart.register(
-        Legend,
-        Tooltip,
-        LineElement,
-        PointElement,
-        LineController,
-        CategoryScale,
-        LinearScale
-    );
+    Chart.register(...registerables);
 
     export let data;
 

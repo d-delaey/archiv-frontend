@@ -39,32 +39,3 @@
         {/await}
     </div>
 </main>
-
-<style lang="scss">
-    .page-link {
-        color: var(--color-main);
-        background-color: var(--color-background);
-
-        &:hover {
-            color: var(--color-background);
-            background-color: var(--color-main);
-        }
-
-        &:focus {
-            color: var(--color-background);
-            background-color: var(--color-main);
-            box-shadow: none;
-        }
-    }
-
-    .page-item {
-        &.active .page-link {
-            background-color: var(--color-main);
-            border-color: var(--color-main);
-            color: var(--color-background);
-        }
-    }
-    .pagination-ellipsis {
-        width: 35px !important;
-    }
-</style>

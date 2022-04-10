@@ -132,9 +132,3 @@
         </div>
     </div>
 </footer>
-
-<style lang="scss">
-    footer {
-        background-color: var(--color-footer-background);
-    }
-</style>
