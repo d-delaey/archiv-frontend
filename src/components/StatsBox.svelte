@@ -95,19 +95,19 @@
         -moz-box-shadow: var(--drop-shadow);
 
         &.bg-1 {
-            background-color: var(--stats-bg-1);
+            background-color: var(--color-stats-bg-1);
         }
 
         &.bg-2 {
-            background-color: var(--stats-bg-2);
+            background-color: var(--color-stats-bg-2);
         }
 
         &.bg-3 {
-            background-color: var(--stats-bg-3);
+            background-color: var(--color-stats-bg-3);
         }
 
         &.bg-4 {
-            background-color: var(--stats-bg-4);
+            background-color: var(--color-stats-bg-4);
         }
     }
 </style>

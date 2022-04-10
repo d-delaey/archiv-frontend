@@ -5,6 +5,10 @@
     --color-hover: #2c2c2c;
     --color-text-muted: #b6b6b6;
     --color-footer-background: #151515;
+    --color-stats-bg-1: #6484a7;
+    --color-stats-bg-2: #eea154;
+    --color-stats-bg-3: #da797a;
+    --color-stats-bg-4: #82b6b2;
     --border: 1px solid var(--color-main) !important;
     --drop-shadow: 1px 1px 26px 0px rgba(0, 0, 0, 0.36);
     --toggler-icon: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
@@ -18,10 +22,6 @@
     // these things probably stay the same across multiple themes
     --progress-bar-fg: #f28e2b;
     --progress-bar-bg: #222222;
-    --stats-bg-1: #4e79a7;
-    --stats-bg-2: #f28e2b;
-    --stats-bg-3: #e15759;
-    --stats-bg-4: #76b7b2;
     scrollbar-width: none;
 }
 
@@ -32,6 +32,10 @@
     --color-hover: #eeeeee;
     --color-text-muted: #666666;
     --color-footer-background: #f5f5f5;
+    --color-stats-bg-1: #4e79a7;
+    --color-stats-bg-2: #f28e2b;
+    --color-stats-bg-3: #e15759;
+    --color-stats-bg-4: #76b7b2;
     --border: 1px solid var(--color-main) !important;
     --drop-shadow: 1px 1px 26px 0px rgba(0, 0, 0, 0.2);
     --toggler-icon: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,0,0,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");

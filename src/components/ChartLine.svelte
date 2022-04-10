@@ -1,8 +1,8 @@
 <script>
     import { onMount } from 'svelte';
     import { Chart, registerables } from 'chart.js/dist/chart.esm';
-    import { chartColors } from './ChartColors.svelte';
     import { theme } from '../stores';
+    import { themeColors } from './StatsColors.svelte';
 
     Chart.register(...registerables);
 
@@ -10,13 +10,13 @@
 
     let chartCanvas;
     let chart;
-    let colors = chartColors.themes[$theme];
+    let colors = themeColors[$theme];
     const chartValues = Array.from([...data.map((x) => x.count)]);
     const chartLabels = Array.from([...data.map((x) => x.hour)]);
 
     theme.subscribe((newTheme) => {
         if (chart) {
-            colors = chartColors.themes[newTheme];
+            colors = themeColors[newTheme];
             chart.options.scales = {
                 y: {
                     ticks: {

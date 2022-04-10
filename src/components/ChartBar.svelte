@@ -1,8 +1,8 @@
 <script>
     import { onMount } from 'svelte';
     import { Chart, registerables } from 'chart.js/dist/chart.esm';
-    import { chartColors } from './ChartColors.svelte';
     import { theme } from '../stores';
+    import { themeColors } from './StatsColors.svelte';
 
     Chart.register(...registerables);
 
@@ -10,31 +10,41 @@
 
     let chartCanvas;
     let chart;
-    let colors = chartColors.themes[$theme];
+    let colors = themeColors[$theme];
     const chartValues = Array.from([...data.map((x) => x.count)]);
     const chartLabels = Array.from([...data.map((x) => x.month)]);
 
     theme.subscribe((newTheme) => {
         if (chart) {
-            colors = chartColors.themes[newTheme];
-            chart.options.scales = {
-                y: {
-                    ticks: {
-                        color: colors?.ticks
-                    },
-                    grid: {
-                        color: colors?.grid
+            colors = themeColors[newTheme];
+            chart.data.datasets.forEach((dataset) => {
+                dataset.backgroundColor = colors?.backgroundColors
+            });
+            chart.options = {
+                plugins: {
+                    legend: {
+                        display: false
                     }
                 },
-                x: {
-                    ticks: {
-                        color: colors?.ticks
+                scales: {
+                    y: {
+                        ticks: {
+                            color: colors?.ticks
+                        },
+                        grid: {
+                            color: colors?.grid
+                        }
                     },
-                    grid: {
-                        color: colors?.grid
+                    x: {
+                        ticks: {
+                            color: colors?.ticks
+                        },
+                        grid: {
+                            color: colors?.grid
+                        }
                     }
                 }
-            };
+            }
             chart.update();
         }
     });
@@ -47,7 +57,7 @@
                 labels: chartLabels,
                 datasets: [
                     {
-                        backgroundColor: chartColors.backgroundColors,
+                        backgroundColor: colors?.backgroundColors,
                         data: chartValues
                     }
                 ]
