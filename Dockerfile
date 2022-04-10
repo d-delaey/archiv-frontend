@@ -1,6 +1,6 @@
 FROM node:alpine as build
 WORKDIR /app
-ENV VITE_BASE_URL=https://archiv.wubbl0rz.tv
+ENV VITE_BASE_URL=https://api.wubbl0rz.tv
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
