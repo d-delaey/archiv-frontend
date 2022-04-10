@@ -33,15 +33,7 @@
     <script data-cfasync="false">
         if (document) {
             let theme = localStorage.getItem('theme');
-            if (theme) {
-                document.documentElement.setAttribute('data-theme', theme);
-            } else {
-                theme = window.matchMedia('(prefers-color-scheme: dark)').matches
-                    ? 'dark'
-                    : 'light';
-                document.documentElement.setAttribute('data-theme', theme);
-                localStorage.setItem('theme', theme);
-            }
+            document.documentElement.setAttribute('data-theme', theme);
         }
     </script>
 </svelte:head>

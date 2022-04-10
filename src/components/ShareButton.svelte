@@ -1,6 +1,4 @@
 <script>
-    import { page } from '$app/stores';
-
     export let time;
 
     if (time === undefined) {
@@ -10,7 +8,7 @@
     let shareTime = false;
     let shareUrl;
     let copyClicked = false;
-    const baseUrl = window.location.href.split('?')[0] // prevent having 2x '?t=' in url
+    const baseUrl = window.location.href.split('?')[0]; // prevent having 2x '?t=' in url
 
     $: shareTime, (shareUrl = shareTime ? baseUrl + '?t=' + time : baseUrl);
 

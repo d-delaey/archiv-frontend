@@ -15,12 +15,6 @@
         window.scrollTo(0, 0);
         return v;
     }
-
-    function range(start, end) {
-        return Array(end - start + 1)
-            .fill()
-            .map((_, idx) => start + idx);
-    }
 </script>
 
 <main class="flex-shrink-0">

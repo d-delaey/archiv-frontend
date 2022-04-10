@@ -1,6 +1,9 @@
 <script>
     import { formatBytes } from '../functions.svelte';
-    import StatsBox from "../components/StatsBox.svelte";
+    import StatsBox from '../components/StatsBox.svelte';
+    import ChartBar from '../components/ChartBar.svelte';
+    import ChartDoughnut from '../components/ChartDoughnut.svelte';
+    import ChartLine from '../components/ChartLine.svelte';
 
     const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -9,30 +12,45 @@
         const s = await response.json();
         return s;
     }
-
 </script>
 
-{#await fetchStats()}
-    <span>lul</span>
-{:then stats}
-    <main class="flex-shrink-0">
-        <div class="container mb-4">
-            <h1 class="display-4 fw-bolder pb-3">
-                Statistiken
-            </h1>
+<main class="flex-shrink-0">
+    <div class="container mb-4">
+        <h1 class="display-4 fw-bolder pb-3">Statistiken</h1>
+        {#await fetchStats() then stats}
             <section>
                 <div class="row">
                     <div class="col-12 col-sm-6 col-lg-3 p-2">
-                        <StatsBox title="Vods" count={stats.count_vods_total} trend={stats.trend_vods} color=1 />
+                        <StatsBox
+                            title="Vods"
+                            count={stats.count_vods_total}
+                            trend={stats.trend_vods}
+                            color="1"
+                        />
                     </div>
                     <div class="col-12 col-sm-6 col-lg-3 p-2">
-                        <StatsBox title="Clips" count={stats.count_clips_total} trend={stats.trend_clips} color=2 />
+                        <StatsBox
+                            title="Clips"
+                            count={stats.count_clips_total}
+                            trend={stats.trend_clips}
+                            color="2"
+                        />
                     </div>
                     <div class="col-12 col-sm-6 col-lg-3 p-2">
-                        <StatsBox title="Stunden gestreamt" count={stats.count_h_streamed} trend={stats.trend_h_streamed} color=3 />
+                        <StatsBox
+                            title="Stunden gestreamt"
+                            count={stats.count_h_streamed}
+                            trend={stats.trend_h_streamed}
+                            color="3"
+                        />
                     </div>
                     <div class="col-12 col-sm-6 col-lg-3 p-2">
-                        <StatsBox title="Archivgröße" count={formatBytes(stats.count_size_bytes)} trend={false} color=4 />
+                        <StatsBox
+                            title="Archivgröße"
+                            count={formatBytes(stats.count_size_bytes)}
+                            trend={false}
+                            color="4"
+                        />
                     </div>
                 </div>
             </section>
@@ -42,13 +60,13 @@
                         <h3 class="display-6 py-3">
                             <strong>Vods pro Monat</strong>
                         </h3>
-                        <canvas id="chart-vods-by-month"></canvas>
+                        <ChartBar data={stats.vods_per_month} />
                     </div>
                     <div class="col-md-4 py-3">
                         <h3 class="display-6 py-3">
                             <strong>Vods pro Wochentag</strong>
                         </h3>
-                        <canvas id="chart-vods-by-weekday" width="300" height="300"></canvas>
+                        <ChartDoughnut data={stats.vods_per_weekday} />
                     </div>
                 </div>
                 <div class="row">
@@ -56,7 +74,7 @@
                         <h3 class="display-6 py-3">
                             <strong>Streambeginn nach Uhrzeit</strong>
                         </h3>
-                        <canvas id="chart-vods-by-hour" style="max-height: 300px;"></canvas>
+                        <ChartLine data={stats.start_by_time} />
                     </div>
                 </div>
             </section>
@@ -138,6 +156,6 @@
                     {% endfor %} -->
                 </div>
             </section>
-        </div>
-    </main>
-{/await}
+        {/await}
+    </div>
+</main>

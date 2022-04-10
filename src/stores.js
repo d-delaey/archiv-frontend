@@ -6,3 +6,5 @@ export const clipFilter = writable({
     date_from: null,
     date_to: null
 });
+
+export const theme = writable(localStorage.getItem('theme'));
