@@ -12,9 +12,9 @@
         <div class="col-auto mx-3">
             <strong class="fs-1">{count}</strong>
         </div>
-        <div class="col-auto mx-3">
-            <div class="fs-3 fw-bold">
-                {#if trend !== false}
+        {#if trend !== false}
+            <div class="col-auto mx-3">
+                <div class="fs-3 fw-bold">
                     {#if trend > 0}
                         <div
                             class="m-0"
@@ -79,9 +79,9 @@
                             </svg>
                         </div>
                     {/if}
-                {/if}
+                </div>
             </div>
-        </div>
+        {/if}
         <div class="fs-5">{title}</div>
     </div>
 </div>
