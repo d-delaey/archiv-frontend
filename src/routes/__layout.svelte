@@ -16,6 +16,7 @@
     let showResults = false;
     let searchFocus = -1;
     let preferesDark;
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
 
     onMount(async () => {
         // bootstrap js
@@ -59,7 +60,7 @@
     }
 
     async function fetchDB() {
-        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/stats/db/`);
+        const response = await fetch(`${BASE_URL}/stats/db/`);
         const s = await response.json();
         statsDB = s;
     }
@@ -68,8 +69,8 @@
     // handle search
     async function fetchSearch() {
         const [vodsResponse, clipsResponse] = await Promise.all([
-            fetch(`${import.meta.env.VITE_BASE_URL}/vods/?page_size=4&search=${query}`),
-            fetch(`${import.meta.env.VITE_BASE_URL}/clips/?page_size=4&search=${query}`)
+            fetch(`${BASE_URL}/vods/?page_size=4&search=${query}`),
+            fetch(`${BASE_URL}/clips/?page_size=4&search=${query}`)
         ]);
         const v = await vodsResponse.json();
         const c = await clipsResponse.json();
