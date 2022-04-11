@@ -83,7 +83,7 @@
             <div class="vod-infos mb-4">
                 <div class="d-flex title-container">
                     <div>
-                        <p class="display-6 fw-bolder emote-title large">
+                        <p class="display-6 fw-bolder">
                             {vod.title}
                         </p>
                         <p class="text-muted">
@@ -185,7 +185,7 @@
                 </div>
                 {#if vod.clip_set.length}
                     <hr class="my-4" />
-                    <p class="display-6 fw-bolder emote-title large">Clips für dieses Vod:</p>
+                    <p class="display-6 fw-bolder">Clips für dieses Vod:</p>
                     <div class="row">
                         {#each vod.clip_set as uuid}
                             {#await fetchClip(uuid)}
@@ -206,7 +206,7 @@
                                     </div>
                                     <div class="card-body">
                                         <a href="/clips/watch/{clip.uuid}">
-                                            <p class="h5 m-0 emote-title">
+                                            <p class="h5 m-0">
                                                 {clip.title}
                                             </p>
                                         </a>

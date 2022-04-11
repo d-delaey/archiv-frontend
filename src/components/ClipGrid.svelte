@@ -22,7 +22,7 @@
                 </div>
                 <div class="card-body">
                     <a href="/clips/watch/{clip.uuid}">
-                        <p class="h5 m-0 emote-title">
+                        <p class="h5 m-0">
                             {clip.title}
                         </p>
                     </a>

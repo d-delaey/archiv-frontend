@@ -73,10 +73,7 @@
                                                 {format(parseISO(vod.date), 'dd.MM.yyyy - HH:mm')} Uhr
                                             </div>
                                             <div class="col order-first order-md-last fw-bold">
-                                                <a
-                                                    href="/vods/watch/{vod.uuid}"
-                                                    class="emote-title"
-                                                >
+                                                <a href="/vods/watch/{vod.uuid}">
                                                     {vod.title}
                                                 </a>
                                             </div>

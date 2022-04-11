@@ -11,7 +11,6 @@
     // vars
     let clips;
     let vods;
-    let emotes;
     let statsDB;
     let query = '';
     let showResults = false;
@@ -59,21 +58,12 @@
         localStorage.setItem('theme', newTheme);
     }
 
-    // parallel api fetch: https://dmitripavlutin.com/javascript-fetch-async-await/#5-parallel-fetch-requests
-    async function fetchApi() {
-        const [emoteResponse, statsResponse] = await Promise.all([
-            fetch(`${import.meta.env.VITE_BASE_URL}/emotes/?page_size=500`),
-            fetch(`${import.meta.env.VITE_BASE_URL}/stats/db/`)
-        ]);
-        const e = await emoteResponse.json();
-        const s = await statsResponse.json();
-        return [e, s];
-    }
-
-    fetchApi().then(([e, s]) => {
-        emotes = e;
+    async function fetchDB() {
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/stats/db/`)
+        const s = await response.json();
         statsDB = s;
-    });
+    }
+    fetchDB()
 
     // handle search
     async function fetchSearch() {
