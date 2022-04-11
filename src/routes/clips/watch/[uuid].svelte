@@ -83,7 +83,7 @@
             <div class="vod-infos mb-4">
                 <div class="d-flex title-container">
                     <div>
-                        <p class="display-6 fw-bolder emote-title large">
+                        <p class="display-6 fw-bolder">
                             {clip.title}
                         </p>
                         <div class="row align-items-center">
@@ -184,7 +184,7 @@
             </div>
             {#if clip.vod}
                 <hr class="my-4" />
-                <p class="display-6 fw-bolder emote-title large">Clip stammt aus folgendem Vod:</p>
+                <p class="display-6 fw-bolder">Clip stammt aus folgendem Vod:</p>
                 <div class="row">
                     {#await fetchVod(clip.vod)}
                         <GridPlaceholder count="1" />
@@ -202,7 +202,7 @@
                             </div>
                             <div class="card-body">
                                 <a href="/vods/watch/{vod.uuid}">
-                                    <p class="h5 m-0 emote-title">
+                                    <p class="h5 m-0">
                                         {vod.title}
                                     </p>
                                 </a>

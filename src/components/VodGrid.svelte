@@ -22,12 +22,8 @@
                 </div>
                 <div class="card-body">
                     <a href="/vods/watch/{vod.uuid}">
-                        <p class="h5 m-0 emote-title">
-                            {#if vod.emote_title}
-                                {vod.emote_title}
-                            {:else}
-                                {vod.title}
-                            {/if}
+                        <p class="h5 m-0">
+                            {vod.title}
                         </p>
                     </a>
                     <p class="card-text text-muted">
