@@ -1,6 +1,7 @@
 <script>
     import { formatRelative, parseISO } from 'date-fns';
     import { de } from 'date-fns/locale/index.js';
+    import { dev } from '$app/env';
 
     export let statsDB;
 </script>
@@ -131,4 +132,7 @@
             </div>
         </div>
     </div>
+    {#if (!dev)}
+        <script async defer data-website-id="df348655-2d47-427d-87d2-7a4b048c8216" src="https://umami.wubbl0rz.tv/umami.js"></script>
+    {/if}
 </footer>
