@@ -21,7 +21,7 @@
             </div>
             <div class="col-md mt-3">
                 <p class="mb-1 fw-bold fs-6">Max</p>
-                <ul>
+                <ul class="footer-list">
                     <li>
                         <a
                             href="https://www.twitch.tv/wubbl0rz"
@@ -59,7 +59,7 @@
             </div>
             <div class="col-md mt-3 mb-3">
                 <p class="mb-1 fw-bold fs-6">Archiv</p>
-                <ul>
+                <ul class="footer-list">
                     <li>
                         <a
                             href="https://github.com/AgileProggers/"
@@ -101,11 +101,3 @@
         <script async defer data-website-id="df348655-2d47-427d-87d2-7a4b048c8216" src="https://umami.wubbl0rz.tv/umami.js"></script>
     {/if}
 </footer>
-
-<style lang="scss">
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-</style>
