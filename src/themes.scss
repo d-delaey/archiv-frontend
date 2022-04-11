@@ -77,6 +77,19 @@
     --border: 1px solid var(--color-main) !important;
 }
 
+[data-theme='ayaya'] {
+    --color-main: #ff00c8;
+    --color-background: #ffcce6;
+    --color-hover: #825f99;
+    --color-text-muted: #fd4efd;
+    --color-footer-background: #073642;
+    --progress-bar-fg: #ff00ff;
+    --border: 1px solid var(--color-main) !important;
+    h1, .h5 {
+        text-shadow: 0px 0px 20px #ff64d8;
+    }
+}
+
 // bootstrap vars
 $font-family-sans-serif: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;

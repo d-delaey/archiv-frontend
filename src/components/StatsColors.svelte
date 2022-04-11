@@ -76,6 +76,19 @@
                 '#859900',
                 '#f18019'
             ]
+        },
+        ayaya: {
+            grid: '#073642',
+            ticks: '#ff00c8',
+            backgroundColors: [
+                '#ff00c8',
+                '#825f99',
+                '#fd4efd',
+                '#ff00ff',
+                '#A63EC5',
+                '#CE49BF',
+                '#F190B7'
+            ]
         }
     };
 </script>

@@ -311,6 +311,11 @@
                                     Solarized Dark
                                 </div>
                             </li>
+                            <li>
+                                <div class="dropdown-item" on:click={() => setTheme('ayaya')}>
+                                    AYAYA
+                                </div>
+                            </li>
                         </ul>
                     </li>
                 </ul>
