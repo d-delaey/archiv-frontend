@@ -286,32 +286,32 @@
                             class="dropdown-menu dropdown-menu-end"
                             aria-labelledby="navbarDropdown"
                         >
-                            <li>
+                            <li class="cursor-pointer">
                                 <div class="dropdown-item" on:click={() => setTheme('dark')}>
                                     Dark
                                 </div>
                             </li>
-                            <li>
+                            <li class="cursor-pointer">
                                 <div class="dropdown-item" on:click={() => setTheme('light')}>
                                     Light
                                 </div>
                             </li>
-                            <li>
+                            <li class="cursor-pointer">
                                 <div class="dropdown-item" on:click={() => setTheme('nord')}>
                                     Nord
                                 </div>
                             </li>
-                            <li>
+                            <li class="cursor-pointer">
                                 <div class="dropdown-item" on:click={() => setTheme('gruvbox')}>
                                     Gruvbox
                                 </div>
                             </li>
-                            <li>
+                            <li class="cursor-pointer">
                                 <div class="dropdown-item" on:click={() => setTheme('solarized')}>
                                     Solarized Dark
                                 </div>
                             </li>
-                            <li>
+                            <li class="cursor-pointer">
                                 <div class="dropdown-item" on:click={() => setTheme('ayaya')}>
                                     AYAYA
                                 </div>
@@ -394,6 +394,10 @@
         &:focus {
             box-shadow: none !important;
         }
+    }
+
+    .cursor-pointer {
+        cursor: pointer;
     }
 
     @media only screen and (max-width: 991px) {
