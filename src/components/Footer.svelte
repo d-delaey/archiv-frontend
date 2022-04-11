@@ -84,6 +84,17 @@
                     </li>
                     <li>
                         <a
+                            href="https://api.wubbl0rz.tv/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            data-bs-toggle="tooltip"
+                            title="Rest Api"
+                            class="text-decoration-none"
+                            >Rest Api
+                        </a>
+                    </li>
+                    <li>
+                        <a
                             href="https://www.youtube.com/channel/UC9UlBHJlvz93xmLrjYCM0UA"
                             target="_blank"
                             rel="noopener noreferrer"
