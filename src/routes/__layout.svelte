@@ -29,7 +29,8 @@
 
     onMount(() => {
         // delete outdated local storage values
-        if (localStorage.getItem("watched")["vods"] === undefined) {
+        let watched = localStorage.getItem("watched");
+        if (watched && watched["vods"] === undefined) {
             localStorage.removeItem("watched")
         }
         if (localStorage.getItem("dark-mode")) {
