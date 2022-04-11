@@ -28,6 +28,14 @@
     });
 
     onMount(() => {
+        // delete outdated local storage values
+        if (localStorage.getItem("watched")["vods"] === undefined) {
+            localStorage.removeItem("watched")
+        }
+        if (localStorage.getItem("dark-mode")) {
+            localStorage.removeItem("dark-mode")
+        }
+
         // set theme
         preferesDark = window.matchMedia('(prefers-color-scheme: dark)');
         preferesDark.addEventListener('change', (e) => {
