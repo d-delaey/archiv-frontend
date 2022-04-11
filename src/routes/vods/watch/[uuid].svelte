@@ -104,7 +104,7 @@
                         >
                             Mehr anzeigen
                         </button>
-                        <a href="/dl/vods/{vod.uuid}" class="btn btn-sm" rel="external">
+                        <a href="{BASE_URL}/dl/vods/{vod.uuid}" class="btn btn-sm" rel="external">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="16"
