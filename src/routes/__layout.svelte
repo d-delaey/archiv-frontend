@@ -28,12 +28,12 @@
 
     onMount(() => {
         // delete outdated local storage values
-        let watched = localStorage.getItem("watched");
-        if (watched && watched["vods"] === undefined) {
-            localStorage.removeItem("watched")
+        let watched = localStorage.getItem('watched');
+        if (watched && watched['vods'] === undefined) {
+            localStorage.removeItem('watched');
         }
-        if (localStorage.getItem("dark-mode")) {
-            localStorage.removeItem("dark-mode")
+        if (localStorage.getItem('dark-mode')) {
+            localStorage.removeItem('dark-mode');
         }
 
         // set theme
@@ -59,11 +59,11 @@
     }
 
     async function fetchDB() {
-        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/stats/db/`)
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/stats/db/`);
         const s = await response.json();
         statsDB = s;
     }
-    fetchDB()
+    fetchDB();
 
     // handle search
     async function fetchSearch() {

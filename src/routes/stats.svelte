@@ -90,10 +90,8 @@
             <h3 class="display-6 py-3">
                 <strong>Emotes</strong>
             </h3>
-            {#await fetchEmotes("twitch")}
-                <h4 class="h4">
-                    Twitch
-                </h4>
+            {#await fetchEmotes('twitch')}
+                <h4 class="h4">Twitch</h4>
             {:then emotes}
                 <h4 class="h4">
                     Twitch
@@ -102,15 +100,20 @@
                 <div class="row">
                     {#each emotes.results as emote}
                         <div class="col-auto p-1">
-                            <img src={emote.url} alt={emote.name} loading="lazy" height="60" data-toggle="tooltip" title={emote.name}>
+                            <img
+                                src={emote.url}
+                                alt={emote.name}
+                                loading="lazy"
+                                height="60"
+                                data-toggle="tooltip"
+                                title={emote.name}
+                            />
                         </div>
                     {/each}
                 </div>
             {/await}
-            {#await fetchEmotes("bttv")}
-                <h4 class="h4 pt-4">
-                    BetterTTV
-                </h4>
+            {#await fetchEmotes('bttv')}
+                <h4 class="h4 pt-4">BetterTTV</h4>
             {:then emotes}
                 <h4 class="h4 pt-4">
                     BetterTTV
@@ -119,15 +122,20 @@
                 <div class="row">
                     {#each emotes.results as emote}
                         <div class="col-auto p-1">
-                            <img src={emote.url} alt={emote.name} loading="lazy" height="60" data-toggle="tooltip" title={emote.name}>
+                            <img
+                                src={emote.url}
+                                alt={emote.name}
+                                loading="lazy"
+                                height="60"
+                                data-toggle="tooltip"
+                                title={emote.name}
+                            />
                         </div>
                     {/each}
                 </div>
             {/await}
-            {#await fetchEmotes("ffz")}
-                <h4 class="h4 pt-4">
-                    FrankerFaceZ
-                </h4>
+            {#await fetchEmotes('ffz')}
+                <h4 class="h4 pt-4">FrankerFaceZ</h4>
             {:then emotes}
                 <h4 class="h4 pt-4">
                     FrankerFaceZ
@@ -136,7 +144,14 @@
                 <div class="row">
                     {#each emotes.results as emote}
                         <div class="col-auto p-1">
-                            <img src={emote.url} alt={emote.name} loading="lazy" height="60" data-toggle="tooltip" title={emote.name}>
+                            <img
+                                src={emote.url}
+                                alt={emote.name}
+                                loading="lazy"
+                                height="60"
+                                data-toggle="tooltip"
+                                title={emote.name}
+                            />
                         </div>
                     {/each}
                 </div>

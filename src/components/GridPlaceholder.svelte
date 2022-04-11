@@ -27,12 +27,12 @@
                 </div>
                 <div class="card-body">
                     <div class="h5 m-0 card-title placeholder-glow">
-                        <span class="placeholder col-{getRandomInt(1,5)}" />
-                        <span class="placeholder col-{getRandomInt(3,5)}" />
-                        <span class="placeholder col-{getRandomInt(3,5)}" />
+                        <span class="placeholder col-{getRandomInt(1, 5)}" />
+                        <span class="placeholder col-{getRandomInt(3, 5)}" />
+                        <span class="placeholder col-{getRandomInt(3, 5)}" />
                     </div>
                     <p class="card-text placeholder-glow">
-                        <span class="placeholder col-{getRandomInt(6,9)}" />
+                        <span class="placeholder col-{getRandomInt(6, 9)}" />
                     </p>
                 </div>
             </div>

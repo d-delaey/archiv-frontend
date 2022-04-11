@@ -30,7 +30,7 @@
                             data-bs-toggle="tooltip"
                             title="Twitch"
                             class="text-decoration-none"
-                        >Twitch
+                            >Twitch
                         </a>
                     </li>
                     <li>
@@ -41,7 +41,7 @@
                             data-bs-toggle="tooltip"
                             title="Youtube"
                             class="text-decoration-none"
-                        >YouTube
+                            >YouTube
                         </a>
                     </li>
                     <li>
@@ -52,7 +52,7 @@
                             data-bs-toggle="tooltip"
                             title="Discord"
                             class="text-decoration-none"
-                        >Discord
+                            >Discord
                         </a>
                     </li>
                 </ul>
@@ -68,7 +68,7 @@
                             data-bs-toggle="tooltip"
                             title="GitHub"
                             class="text-decoration-none"
-                        >Github
+                            >Github
                         </a>
                     </li>
                     <li>
@@ -79,7 +79,7 @@
                             data-bs-toggle="tooltip"
                             title="Status Page"
                             class="text-decoration-none"
-                        >Status
+                            >Status
                         </a>
                     </li>
                     <li>
@@ -90,14 +90,18 @@
                             data-bs-toggle="tooltip"
                             title="YouTube Archiv"
                             class="text-decoration-none"
-                        >YouTube Archiv
+                            >YouTube Archiv
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
-    {#if (!dev)}
-        <script async defer data-website-id="df348655-2d47-427d-87d2-7a4b048c8216" src="https://umami.wubbl0rz.tv/umami.js"></script>
+    {#if !dev}
+        <script
+            async
+            defer
+            data-website-id="df348655-2d47-427d-87d2-7a4b048c8216"
+            src="https://umami.wubbl0rz.tv/umami.js"></script>
     {/if}
 </footer>
