@@ -43,7 +43,7 @@
             setTheme(e.matches ? 'dark' : 'light');
         });
 
-        // close seach results when clicking somewhere else on the page
+        // close search results when clicking somewhere else on the page
         document.addEventListener('click', function (e) {
             const searchInput = document.querySelector('#searchInput');
             const searchResults = document.querySelector('#searchResults');
@@ -93,7 +93,7 @@
     // keyboard navigation for search results
     function handleResultsList(e) {
         let resultItems = document.querySelectorAll('.result-item');
-        if (e.keyCode == 13 && searchFocus === -1) {
+        if (e.keyCode == 13 && searchFocus === -1 && query.length > 0) {
             showResults = false;
             goto(`/search/${query}`);
         } else if (e.keyCode == 40) {
