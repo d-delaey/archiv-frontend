@@ -93,6 +93,7 @@
     // keyboard navigation for search results
     function handleResultsList(e) {
         let resultItems = document.querySelectorAll('.result-item');
+        console.log(resultItems);
         if (e.keyCode == 13 && searchFocus === -1 && query.length > 0) {
             showResults = false;
             goto(`/search/${query}`);
@@ -211,21 +212,22 @@
                             <h5 class="p-2">Vod Ergebnisse: {vods.count}</h5>
                             <div id="result-items-vods">
                                 {#each vods.results as vod}
-                                    <div
-                                        class="result-item"
-                                        on:click={() => goto(`/vods/watch/${vod.uuid}`)}
-                                        on:mouseenter={(e) =>
-                                            e.target.classList.add('result-item-active')}
-                                        on:mouseleave={(e) =>
-                                            e.target.classList.remove('result-item-active')}
-                                    >
-                                        <div class="fw-bold">{vod.title}</div>
-                                        <div class="text-muted">
-                                            {formatDistanceToNow(parseISO(vod.date), {
-                                                locale: de
-                                            })} - {format(parseISO(vod.date), 'HH:mm')} Uhr
+                                    <a href="/vods/watch/{vod.uuid}" class="text-decoration-none">
+                                        <div
+                                            class="p-2 result-item"
+                                            on:mouseenter={(e) =>
+                                                e.target.classList.add('result-item-active')}
+                                            on:mouseleave={(e) =>
+                                                e.target.classList.remove('result-item-active')}
+                                        >
+                                            <div class="fw-bold">{vod.title}</div>
+                                            <div class="text-muted">
+                                                {formatDistanceToNow(parseISO(vod.date), {
+                                                    locale: de
+                                                })} - {format(parseISO(vod.date), 'HH:mm')} Uhr
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 {/each}
                             </div>
                         {/if}
@@ -233,22 +235,23 @@
                             <h5 class="p-2">Clip Ergebnisse: {clips.count}</h5>
                             <div id="result-items-clips">
                                 {#each clips?.results as clip}
-                                    <div
-                                        class="result-item"
-                                        on:click={() => goto(`/clips/watch/${clip.uuid}`)}
-                                        on:mouseenter={(e) =>
-                                            e.target.classList.add('result-item-active')}
-                                        on:mouseleave={(e) =>
-                                            e.target.classList.remove('result-item-active')}
-                                    >
-                                        <div class="fw-bold">{clip.title}</div>
-                                        <div class="text-muted">
-                                            {formatDistanceToNow(parseISO(clip.date), {
-                                                locale: de
-                                            })}, von {clip.creator},
-                                            {clip.view_count} Views
+                                    <a href="/clips/watch/{clip.uuid}" class="text-decoration-none">
+                                        <div
+                                            class="p-2 result-item"
+                                            on:mouseenter={(e) =>
+                                                e.target.classList.add('result-item-active')}
+                                            on:mouseleave={(e) =>
+                                                e.target.classList.remove('result-item-active')}
+                                        >
+                                            <div class="fw-bold">{clip.title}</div>
+                                            <div class="text-muted">
+                                                {formatDistanceToNow(parseISO(clip.date), {
+                                                    locale: de
+                                                })}, von {clip.creator},
+                                                {clip.view_count} Views
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 {/each}
                             </div>
                         {/if}
@@ -373,15 +376,6 @@
             margin: 0;
             background-color: var(--color-main);
             color: var(--color-background);
-        }
-
-        .result-item {
-            padding: 0.5em;
-            cursor: pointer;
-
-            &:not(:last-child) {
-                border-bottom: 1px solid var(--color-hover);
-            }
         }
     }
 
