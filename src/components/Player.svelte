@@ -5,6 +5,7 @@
     import 'video.js/dist/video-js.css';
     import 'videojs-seek-buttons';
     import 'videojs-seek-buttons/dist/videojs-seek-buttons.css';
+    import 'videojs-thumbnail-sprite';
 
     export let obj;
     export let type;
@@ -57,6 +58,33 @@
         player.seekButtons({
             forward: 30,
             back: 10
+        });
+        let sprites = [];
+        const sprites_horizontal = 6; // defined by default ffmpeg value for tile
+        const sprites_vertical = 5; // defined by default ffmpeg value for tile
+        const sprites_per_frame = sprites_horizontal * sprites_vertical;
+        const interval = 20; // 1 frame each x seconds
+        const duration = sprites_horizontal * sprites_vertical * interval;
+        for (
+            let index = 1;
+            index <= Math.ceil(obj.duration / interval / sprites_per_frame);
+            index++
+        ) {
+            const d = {
+                url: `${BASE_URL}/media/${type}/${obj.filename}-sprites/${obj.filename}_${index
+                    .toString()
+                    .padStart(3, '0')}.webp`,
+                start: index * duration - duration,
+                duration: duration,
+                interval: interval,
+                width: 160,
+                height: 90
+            };
+            sprites = [...sprites, d];
+        }
+        console.log(sprites);
+        player.thumbnailSprite({
+            sprites: sprites
         });
         // Safari has problems with bind:currentTime on the video element and running a function when the var changes. So we use the non svelte way.
         // https://github.com/sveltejs/svelte/issues/6002
