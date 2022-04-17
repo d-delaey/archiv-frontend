@@ -42,7 +42,7 @@
     "videojs-seek-buttons": "^2.2.0"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
+    "*.{js,svelte,scss}": "eslint --cache --fix",
+    "*.{js,css,md,svelte,scss}": "prettier --write"
   }
 }
