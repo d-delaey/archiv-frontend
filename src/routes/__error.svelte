@@ -1,18 +1,18 @@
 <script context="module">
-  /** @type {import('@sveltejs/kit').ErrorLoad} */  
-  export function load({ error, status }) {
-    return {
-      props: {
-        //title: `${status}: ${error.message}`
-        status: status,
-        message: error.message
-      }
-    };
-  }
+    /** @type {import('@sveltejs/kit').ErrorLoad} */
+    export function load({ error, status }) {
+        return {
+            props: {
+                //title: `${status}: ${error.message}`
+                status: status,
+                message: error.message
+            }
+        };
+    }
 </script>
 
 <script>
-  export let status, message;
+    export let status, message;
 </script>
 
 <h1 class="text-center">{status}</h1>
