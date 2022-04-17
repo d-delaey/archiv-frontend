@@ -118,6 +118,23 @@
         });
         player.play();
 
+        // smooth scrubbing
+        // https://github.com/videojs/video.js/issues/4460#issuecomment-312861657
+        const SeekBar = videojs.getComponent('SeekBar');
+        SeekBar.prototype.getPercent = function getPercent() {
+            const time = this.player_.currentTime();
+            const percent = time / this.player_.duration();
+            return percent >= 1 ? 1 : percent;
+        };
+        SeekBar.prototype.handleMouseMove = function handleMouseMove(event) {
+            let newTime = this.calculateDistance(event) * this.player_.duration();
+            if (newTime === this.player_.duration()) {
+                newTime = newTime - 0.1;
+            }
+            this.player_.currentTime(newTime);
+            this.update();
+        };
+
         document.onkeydown = (e) => {
             let searchActive = document.getElementById('searchInput') == document.activeElement;
             if (searchActive) {
