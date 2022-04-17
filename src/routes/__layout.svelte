@@ -93,7 +93,6 @@
     // keyboard navigation for search results
     function handleResultsList(e) {
         let resultItems = document.querySelectorAll('.result-item');
-        console.log(resultItems);
         if (e.keyCode == 13 && searchFocus === -1 && query.length > 0) {
             showResults = false;
             goto(`/search/${query}`);

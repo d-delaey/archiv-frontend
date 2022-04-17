@@ -1,4 +1,5 @@
 <script>
+    import { page } from '$app/stores';
     import { format, parseISO } from 'date-fns';
 
     let vodCount = 0;
@@ -35,6 +36,14 @@
         return h + ':' + m + ':' + s;
     }
 </script>
+
+<svelte:head>
+    <meta property="og:title" content="Jahresansicht" />
+    <meta property="og:url" content={$page.url} />
+    <meta property="og:updated_time" content="Jahresansicht" />
+    <meta name="twitter:title" content="Jahresansicht" />
+    <title>Jahresansicht</title>
+</svelte:head>
 
 <div class="container">
     <h1 class="display-4 fw-bold pb-3">

@@ -21,12 +21,11 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Wubbl0rz Archiv" />
-    <meta name="twitter:title" content="Wubbl0rz Archiv " />
+    <meta name="twitter:title" content="Wubbl0rz Archiv" />
     <meta name="twitter:description" content="Twtich VOD Archiv von m4xFPS/wubbl0rz" />
     <meta name="twitter:image" content="/img/og.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image:alt" content="Wubbl0rz Archiv" />
-    <title>Wubbl0rz Archiv</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <!-- Prevent flashing theme -->
     <script data-cfasync="false">

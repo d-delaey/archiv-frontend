@@ -20,6 +20,10 @@
     }
 </script>
 
+<svelte:head>
+    <title>Statistiken</title>
+</svelte:head>
+
 <main class="flex-shrink-0">
     <div class="container mb-4">
         <h1 class="display-4 fw-bolder pb-3">Statistiken</h1>

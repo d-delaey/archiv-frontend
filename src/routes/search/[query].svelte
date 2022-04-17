@@ -14,16 +14,24 @@
         query = $page.params.query;
     });
 
-    async function fetchSearch(type, page, q) {
+    async function fetchSearch(type, p, q) {
         const response = await fetch(
-            `${
-                import.meta.env.VITE_BASE_URL
-            }/${type}/?page_size=${pageSize}&page=${page}&search=${q}`
+            `${import.meta.env.VITE_BASE_URL}/${type}/?page_size=${pageSize}&page=${p}&search=${q}`
         );
         const resp = await response.json();
         return resp;
     }
 </script>
+
+<svelte:head>
+    {#if query}
+        <meta property="og:title" content={query} />
+        <meta property="og:url" content={$page.url} />
+        <meta property="og:updated_time" content={query} />
+        <meta name="twitter:title" content={query} />
+        <title>{query}</title>
+    {/if}
+</svelte:head>
 
 <main class="flex-shrink-0">
     <div class="container">
@@ -48,7 +56,7 @@
                 </div>
             </div>
             <VodGrid {vods} />
-            <Pagination obj={vods} bind:page={vodsPage} />
+            <Pagination obj={vods} bind:p={vodsPage} />
         {/await}
     </div>
     <div class="container">
@@ -73,7 +81,7 @@
                 </div>
             </div>
             <ClipGrid {clips} />
-            <Pagination obj={clips} bind:page={clipsPage} />
+            <Pagination obj={clips} bind:p={clipsPage} />
         {/await}
     </div>
 </main>

@@ -11,6 +11,7 @@
 
     let uuid;
     let time = 0;
+    let headvod;
 
     onMount(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -28,6 +29,7 @@
     async function fetchVod(vod_uuid) {
         const response = await fetch(`${BASE_URL}/vods/${vod_uuid}`);
         const v = await response.json();
+        headvod = v;
         return v;
     }
 
@@ -37,6 +39,16 @@
         return c;
     }
 </script>
+
+<svelte:head>
+    {#if headvod}
+        <meta property="og:title" content={headvod.title} />
+        <meta property="og:url" content={$page.url} />
+        <meta property="og:updated_time" content={headvod.date} />
+        <meta name="twitter:title" content={headvod.title} />
+        <title>{headvod.title}</title>
+    {/if}
+</svelte:head>
 
 <main class="flex-shrink-0">
     {#await fetchVod(uuid)}

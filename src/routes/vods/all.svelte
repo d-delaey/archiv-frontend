@@ -2,9 +2,10 @@
     import VodGrid from '../../components/VodGrid.svelte';
     import GridPlaceholder from '../../components/GridPlaceholder.svelte';
     import Pagination from '../../components/Pagination.svelte';
+    import { page } from '$app/stores';
 
     let vods;
-    let page = 1;
+    let p = 1;
 
     async function fetchVods(p) {
         const response = await fetch(
@@ -16,6 +17,14 @@
         return v;
     }
 </script>
+
+<svelte:head>
+    <meta property="og:title" content="Alle Vods" />
+    <meta property="og:url" content={$page.url} />
+    <meta property="og:updated_time" content="Alle Vods" />
+    <meta name="twitter:title" content="Alle Vods" />
+    <title>Alle Vods</title>
+</svelte:head>
 
 <main class="flex-shrink-0">
     <div class="container">
@@ -31,11 +40,11 @@
                 </div>
             {/if}
         </div>
-        {#await fetchVods(page)}
+        {#await fetchVods(p)}
             <GridPlaceholder count="48" />
         {:then vods}
             <VodGrid {vods} />
-            <Pagination obj={vods} bind:page />
+            <Pagination obj={vods} bind:p />
         {/await}
     </div>
 </main>

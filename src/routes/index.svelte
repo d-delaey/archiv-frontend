@@ -4,6 +4,7 @@
     import ClipGrid from '../components/ClipGrid.svelte';
     import GridPlaceholder from '../components/GridPlaceholder.svelte';
     import subMonths from 'date-fns/subMonths/index.js';
+    import { page } from '$app/stores';
 
     // fetch vods and clips
     async function fetchVods() {
@@ -25,6 +26,14 @@
         return clips;
     }
 </script>
+
+<svelte:head>
+    <meta property="og:title" content="Wubbl0rz Archiv" />
+    <meta property="og:url" content={$page.url} />
+    <meta property="og:updated_time" content="Wubbl0rz Archiv" />
+    <meta name="twitter:title" content="Wubbl0rz Archiv" />
+    <title>Wubbl0rz Archiv</title>
+</svelte:head>
 
 <main class="flex-shrink-0">
     <div class="container">

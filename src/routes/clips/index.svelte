@@ -3,9 +3,10 @@
     import GridPlaceholder from '../../components/GridPlaceholder.svelte';
     import Pagination from '../../components/Pagination.svelte';
     import { clipFilter } from '../../stores';
+    import { page } from '$app/stores';
 
     let clips;
-    let page = 1;
+    let p = 1;
 
     async function fetchClips(f, p) {
         let params = `?page_size=48&page=${p}&ordering=${f['direction']}${f['sort_by']}`;
@@ -22,6 +23,14 @@
         return c;
     }
 </script>
+
+<svelte:head>
+    <meta property="og:title" content="Alle Clips" />
+    <meta property="og:url" content={$page.url} />
+    <meta property="og:updated_time" content="Alle Clips" />
+    <meta name="twitter:title" content="Alle Clips" />
+    <title>Alle Clips</title>
+</svelte:head>
 
 <main class="flex-shrink-0">
     <div class="container">
@@ -168,11 +177,11 @@
                 </div>
             {/if}
         </div>
-        {#await fetchClips($clipFilter, page)}
+        {#await fetchClips($clipFilter, p)}
             <GridPlaceholder count="48" />
         {:then clips}
             <ClipGrid {clips} />
-            <Pagination obj={clips} bind:page />
+            <Pagination obj={clips} bind:p />
         {/await}
     </div>
 </main>

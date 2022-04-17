@@ -11,6 +11,7 @@
 
     let uuid;
     let time = 0;
+    let headclip;
 
     onMount(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -34,9 +35,28 @@
     async function fetchClip(clip_uuid) {
         const response = await fetch(`${BASE_URL}/clips/${clip_uuid}`);
         const c = await response.json();
+        headclip = c;
         return c;
     }
 </script>
+
+<svelte:head>
+    {#if headclip}
+        <meta
+            name="description"
+            content="Clip von {headclip.creator} mit {headclip.view_count} Views"
+        />
+        <meta property="og:title" content={headclip.title} />
+        <meta
+            property="og:description"
+            content="Clip von {headclip.creator} mit {headclip.view_count} Views"
+        />
+        <meta property="og:url" content={$page.url} />
+        <meta property="og:updated_time" content={headclip.date} />
+        <meta name="twitter:title" content={headclip.title} />
+        <title>{headclip.title}</title>
+    {/if}
+</svelte:head>
 
 <main class="flex-shrink-0">
     {#await fetchClip(uuid)}
