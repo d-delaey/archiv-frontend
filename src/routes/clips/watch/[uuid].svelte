@@ -201,7 +201,7 @@
                     <ShareButton bind:time />
                 </div>
                 <p class="collapse text-muted mt-2" id="collapseExample">
-                    Auslösung: {clip.resolution}<br />
+                    Auflösung: {clip.resolution}<br />
                     Bitrate: {formatBytes(clip.bitrate)}it/s<br />
                     Größe: {formatBytes(clip.size)}
                 </p>
