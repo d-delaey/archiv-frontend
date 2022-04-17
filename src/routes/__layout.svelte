@@ -29,7 +29,7 @@
 
     onMount(() => {
         // delete outdated local storage values
-        let watched = localStorage.getItem('watched');
+        let watched = JSON.parse(localStorage.getItem('watched'));
         if (watched && watched['vods'] === undefined) {
             localStorage.removeItem('watched');
         }
