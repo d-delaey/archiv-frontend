@@ -59,40 +59,42 @@
             forward: 30,
             back: 10
         });
-        let sprites = [];
-        const sprites_horizontal = 6; // defined by default ffmpeg value for tile
-        const sprites_vertical = 5; // defined by default ffmpeg value for tile
-        const sprites_per_frame = sprites_horizontal * sprites_vertical;
-        const interval = 20; // 1 frame each x seconds
-        const duration = sprites_horizontal * sprites_vertical * interval;
-        for (
-            let index = 1;
-            index <= Math.ceil(obj.duration / interval / sprites_per_frame);
-            index++
-        ) {
-            let restDur;
-            if (index * duration <= obj.duration) {
-                restDur = duration;
-            } else {
-                // rest duration calculated by total duration - (index*duration) and rouded up to the next interval size (191 would be rounded up to 200) to prevent module warning
-                const durationUntilNow = obj.duration - (index - 1) * duration;
-                restDur = durationUntilNow + (interval - (durationUntilNow % interval));
+        if (type === 'vods') {
+            let sprites = [];
+            const sprites_horizontal = 6; // defined by default ffmpeg value for tile
+            const sprites_vertical = 5; // defined by default ffmpeg value for tile
+            const sprites_per_frame = sprites_horizontal * sprites_vertical;
+            const interval = 20; // 1 frame each x seconds
+            const duration = sprites_horizontal * sprites_vertical * interval;
+            for (
+                let index = 1;
+                index <= Math.ceil(obj.duration / interval / sprites_per_frame);
+                index++
+            ) {
+                let restDur;
+                if (index * duration <= obj.duration) {
+                    restDur = duration;
+                } else {
+                    // rest duration calculated by total duration - (index*duration) and rouded up to the next interval size (191 would be rounded up to 200) to prevent module warning
+                    const durationUntilNow = obj.duration - (index - 1) * duration;
+                    restDur = durationUntilNow + (interval - (durationUntilNow % interval));
+                }
+                const d = {
+                    url: `${BASE_URL}/media/${type}/${obj.filename}-sprites/${obj.filename}_${index
+                        .toString()
+                        .padStart(3, '0')}.webp`,
+                    start: index * duration - duration,
+                    duration: restDur,
+                    interval: interval,
+                    width: 160,
+                    height: 90
+                };
+                sprites = [...sprites, d];
             }
-            const d = {
-                url: `${BASE_URL}/media/${type}/${obj.filename}-sprites/${obj.filename}_${index
-                    .toString()
-                    .padStart(3, '0')}.webp`,
-                start: index * duration - duration,
-                duration: restDur,
-                interval: interval,
-                width: 160,
-                height: 90
-            };
-            sprites = [...sprites, d];
+            player.thumbnailSprite({
+                sprites: sprites
+            });
         }
-        player.thumbnailSprite({
-            sprites: sprites
-        });
         // Safari has problems with bind:currentTime on the video element and running a function when the var changes. So we use the non svelte way.
         // https://github.com/sveltejs/svelte/issues/6002
         player.on('loadedmetadata', () => {
