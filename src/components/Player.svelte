@@ -70,19 +70,26 @@
             index <= Math.ceil(obj.duration / interval / sprites_per_frame);
             index++
         ) {
+            let restDur;
+            if (index * duration <= obj.duration) {
+                restDur = duration;
+            } else {
+                // rest duration calculated by total duration - (index*duration) and rouded up to the next interval size (191 would be rounded up to 200) to prevent module warning
+                const durationUntilNow = obj.duration - (index - 1) * duration;
+                restDur = durationUntilNow + (interval - (durationUntilNow % interval));
+            }
             const d = {
                 url: `${BASE_URL}/media/${type}/${obj.filename}-sprites/${obj.filename}_${index
                     .toString()
                     .padStart(3, '0')}.webp`,
                 start: index * duration - duration,
-                duration: duration,
+                duration: restDur,
                 interval: interval,
                 width: 160,
                 height: 90
             };
             sprites = [...sprites, d];
         }
-        console.log(sprites);
         player.thumbnailSprite({
             sprites: sprites
         });
