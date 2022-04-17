@@ -61,8 +61,9 @@
         // Safari has problems with bind:currentTime on the video element and running a function when the var changes. So we use the non svelte way.
         // https://github.com/sveltejs/svelte/issues/6002
         player.on('loadedmetadata', () => {
-            player.playbackRate(playerSettings.playbackRate);
             player.volume(playerSettings.volume);
+            player.muted(playerSettings?.muted);
+            player.playbackRate(playerSettings.playbackRate);
             if (time > 0 && time <= obj.duration) {
                 player.currentTime(time);
             } else if (watched[type][obj.uuid]) {
@@ -160,6 +161,7 @@
 
     function updatePlayerSettings() {
         playerSettings.volume = player.volume();
+        playerSettings.muted = player.muted();
         playerSettings.playbackRate = player.playbackRate();
         localStorage.setItem('player', JSON.stringify(playerSettings));
     }
