@@ -1,7 +1,7 @@
 <script>
     import { formatRelative, parseISO } from 'date-fns';
     import { de } from 'date-fns/locale/index.js';
-    import { dev } from '$app/env';
+    import { page } from '$app/stores';
 
     export let statsDB;
 </script>
@@ -108,7 +108,8 @@
             </div>
         </div>
     </div>
-    {#if !dev}
+    {#if $page.url.hostname.startsWith('archiv.wubbl0rz.tv')}
+        yes
         <script
             async
             defer
