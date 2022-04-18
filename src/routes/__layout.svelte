@@ -53,17 +53,16 @@
         });
 
         /**
-         * 
+         *
          * Thats hacky
          * we remove the "insertAdjacentHTML" function from the head (otherwise it will break everything)
          * and replace it with a empty function.
          * We do that because https://github.com/utterance/utterances/blob/master/src/client.ts inserts styling with
          * this function that's results in duplicated styling when visiting vod's.
          */
-        document.head.insertAdjacentHTML = function() {
+        document.head.insertAdjacentHTML = function () {
             return;
-        }
-
+        };
     });
 
     function setTheme(newTheme) {
