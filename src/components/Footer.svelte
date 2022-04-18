@@ -109,7 +109,6 @@
         </div>
     </div>
     {#if $page.url.hostname.startsWith('archiv.wubbl0rz.tv')}
-        yes
         <script
             async
             defer
