@@ -160,7 +160,7 @@
                         <HotkeyModal />
                     </p>
                     <p class="collapse text-muted" id="moreInfos">
-                        Auslösung: {vod.resolution}<br />
+                        Auflösung: {vod.resolution}<br />
                         Bitrate: {formatBytes(vod.bitrate)}it/s<br />
                         FPS: {vod.fps}<br />
                         Größe: {formatBytes(vod.size)}
