@@ -43,7 +43,7 @@
     "videojs-thumbnail-sprite": "^0.1.1"
   },
   "lint-staged": {
-    "*.{js,svelte,scss}": "eslint --cache --fix",
+    "*.{js,svelte}": "eslint --cache --fix",
     "*.{js,css,md,svelte,scss}": "prettier --write"
   }
 }
