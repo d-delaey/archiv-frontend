@@ -27,14 +27,14 @@
     const BASE_URL = import.meta.env.VITE_BASE_URL;
 
     async function fetchVod(vod_uuid) {
-        const response = await fetch(`${BASE_URL}/vods/${vod_uuid}`);
+        const response = await fetch(`${BASE_URL}/vods/${vod_uuid}/`);
         const v = await response.json();
         headvod = v;
         return v;
     }
 
     async function fetchClip(clip_uuid) {
-        const response = await fetch(`${BASE_URL}/clips/${clip_uuid}`);
+        const response = await fetch(`${BASE_URL}/clips/${clip_uuid}/`);
         const c = await response.json();
         return c;
     }
