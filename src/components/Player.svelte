@@ -200,6 +200,7 @@
 
     onDestroy(() => {
         player.dispose();
+        document.onkeydown = null;
     });
 
     function updateWatched() {
