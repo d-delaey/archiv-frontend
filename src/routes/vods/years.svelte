@@ -1,6 +1,7 @@
 <script>
     import { page } from '$app/stores';
     import { format, parseISO } from 'date-fns';
+    import { emotes, showEmotesInTitle } from '../../stores/emotes';
 
     let vodCount = 0;
     let vods = {};
@@ -25,14 +26,6 @@
         vods[y] = year.results;
     }
 
-    async function fetchEmotes(provider) {
-        const response = await fetch(
-            `${import.meta.env.VITE_BASE_URL}/emotes/?page_size=500&provider=${provider}`
-        );
-        const e = await response.json();
-        return e;
-    }
-
     function toHHMMSS(duration) {
         const sec_num = parseInt(duration, 10);
         let hours = Math.floor(sec_num / 3600);
@@ -42,32 +35,6 @@
         let m = minutes < 10 ? '0' + minutes : minutes;
         let s = seconds < 10 ? '0' + seconds : seconds;
         return h + ':' + m + ':' + s;
-    }
-    async function showEmotesInTitle(title) {
-        let emotes = (await fetchEmotes('ffz')).results;
-        let newTitle = title;
-        let emoteNames = [];
-        let emoteLinks = [];
-
-        Object.keys(emotes).map((key) => {
-            emoteNames.push(emotes[key].name);
-            emoteLinks.push(emotes[key].url);
-        });
-
-        for (let i = 0; i < emoteNames.length; i++) {
-            let value = emoteNames[i];
-            let imgHTML =
-                '<img src="' +
-                emoteLinks[i] +
-                '" alt="' +
-                value +
-                '" loading="lazy" height="20" data-toggle="tooltip" title=' +
-                value +
-                '/>';
-            newTitle = newTitle.replace(value, imgHTML);
-        }
-
-        return newTitle;
     }
 </script>
 
@@ -117,7 +84,7 @@
                                             </div>
                                             <div class="col order-first order-md-last fw-bold">
                                                 <a href="/vods/watch/{vod.uuid}">
-                                                    {#await showEmotesInTitle(vod.title)}
+                                                    {#await showEmotesInTitle(vod.title, $emotes)}
                                                         {vod.title}
                                                     {:then newTitle}
                                                         {@html newTitle}

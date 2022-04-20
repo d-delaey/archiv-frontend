@@ -2,41 +2,9 @@
     import VideoThumbnail from './VideoThumbnail.svelte';
     import { format, formatDistanceToNow, parseISO } from 'date-fns';
     import { de } from 'date-fns/locale/index.js';
+    import { emotes, showEmotesInTitle } from '../stores/emotes';
 
     const BASE_URL = import.meta.env.VITE_BASE_URL;
-
-    async function fetchEmotes(provider) {
-        const response = await fetch(`${BASE_URL}/emotes/?page_size=500&provider=${provider}`);
-        const e = await response.json();
-        return e;
-    }
-
-    async function showEmotesInTitle(title) {
-        let emotes = (await fetchEmotes('ffz')).results;
-        let newTitle = title;
-        let emoteNames = [];
-        let emoteLinks = [];
-
-        Object.keys(emotes).map((key) => {
-            emoteNames.push(emotes[key].name);
-            emoteLinks.push(emotes[key].url);
-        });
-
-        for (let i = 0; i < emoteNames.length; i++) {
-            let value = emoteNames[i];
-            let imgHTML =
-                '<img src="' +
-                emoteLinks[i] +
-                '" alt="' +
-                value +
-                '" loading="lazy" height="20" data-toggle="tooltip" title=' +
-                value +
-                '/>';
-            newTitle = newTitle.replace(value, imgHTML);
-        }
-
-        return newTitle;
-    }
 
     export let vods;
 </script>
@@ -58,7 +26,7 @@
                 <div class="card-body">
                     <a href="/vods/watch/{vod.uuid}">
                         <p class="h5 m-0">
-                            {#await showEmotesInTitle(vod.title)}
+                            {#await showEmotesInTitle(vod.title, $emotes)}
                                 {vod.title}
                             {:then newTitle}
                                 {@html newTitle}

@@ -8,6 +8,7 @@
     import GridPlaceholder from '../../../components/GridPlaceholder.svelte';
     import ShareButton from '../../../components/ShareButton.svelte';
     import HotkeyModal from '../../../components/HotkeyModal.svelte';
+    import { emotes, showEmotesInTitle } from '../../../stores/emotes';
 
     let uuid;
     let time = 0;
@@ -96,7 +97,11 @@
                 <div class="d-flex title-container">
                     <div>
                         <p class="display-6 fw-bolder">
-                            {vod.title}
+                            {#await showEmotesInTitle(vod.title, $emotes, 50)}
+                                {vod.title}
+                            {:then newTitle}
+                                {@html newTitle}
+                            {/await}
                         </p>
                         <p class="text-muted">
                             {format(parseISO(vod.date), 'dd.MM.yyyy - HH:mm')} Uhr
@@ -219,6 +224,11 @@
                                     <div class="card-body">
                                         <a href="/clips/watch/{clip.uuid}">
                                             <p class="h5 m-0">
+                                                {#await showEmotesInTitle(vod.title, $emotes)}
+                                                    {clip.title}
+                                                {:then newTitle}
+                                                    {@html newTitle}
+                                                {/await}
                                                 {clip.title}
                                             </p>
                                         </a>

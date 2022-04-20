@@ -2,6 +2,7 @@
     import VideoThumbnail from './VideoThumbnail.svelte';
     import { formatDistanceToNow, parseISO } from 'date-fns';
     import { de } from 'date-fns/locale/index.js';
+    import { emotes, showEmotesInTitle } from '../stores/emotes';
 
     export let clips;
 </script>
@@ -23,7 +24,11 @@
                 <div class="card-body">
                     <a href="/clips/watch/{clip.uuid}">
                         <p class="h5 m-0">
-                            {clip.title}
+                            {#await showEmotesInTitle(clip.title, $emotes)}
+                                {clip.title}
+                            {:then newTitle}
+                                {@html newTitle}
+                            {/await}
                         </p>
                     </a>
                     <p class="card-text text-muted">
