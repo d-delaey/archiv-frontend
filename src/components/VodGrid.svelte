@@ -4,8 +4,6 @@
     import { de } from 'date-fns/locale/index.js';
     import { emotes, showEmotesInTitle } from '../stores/emotes';
 
-    const BASE_URL = import.meta.env.VITE_BASE_URL;
-
     export let vods;
 </script>
 
