@@ -1,15 +1,13 @@
 import { readable } from 'svelte/store';
 
-async function fetchEmotes(provider) {
-    const response = await fetch(
-        `${import.meta.env.VITE_BASE_URL}/emotes/?page_size=500&provider=${provider}`
-    );
+async function fetchEmotes() {
+    const response = await fetch(`${import.meta.env.VITE_BASE_URL}/emotes/?page_size=500`);
     const e = await response.json();
     return e;
 }
 
 const emotes = readable([], (set) => {
-    fetchEmotes('ffz')
+    fetchEmotes()
         .then((data) => set(data.results))
         .catch((err) => {
             console.error('Failed to fetch', err);
@@ -38,10 +36,12 @@ async function showEmotesInTitle(title, emotes, size = 20) {
             value +
             '" loading="lazy" height="' +
             size +
-            '" data-toggle="tooltip" title=' +
+            '" data-toggle="tooltip" title="' +
             value +
-            '/>';
-        newTitle = newTitle.replace(value, imgHTML);
+            '" />';
+
+        let re = new RegExp(`\\b${value}\\b`, 'gi');
+        newTitle = newTitle.replace(re, imgHTML);
     }
 
     return newTitle;
