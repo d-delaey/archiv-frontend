@@ -1,6 +1,7 @@
 <script>
     import { page } from '$app/stores';
     import { format, parseISO } from 'date-fns';
+    import { emotes, showEmotesInTitle } from '../../stores/emotes';
 
     let vodCount = 0;
     let vods = {};
@@ -83,7 +84,11 @@
                                             </div>
                                             <div class="col order-first order-md-last fw-bold">
                                                 <a href="/vods/watch/{vod.uuid}">
-                                                    {vod.title}
+                                                    {#await showEmotesInTitle(vod.title, $emotes)}
+                                                        {vod.title}
+                                                    {:then newTitle}
+                                                        {@html newTitle}
+                                                    {/await}
                                                 </a>
                                             </div>
                                             <div class="col-md-auto order-sm-last">
