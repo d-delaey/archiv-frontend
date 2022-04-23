@@ -46,14 +46,7 @@
         <meta property="og:title" content={headvod.title} />
         <meta property="og:url" content={$page.url} />
         <meta property="og:updated_time" content={headvod.date} />
-        <meta property="og:image" content="{BASE_URL}/media/vods/{headvod.filename}-lg.jpg" />
-        <meta property="og:image:url" content="{BASE_URL}/media/vods/{headvod.filename}-lg.jpg" />
-        <meta
-            property="og:image:secure_url"
-            content="{BASE_URL}/media/vods/{headvod.filename}-lg.jpg"
-        />
         <meta name="twitter:title" content={headvod.title} />
-        <meta name="twitter:image" content="{BASE_URL}/media/vods/{headvod.filename}-lg.jpg" />
         <title>{headvod.title}</title>
     {/if}
 </svelte:head>
