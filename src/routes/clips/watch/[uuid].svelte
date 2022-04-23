@@ -54,7 +54,14 @@
         />
         <meta property="og:url" content={$page.url} />
         <meta property="og:updated_time" content={headclip.date} />
+        <meta property="og:image" content="{BASE_URL}/media/clips/{headclip.clip_id}-lg.jpg" />
+        <meta property="og:image:url" content="{BASE_URL}/media/clips/{headclip.clip_id}-lg.jpg" />
+        <meta
+            property="og:image:secure_url"
+            content="{BASE_URL}/media/clips/{headclip.clip_id}-lg.jpg"
+        />
         <meta name="twitter:title" content={headclip.title} />
+        <meta name="twitter:image" content="{BASE_URL}/media/vods/{headclip.clip_id}-lg.jpg" />
         <title>{headclip.title}</title>
     {/if}
 </svelte:head>
