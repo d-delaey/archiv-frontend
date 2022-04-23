@@ -43,6 +43,11 @@
 
 <svelte:head>
     {#if headvod}
+        <meta name="description" content="Vod vom {format(parseISO(headvod.date), 'dd.MM.yyyy')}" />
+        <meta
+            property="og:description"
+            content="Vod vom {format(parseISO(headvod.date), 'dd.MM.yyyy')}"
+        />
         <meta property="og:title" content={headvod.title} />
         <meta property="og:url" content={$page.url} />
         <meta property="og:updated_time" content={headvod.date} />
@@ -54,6 +59,10 @@
         />
         <meta name="twitter:title" content={headvod.title} />
         <meta name="twitter:image" content="{BASE_URL}/media/vods/{headvod.filename}-lg.jpg" />
+        <meta
+            name="twitter:description"
+            content="Vod vom {format(parseISO(headvod.date), 'dd.MM.yyyy')}"
+        />
         <title>{headvod.title}</title>
     {/if}
 </svelte:head>
