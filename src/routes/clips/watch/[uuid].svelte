@@ -61,7 +61,7 @@
             content="{BASE_URL}/media/clips/{headclip.clip_id}-lg.jpg"
         />
         <meta name="twitter:title" content={headclip.title} />
-        <meta name="twitter:image" content="{BASE_URL}/media/vods/{headclip.clip_id}-lg.jpg" />
+        <meta name="twitter:image" content="{BASE_URL}/media/clips/{headclip.clip_id}-lg.jpg" />
         <meta
             name="twitter:description"
             content="Clip von {headclip.creator} mit {headclip.view_count} Views"
