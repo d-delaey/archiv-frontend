@@ -1,6 +1,6 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
-
+    import { browser } from '$app/env';
     import videojs from 'video.js';
     import 'video.js/dist/video-js.css';
     import 'videojs-seek-buttons';
@@ -14,20 +14,8 @@
     const BASE_URL = import.meta.env.VITE_BASE_URL;
     const playbackRates = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
     let player;
-    let watched = JSON.parse(localStorage.getItem('watched'));
-    if (!watched) {
-        watched = {
-            vods: {},
-            clips: {}
-        };
-    }
-    let playerSettings = JSON.parse(localStorage.getItem('player'));
-    if (!playerSettings) {
-        playerSettings = {
-            volume: 1,
-            playbackRate: 1
-        };
-    }
+    let watched;
+    let playerSettings;
     let src =
         type === 'vods'
             ? `${BASE_URL}/media/${type}/${obj.filename}-segments/${obj.filename}.m3u8`
@@ -41,6 +29,21 @@
     let timeout;
 
     onMount(() => {
+        watched = JSON.parse(localStorage.getItem('watched'));
+        if (!watched) {
+            watched = {
+                vods: {},
+                clips: {}
+            };
+        }
+        playerSettings = JSON.parse(localStorage.getItem('player'));
+        if (!playerSettings) {
+            playerSettings = {
+                volume: 1,
+                playbackRate: 1
+            };
+        }
+
         let options = {
             controlBar: {
                 volumePanel: {
@@ -199,8 +202,10 @@
     });
 
     onDestroy(() => {
-        player.dispose();
-        document.onkeydown = null;
+        if (browser) {
+            player.dispose();
+            document.onkeydown = null;
+        }
     });
 
     function updateWatched() {
