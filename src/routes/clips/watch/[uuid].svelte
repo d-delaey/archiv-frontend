@@ -40,16 +40,16 @@
 
 <svelte:head>
     <meta name="description" content="Clip von {clip.creator} mit {clip.view_count} Views" />
-    <meta property="og:title" content={clip.title} />
+    <meta property="og:title" content="{clip.title}" />
     <meta property="og:description" content="Clip von {clip.creator} mit {clip.view_count} Views" />
-    <meta property="og:updated_time" content={clip.date} />
+    <meta property="og:updated_time" content="{clip.date}" />
     <meta property="og:image" content="{BASE_URL}/media/clips/{clip.clip_id}-lg.jpg" />
     <meta property="og:image:url" content="{BASE_URL}/media/clips/{clip.clip_id}-lg.jpg" />
     <meta property="og:image:secure_url" content="{BASE_URL}/media/clips/{clip.clip_id}-lg.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Clip Thumbnail" />
-    <meta name="twitter:title" content={clip.title} />
+    <meta name="twitter:title" content="{clip.title}" />
     <meta
         name="twitter:description"
         content="Clip von {clip.creator} mit {clip.view_count} Views"
