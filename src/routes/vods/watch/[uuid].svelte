@@ -216,7 +216,7 @@
         </div>
         <script
             src="https://utteranc.es/client.js"
-            repo="AgileProggers/wubbl0rz-archiv-comments"
+            repo="AgileProggers/archiv-comments"
             issue-term="url"
             theme="preferred-color-scheme"
             crossorigin="anonymous"
