@@ -49,9 +49,13 @@
                 </div>
                 <div class="col-xs-12 col-md-5 ms-auto col-pages">
                     <p class="fs-4 fw-bold p-0 m-0 align-self-center">
-                        {vods.count > 1 ? 'Ergebnisse' : 'Ergebnis'}
-                        {(vodsPage - 1) * pageSize + 1} - {(vodsPage - 1) * pageSize +
-                            vods.results.length} von {vods.count}
+                        {#if vods.count >= 1}
+                            {(vodsPage - 1) * pageSize + 1} - {(vodsPage - 1) * pageSize +
+                                vods.results.length} von {vods.count}
+                            {vods.count == 1 ? 'Ergebnis' : 'Ergebnissen'}
+                        {:else}
+                            0 Ergebnisse
+                        {/if}
                     </p>
                 </div>
             </div>
@@ -74,9 +78,13 @@
                 </div>
                 <div class="col-xs-12 col-md-5 ms-auto col-pages">
                     <p class="fs-4 fw-bold p-0 m-0 align-self-center">
-                        {clips.count > 1 ? 'Ergebnisse' : 'Ergebnis'}
-                        {(clipsPage - 1) * pageSize + 1} - {(clipsPage - 1) * pageSize +
-                            clips.results.length} von {clips.count}
+                        {#if clips.count >= 1}
+                            {(clipsPage - 1) * pageSize + 1} - {(clipsPage - 1) * pageSize +
+                                clips.results.length} von {clips.count}
+                            {clips.count == 1 ? 'Ergebnis' : 'Ergebnissen'}
+                        {:else}
+                            0 Ergebnisse
+                        {/if}
                     </p>
                 </div>
             </div>
