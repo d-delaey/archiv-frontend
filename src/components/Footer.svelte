@@ -4,6 +4,7 @@
     import { page } from '$app/stores';
 
     export let statsDB;
+    const GIT_REV = import.meta.env.VITE_GIT_REV;
 </script>
 
 <footer class="footer mt-auto py-3">
@@ -12,11 +13,24 @@
             <div class="col-md mt-3">
                 <p class="mb-1 fw-bold fs-6">Letztes Update</p>
                 {#if statsDB}
-                    <p class="m-0">
+                    <p class="mb-1">
                         {formatRelative(parseISO(statsDB.last_vod_sync), new Date(), {
                             locale: de
                         })} Uhr
                     </p>
+                {/if}
+                <p class="mb-1 fw-bold fs-6">Git Commit Hash</p>
+                {#if GIT_REV && GIT_REV.length >= 7}
+                    <p class="m-0">
+                        <code
+                            ><a
+                                href="https://github.com/AgileProggers/archiv-frontend/commit/{GIT_REV}"
+                                target="_blank">{GIT_REV.slice(0, 7)}</a
+                            ></code
+                        >
+                    </p>
+                {:else}
+                    <p class="m-0">Unknown</p>
                 {/if}
             </div>
             <div class="col-md mt-3">
@@ -116,3 +130,10 @@
             src="https://umami.wubbl0rz.tv/umami.js"></script>
     {/if}
 </footer>
+
+<style lang="scss">
+    code > a {
+        color: #d63384;
+        text-decoration: none;
+    }
+</style>
