@@ -1,29 +1,29 @@
 <script>
     import { page } from '$app/stores';
-    import { format, parseISO } from 'date-fns';
-    import { emotes, showEmotesInTitle } from '../../stores/emotes';
+    import { format, parseISO, yearsToMonths } from 'date-fns';
+    import { emotes, showEmotesInTitle } from '@/stores/emotes';
+    import { fetchYears, fetchVods } from '@/api.js';
 
     let vodCount = 0;
     let vods = {};
 
-    async function fetchYears() {
-        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/years/`);
-        const y = await response.json();
-        y.forEach((element) => {
+    async function getYears() {
+        const years = await fetchYears();
+
+        years.forEach((element) => {
             vodCount += element.count;
         });
-        return y;
+
+        return years;
     }
 
-    async function fetchVods(y) {
-        if (y in vods) {
+    async function getYearVods(year) {
+        if (year in vods) {
             return;
         }
-        const response = await fetch(
-            `${import.meta.env.VITE_BASE_URL}/vods/?page_size=500&year=${y}`
-        );
-        const year = await response.json();
-        vods[y] = year.results;
+        const years = await fetchVods({ page_size: 500, year: year });
+
+        vods[year] = years.results;
     }
 
     function toHHMMSS(duration) {
@@ -52,11 +52,11 @@
         <small class="text-muted">Gesamt: {vodCount}</small>
     </h1>
     <div class="accordion" id="accordionPanelsStayOpenExample">
-        {#await fetchYears()}
+        {#await getYears()}
             <p>Lade Jahre...</p>
         {:then years}
             {#each years as year}
-                <div class="accordion-item" on:mouseenter={() => fetchVods(year.year)}>
+                <div class="accordion-item" on:mouseenter={() => getYearVods(year.year)}>
                     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                         <button
                             class="accordion-button collapsed"

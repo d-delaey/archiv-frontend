@@ -1,23 +1,10 @@
 <script>
-    import { formatBytes } from '../functions.svelte';
-    import StatsBox from '../components/StatsBox.svelte';
-    import ChartBar from '../components/ChartBar.svelte';
-    import ChartDoughnut from '../components/ChartDoughnut.svelte';
-    import ChartLine from '../components/ChartLine.svelte';
-
-    const BASE_URL = import.meta.env.VITE_BASE_URL;
-
-    async function fetchStats() {
-        const response = await fetch(`${BASE_URL}/stats`);
-        const s = await response.json();
-        return s;
-    }
-
-    async function fetchEmotes(provider) {
-        const response = await fetch(`${BASE_URL}/emotes/?page_size=500&provider=${provider}`);
-        const e = await response.json();
-        return e;
-    }
+    import { formatBytes } from '@/functions.svelte';
+    import StatsBox from '@components/StatsBox.svelte';
+    import ChartBar from '@components/ChartBar.svelte';
+    import ChartDoughnut from '@components/ChartDoughnut.svelte';
+    import ChartLine from '@components/ChartLine.svelte';
+    import { fetchStats, fetchEmotes } from '@/api.js';
 </script>
 
 <svelte:head>

@@ -13,13 +13,13 @@
 <script>
     import { onMount } from 'svelte';
     import { format, parseISO } from 'date-fns';
-    import { formatBytes } from '../../../functions.svelte';
-    import VideoThumbnail from '../../../components/VideoThumbnail.svelte';
-    import Player from '../../../components/Player.svelte';
-    import GridPlaceholder from '../../../components/GridPlaceholder.svelte';
-    import ShareButton from '../../../components/ShareButton.svelte';
-    import HotkeyModal from '../../../components/HotkeyModal.svelte';
-    import { emotes, showEmotesInTitle } from '../../../stores/emotes';
+    import { formatBytes } from '@/functions.svelte';
+    import VideoThumbnail from '@components/VideoThumbnail.svelte';
+    import Player from '@components/Player.svelte';
+    import GridPlaceholder from '@/components/GridPlaceholder.svelte';
+    import ShareButton from '@components/ShareButton.svelte';
+    import HotkeyModal from '@components/HotkeyModal.svelte';
+    import { emotes, showEmotesInTitle } from '@/stores/emotes';
 
     export let vod;
     let time = 0;

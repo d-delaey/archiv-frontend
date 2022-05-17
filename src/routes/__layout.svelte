@@ -3,10 +3,10 @@
     import { format, formatDistanceToNow, parseISO } from 'date-fns';
     import { de } from 'date-fns/locale/index.js';
     import { goto } from '$app/navigation';
-    import { theme } from '../stores';
+    import { theme } from '@/stores';
 
-    import Head from '../components/Head.svelte';
-    import Footer from '../components/Footer.svelte';
+    import Head from '@components/Head.svelte';
+    import Footer from '@components/Footer.svelte';
 
     // vars
     let clips;

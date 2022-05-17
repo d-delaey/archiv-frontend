@@ -1,30 +1,10 @@
 <script>
     // components
-    import VodGrid from '../components/VodGrid.svelte';
-    import ClipGrid from '../components/ClipGrid.svelte';
-    import GridPlaceholder from '../components/GridPlaceholder.svelte';
-    import subMonths from 'date-fns/subMonths/index.js';
+    import VodGrid from '@components/VodGrid.svelte';
+    import ClipGrid from '@components/ClipGrid.svelte';
+    import GridPlaceholder from '@components/GridPlaceholder.svelte';
     import { page } from '$app/stores';
-
-    // fetch vods and clips
-    async function fetchVods() {
-        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/vods/?page_size=12`);
-        const vods = await response.json();
-        return vods;
-    }
-
-    async function fetchClips() {
-        const response = await fetch(
-            `${
-                import.meta.env.VITE_BASE_URL
-            }/clips/?page_size=12&ordering=-view_count&date_from=${subMonths(
-                Date.now(),
-                1
-            ).toISOString()}`
-        );
-        const clips = await response.json();
-        return clips;
-    }
+    import { fetchClips, fetchVods } from '@/api.js';
 </script>
 
 <svelte:head>
@@ -40,7 +20,7 @@
         <h1 class="display-4 fw-bolder p-0 m-0 mb-4 align-self-center">
             <a href="/vods/all" class="text-decoration-none">Kürzliche Vods</a>
         </h1>
-        {#await fetchVods()}
+        {#await fetchVods({ page_size: 12 })}
             <GridPlaceholder count="12" />
         {:then vods}
             <VodGrid {vods} />
@@ -50,7 +30,7 @@
         <h1 class="display-4 fw-bolder p-0 m-0 mb-4 align-self-center">
             <a href="/clips" class="text-decoration-none">Top Clips letzter Monat</a>
         </h1>
-        {#await fetchClips()}
+        {#await fetchClips({ page_size: 12 })}
             <GridPlaceholder count="12" />
         {:then clips}
             <ClipGrid {clips} />

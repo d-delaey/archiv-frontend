@@ -1,20 +1,19 @@
 <script>
-    import VodGrid from '../../components/VodGrid.svelte';
-    import GridPlaceholder from '../../components/GridPlaceholder.svelte';
-    import Pagination from '../../components/Pagination.svelte';
+    import VodGrid from '@components/VodGrid.svelte';
+    import GridPlaceholder from '@components/GridPlaceholder.svelte';
+    import Pagination from '@components/Pagination.svelte';
     import { page } from '$app/stores';
+    import { fetchVods } from '@/api.js';
 
     let vods;
     let p = 1;
 
-    async function fetchVods(p) {
-        const response = await fetch(
-            `${import.meta.env.VITE_BASE_URL}/vods/?page_size=48&page=${p}`
-        );
-        const v = await response.json();
-        vods = v;
+    async function vodPagination(p) {
+        const newVods = await fetchVods({ page_size: 48, page: p });
+        vods = newVods;
+
         window.scrollTo(0, 0);
-        return v;
+        return newVods;
     }
 </script>
 
@@ -40,7 +39,7 @@
                 </div>
             {/if}
         </div>
-        {#await fetchVods(p)}
+        {#await vodPagination(p)}
             <GridPlaceholder count="48" />
         {:then vods}
             <VodGrid {vods} />
